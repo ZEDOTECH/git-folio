@@ -1,0 +1,38 @@
+---
+interface Language {
+  name: string;
+  color: string;
+  percentage: number;
+  bytes: number;
+}
+
+interface Props {
+  languages: Language[];
+  limit?: number;
+}
+const { languages, limit = 12 } = Astro.props;
+const visible = languages.slice(0, limit);
+---
+
+<div class="space-y-4">
+  <!-- Stacked bar -->
+  <div class="flex h-3 rounded-full overflow-hidden gap-px">
+    {visible.map(lang => (
+      <div
+        style={`width: ${lang.percentage.toFixed(2)}%; background-color: ${lang.color};`}
+        title={`${lang.name}: ${lang.percentage.toFixed(1)}%`}
+      ></div>
+    ))}
+  </div>
+
+  <!-- Legend -->
+  <div class="flex flex-wrap gap-x-5 gap-y-2">
+    {visible.map(lang => (
+      <div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={`background-color: ${lang.color};`}></span>
+        <span class="mono">{lang.name}</span>
+        <span class="text-stone-600">{lang.percentage.toFixed(1)}%</span>
+      </div>
+    ))}
+  </div>
+</div>

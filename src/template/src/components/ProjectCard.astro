@@ -1,0 +1,142 @@
+---
+interface Language {
+  name: string;
+  color: string;
+  percentage: number;
+}
+
+interface Repo {
+  name: string;
+  description: string | null;
+  url: string;
+  isPrivate?: boolean;
+  stars: number;
+  forks: number;
+  primaryLanguage: { name: string; color: string } | null;
+  languages?: Language[];
+  matchedSkills?: string[];
+  topics: string[];
+  createdAt?: string;
+  pushedAt?: string;
+  homepageUrl?: string | null;
+}
+
+interface Props {
+  repo: Repo;
+}
+const { repo } = Astro.props;
+
+const langs = repo.languages ?? (repo.primaryLanguage ? [{ ...repo.primaryLanguage, percentage: 100 }] : []);
+
+function ym(dateStr: string): string {
+  const d = new Date(dateStr);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+const dateRange = repo.createdAt && repo.pushedAt
+  ? `${ym(repo.createdAt)} ~ ${ym(repo.pushedAt)}`
+  : null;
+---
+
+<div class="card group flex flex-col h-full">
+  <!-- Header -->
+  <div class="flex items-start gap-2 mb-3">
+    <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+    </svg>
+    <a
+      href={repo.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight"
+    >
+      {repo.name}
+    </a>
+    {repo.isPrivate && (
+      <span class="flex-shrink-0 text-xs px-1.5 py-0.5 rounded border border-stone-700 text-stone-500 mono">
+        private
+      </span>
+    )}
+  </div>
+
+  <!-- Date range -->
+  {dateRange && (
+    <p class="mono text-xs text-stone-600 mb-3">{dateRange}</p>
+  )}
+
+  <!-- Description -->
+  <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">
+    {repo.description ?? 'No description available.'}
+  </p>
+
+  <!-- Language breakdown -->
+  {langs.length > 0 && (
+    <div class="mb-3">
+      <div class="flex h-1.5 rounded-full overflow-hidden mb-2 bg-stone-800">
+        {langs.map(lang => (
+          <div
+            style={`width: ${lang.percentage}%; background-color: ${lang.color};`}
+            title={`${lang.name} ${lang.percentage}%`}
+          />
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-x-3 gap-y-1">
+        {langs.map(lang => (
+          <span class="flex items-center gap-1 text-xs text-stone-400 mono">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style={`background-color: ${lang.color};`} />
+            {lang.name}
+            <span class="text-stone-600">{lang.percentage}%</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <!-- Topics -->
+  {repo.topics.length > 0 && (
+    <div class="flex flex-wrap gap-1.5 mb-3">
+      {repo.topics.slice(0, 4).map(topic => (
+        <span class="tag">{topic}</span>
+      ))}
+    </div>
+  )}
+
+  <!-- Matched skills -->
+  {repo.matchedSkills && repo.matchedSkills.length > 0 && (
+    <div class="flex flex-wrap gap-1.5 mb-3">
+      {repo.matchedSkills.map(skill => (
+        <span class="text-xs px-2 py-0.5 rounded-full border border-amber-500/30 text-amber-400/80 mono">
+          {skill}
+        </span>
+      ))}
+    </div>
+  )}
+
+  <!-- Footer -->
+  <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-800">
+    <div class="flex items-center gap-4 text-xs text-stone-500">
+      <span class="flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        {repo.stars}
+      </span>
+      <span class="flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+        </svg>
+        {repo.forks}
+      </span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href={repo.url} target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">
+        GitHub →
+      </a>
+      {repo.homepageUrl && (
+        <a href={repo.homepageUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">
+          Demo →
+        </a>
+      )}
+    </div>
+  </div>
+</div>

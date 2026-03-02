@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import LanguageBreakdown from '../components/LanguageBreakdown.astro';
+import portfolio from '../data/portfolio.json';
+
+const { profile, featuredRepos, skills, languageBreakdown } = portfolio;
+---
+
+<BaseLayout>
+  <Hero
+    name={profile.name}
+    bio={profile.bio}
+    avatarUrl={profile.avatarUrl}
+    githubUrl={profile.githubUrl}
+    websiteUrl={profile.websiteUrl}
+    location={profile.location}
+    login={profile.login}
+  />
+
+  <!-- Featured Projects -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="flex items-baseline justify-between mb-8">
+      <div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Highlighted work from my repositories</p>
+      </div>
+      <a href="/projects" class="text-sm text-amber-500 hover:text-amber-400 transition-colors mono">
+        View all →
+      </a>
+    </div>
+    <ProjectGrid repos={featuredRepos} />
+  </section>
+
+  <!-- Skills -->
+  {skills.length > 0 && (
+    <section class="bg-stone-900/50 border-y border-stone-800 py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">Areas of focus across my work</p>
+        <SkillsSection skills={skills.slice(0, 8)} />
+        <div class="mt-4 text-right">
+          <a href="/skills" class="text-sm text-amber-500 hover:text-amber-400 transition-colors mono">
+            View full breakdown →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Language Breakdown -->
+  {languageBreakdown.length > 0 && (
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+      <h2 class="section-title">Languages</h2>
+      <p class="section-subtitle">Code written across all repositories</p>
+      <LanguageBreakdown languages={languageBreakdown} limit={8} />
+    </section>
+  )}
+</BaseLayout>

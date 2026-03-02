@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import LanguageBreakdown from '../components/LanguageBreakdown.astro';
+import portfolio from '../data/portfolio.json';
+
+const { skills, languageBreakdown } = portfolio;
+---
+
+<BaseLayout title={`Skills — ${portfolio.meta.siteTitle}`}>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <h1 class="text-4xl font-bold text-stone-100 mb-2">Skills</h1>
+    <p class="text-stone-500 mono text-sm mb-12">Technical expertise across all repositories</p>
+
+    <!-- Language Breakdown -->
+    {languageBreakdown.length > 0 && (
+      <section class="mb-16">
+        <h2 class="section-title">Languages</h2>
+        <p class="section-subtitle">Distribution across {portfolio.repos.filter(r => r.enable !== false).length} repositories</p>
+        <LanguageBreakdown languages={languageBreakdown} limit={12} />
+
+        <!-- Per-language bars -->
+        <div class="mt-8 space-y-3">
+          {languageBreakdown.slice(0, 12).map(lang => (
+            <div class="flex items-center gap-4">
+              <div class="w-28 text-right">
+                <span class="mono text-xs text-stone-400">{lang.name}</span>
+              </div>
+              <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+                <div
+                  class="h-full rounded-full"
+                  style={`width: ${Math.min(lang.percentage, 100).toFixed(2)}%; background-color: ${lang.color};`}
+                ></div>
+              </div>
+              <span class="mono text-xs text-stone-500 w-12 text-right">{lang.percentage.toFixed(1)}%</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Skill Areas -->
+    {skills.length > 0 && (
+      <section>
+        <h2 class="section-title">Expertise Areas</h2>
+        <p class="section-subtitle">AI-analyzed skill clusters from repository history</p>
+        <SkillsSection skills={skills} />
+      </section>
+    )}
+
+    {skills.length === 0 && languageBreakdown.length === 0 && (
+      <div class="text-center py-16 text-stone-500">
+        <p>No skill data available. Run with AI enabled to generate analysis.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>
