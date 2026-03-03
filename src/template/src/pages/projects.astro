@@ -60,14 +60,14 @@ function ym(dateStr: string): string {
               {repo.name}
             </a>
             {repo.isPrivate && (
-              <span class="flex-shrink-0 text-xs px-1.5 py-0.5 rounded border border-stone-700 text-stone-500 mono">
+              <span class="flex-shrink-0 text-xs px-1.5 py-0.5 rounded border border-stone-700 text-stone-100 mono">
                 private
               </span>
             )}
           </div>
 
           {repo.createdAt && repo.pushedAt && (
-            <p class="mono text-xs text-stone-600 mb-3">{ym(repo.createdAt)} ~ {ym(repo.pushedAt)}</p>
+            <p class="mono text-xs text-stone-100 mb-3">{ym(repo.createdAt)} ~ {ym(repo.pushedAt)}</p>
           )}
 
           <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">

@@ -84,10 +84,10 @@ export async function writePortfolioData(
     enable: existingEnableMap.get(r.name) ?? true,
   });
 
-  // Featured: top 6 public repos where enable is not false, sorted by stars
+  // Featured: top 6 public repos where enable is not false, sorted by most recently pushed
   const featuredRepos = data.repos
     .filter(r => !r.isPrivate && existingEnableMap.get(r.name) !== false)
-    .sort((a, b) => b.stargazerCount - a.stargazerCount)
+    .sort((a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime())
     .slice(0, 6)
     .map(repoEntry);
 

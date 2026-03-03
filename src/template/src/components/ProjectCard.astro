@@ -57,7 +57,7 @@ const dateRange = repo.createdAt && repo.pushedAt
       </a>
     )}
     {repo.isPrivate && (
-      <span class="flex-shrink-0 text-xs px-1.5 py-0.5 rounded border border-stone-700 text-stone-300 mono">
+      <span class="flex-shrink-0 text-xs px-1.5 py-0.5 rounded border border-stone-700 text-stone-100 mono">
         private
       </span>
     )}
@@ -65,7 +65,7 @@ const dateRange = repo.createdAt && repo.pushedAt
 
   <!-- Date range -->
   {dateRange && (
-    <p class="mono text-xs text-stone-400 mb-3">{dateRange}</p>
+    <p class="mono text-xs text-stone-100 mb-3">{dateRange}</p>
   )}
 
   <!-- Description -->

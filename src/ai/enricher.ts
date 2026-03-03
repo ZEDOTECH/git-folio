@@ -1,6 +1,6 @@
 import pLimit from 'p-limit';
 import type { AppConfig, GenerateOptions } from '../config/types.js';
-import type { RawGitHubData, RawRepoNode } from '../github/types.js';
+import type { RawGitHubData, RawRepoNode, ViewerProfile } from '../github/types.js';
 import type { EnrichedData, EnrichedRepo, SkillArea, LanguageBreakdown } from './types.js';
 import { createOpenAIClient } from './client.js';
 import { buildProjectSummaryPrompt, buildSkillsAnalysisPrompt, buildBioPrompt } from './prompts.js';
@@ -95,7 +95,7 @@ export class AIEnricher {
     const skills = await this.generateSkills(data.repos, languageBreakdown);
 
     logger.step('Generating professional bio...');
-    const bio = await this.generateBio(data, skills);
+    const bio = await this.generateBio(data, skills, languageBreakdown);
 
     return {
       viewer: data.viewer,
@@ -128,9 +128,15 @@ export class AIEnricher {
     }
   }
 
-  private async generateBio(data: RawGitHubData, skills: SkillArea[]): Promise<string> {
+  private async generateBio(
+    data: RawGitHubData,
+    skills: SkillArea[],
+    languageBreakdown: LanguageBreakdown[],
+  ): Promise<string> {
+    const fallback = () =>
+      data.viewer.bio || AIEnricher.composeFallbackBio(data.viewer, languageBreakdown, skills, data.repos);
     try {
-      const prompt = buildBioPrompt(data.viewer, data.repos, skills);
+      const prompt = buildBioPrompt(data.viewer, data.repos, skills, languageBreakdown);
       const response = await this.openai.chat.completions.create({
         model: this.model,
         messages: [{ role: 'user', content: prompt }],
@@ -141,12 +147,29 @@ export class AIEnricher {
       if (!parsed.bio) {
         logger.warn(`Bio parse empty — finish_reason: ${response.choices[0].finish_reason}, raw: ${raw?.slice(0, 120)}`);
       }
-      return parsed.bio || data.viewer.bio || '';
+      return parsed.bio || fallback();
     } catch (err) {
       const reason = err instanceof Error ? err.message : String(err);
       logger.warn(`Bio generation failed: ${reason}`);
-      return data.viewer.bio ?? '';
+      return fallback();
     }
+  }
+
+  static composeFallbackBio(
+    viewer: ViewerProfile,
+    languageBreakdown: LanguageBreakdown[],
+    skills: SkillArea[],
+    repos: RawRepoNode[],
+  ): string {
+    const companyPart = viewer.company ? ` at ${viewer.company}` : '';
+    const locationPart = viewer.location ? `, based in ${viewer.location}` : '';
+    const topLangs = languageBreakdown.slice(0, 3).map(l => l.name);
+    const langStr = topLangs.length > 1
+      ? `${topLangs.slice(0, -1).join(', ')} and ${topLangs[topLangs.length - 1]}`
+      : (topLangs[0] ?? 'various languages');
+    const topSkills = skills.slice(0, 2).map(s => s.name);
+    const skillStr = topSkills.length > 0 ? ` with expertise in ${topSkills.join(' and ')}` : '';
+    return `Software developer${companyPart}${locationPart}. Works primarily in ${langStr} across ${repos.length} repositories${skillStr}.`;
   }
 
   computeLanguageBreakdown(repos: RawRepoNode[]): LanguageBreakdown[] {

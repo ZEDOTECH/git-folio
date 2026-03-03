@@ -1,17 +1,4 @@
-## ADDED Requirements
-
-### Requirement: Scaffold Astro Template to Output Directory
-系統 SHALL 將 CLI 套件內的 `src/template/` 目錄完整複製到使用者指定的 output 目錄（預設 `./output`）。若 output 目錄已存在，SHALL 更新模板檔案但保留 `src/data/portfolio.json` 不被覆蓋（其中含有使用者編輯的 `enable` 欄位）。
-
-#### Scenario: 首次生成
-- **WHEN** output 目錄不存在
-- **THEN** 建立 output 目錄並複製完整模板（含 `astro.config.mjs`、`package.json`、`tailwind.config.mjs`、`src/` 等）
-
-#### Scenario: 重新生成（output 已存在）
-- **WHEN** output 目錄已存在（使用者已修改過 `enable` 等設定）
-- **THEN** 更新模板檔案，但 `src/data/portfolio.json` 保留不覆蓋
-
----
+## MODIFIED Requirements
 
 ### Requirement: Write portfolio.json
 系統 SHALL 將 AI 增強後的完整資料序列化為 `output/src/data/portfolio.json`，結構包含：`profile`（使用者基本資料 + AI bio）、`repos`（**所有** repos，每個帶有 `enable` 欄位）、`featuredRepos`（前 6 個 public 且 `enable: true` 的 repos，**依 `pushedAt` 降序排列**）、`skills`（AI 技能分析）、`languageBreakdown`（前 12 種語言）、`generatedAt`（ISO timestamp）、`meta`（`siteTitle`、`theme`）。
@@ -55,6 +42,8 @@ Astro 模板 SHALL 包含三個頁面：
 ### Requirement: Astro Template Theme（Stone + Amber）
 模板 SHALL 使用 Tailwind CSS 實作深色主題，色系以 stone 為底色、amber 為強調色。字體 SHALL 使用 Geist（body）和 JetBrains Mono（code 元素/標題點綴），透過 Google Fonts 或 Fontsource 載入。
 
+Repo 卡片中，private badge 的文字色和日期範圍的文字色 SHALL 與 repo name 的文字色一致（`text-stone-100`）。
+
 #### Scenario: 深色主題基礎色
 - **WHEN** 網站載入
 - **THEN** 背景為 `stone-950`，卡片為 `stone-900`，主文字為 `stone-100`，強調色為 `amber-500`
@@ -70,12 +59,3 @@ Astro 模板 SHALL 包含三個頁面：
 #### Scenario: Repo 卡片日期顏色
 - **WHEN** repo 有 createdAt 和 pushedAt
 - **THEN** 日期範圍文字色為 `text-stone-100`（與 repo name 一致）
-
----
-
-### Requirement: Generate README in Output Directory
-系統 SHALL 在 output 目錄生成 `README.md`，說明如何安裝依賴、啟動開發伺服器、build 靜態檔案。
-
-#### Scenario: README 內容
-- **WHEN** 生成完成
-- **THEN** README 包含：生成時間、`npm install` + `npm run dev` + `npm run build` 命令說明

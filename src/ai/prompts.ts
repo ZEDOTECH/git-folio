@@ -71,6 +71,7 @@ export function buildBioPrompt(
   viewer: ViewerProfile,
   repos: RawRepoNode[],
   skills: SkillArea[],
+  languageBreakdown: LanguageBreakdown[],
 ): string {
   const topRepos = repos
     .filter(r => !r.isPrivate)
@@ -79,7 +80,32 @@ export function buildBioPrompt(
     .map(r => r.name)
     .join(', ');
 
-  const skillNames = skills.map(s => s.name).join(', ');
+  const topLangs = languageBreakdown
+    .slice(0, 5)
+    .map(l => `${l.name}: ${l.percentage.toFixed(1)}%`)
+    .join(', ');
+
+  const skillDetails = skills.length > 0
+    ? skills.map(s => `  - ${s.name}: ${s.description}`).join('\n')
+    : '  Not analyzed yet';
+
+  const privateRepos = repos.filter(r => r.isPrivate);
+  let privateContext = '';
+  if (privateRepos.length > 0) {
+    const privateLangs = [...new Set(
+      privateRepos.map(r => r.primaryLanguage?.name).filter((n): n is string => !!n),
+    )].join(', ');
+    const privateTopics = [...new Set(privateRepos.flatMap(r => r.topics))].slice(0, 10).join(', ');
+    const allCreated = repos.map(r => r.createdAt).sort();
+    const allPushed = repos.map(r => r.pushedAt).sort();
+    const startYear = new Date(allCreated[0]).getFullYear();
+    const endYear = new Date(allPushed[allPushed.length - 1]).getFullYear();
+    const activitySpan = startYear === endYear ? `${startYear}` : `${startYear}–${endYear}`;
+    privateContext = `\nPrivate work context (${privateRepos.length} private repositories, details anonymized):
+- Languages used: ${privateLangs || 'Various'}
+- Topics/domains: ${privateTopics || 'Not tagged'}
+- Activity span: ${activitySpan}`;
+  }
 
   return `You are writing a professional bio for a developer's portfolio website.
 
@@ -90,9 +116,11 @@ Developer info:
 - GitHub bio: ${viewer.bio || 'Not set'}
 - Company: ${viewer.company ?? 'Independent'}
 - Location: ${viewer.location ?? 'Unknown'}
-- Top repositories: ${topRepos || 'None yet'}
-- Key skill areas: ${skillNames || 'Not analyzed yet'}
+- Top public repositories: ${topRepos || 'None yet'}
 - Total public repos: ${repos.filter(r => !r.isPrivate).length}
+- Language breakdown: ${topLangs || 'Not available'}
+- Key skill areas:
+${skillDetails}${privateContext}
 
 Respond with ONLY a JSON object:
 {"bio": "your 2-3 sentence professional bio here"}`;

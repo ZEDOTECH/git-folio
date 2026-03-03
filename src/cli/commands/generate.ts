@@ -67,7 +67,7 @@ export function registerGenerate(program: Command): void {
             viewer: rawData.viewer,
             repos: rawData.repos.map(r => ({ ...r, aiSummary: r.description })),
             skills: [],
-            bio: rawData.viewer.bio ?? '',
+            bio: rawData.viewer.bio || AIEnricher.composeFallbackBio(rawData.viewer, langBreakdown, [], rawData.repos),
             languageBreakdown: langBreakdown,
             generatedAt: new Date().toISOString(),
           };
