@@ -1,4 +1,4 @@
-## ADDED Requirements
+## Requirements
 
 ### Requirement: generate Command
 CLI SHALL 提供 `git-folio generate` 命令作為主要入口，執行完整的資料抓取 → AI 分析 → 網站生成流程。
@@ -70,3 +70,24 @@ CLI SHALL 以 `#!/usr/bin/env node` 為 entry point，並在 `package.json` 的 
 #### Scenario: npx 執行
 - **WHEN** 使用者執行 `npx git-folio generate`
 - **THEN** 自動下載最新版本並執行
+
+---
+
+### Requirement: serve Command
+CLI SHALL 提供 `git-folio serve` 命令，啟動本機 Web UI server。
+
+支援以下選項：
+- `-p, --port <number>`：監聽 port，預設 `3000`
+- `--open`：啟動後自動在預設瀏覽器開啟網址
+
+#### Scenario: 基本啟動
+- **WHEN** 使用者執行 `git-folio serve`
+- **THEN** server 在 port 3000 啟動，印出「git-folio UI running at http://localhost:3000」
+
+#### Scenario: 自訂 port
+- **WHEN** 使用者執行 `git-folio serve --port 8080`
+- **THEN** server 在 port 8080 啟動，印出對應網址
+
+#### Scenario: --open 旗標
+- **WHEN** 使用者執行 `git-folio serve --open`
+- **THEN** server 啟動後，自動以系統預設瀏覽器開啟 `http://localhost:3000`

@@ -3,7 +3,7 @@ import path from 'path';
 import type { AppConfig, GenerateOptions } from './types.js';
 
 export async function loadConfig(opts: Partial<GenerateOptions>): Promise<AppConfig> {
-  dotenv.config({ path: path.join(process.cwd(), '.env') });
+  dotenv.config({ path: path.join(process.cwd(), '.env'), override: true });
 
   const githubToken = process.env.GITHUB_PAT ?? process.env.GITHUB_TOKEN ?? '';
   const openaiKey = process.env.OPENAI_API_KEY ?? '';

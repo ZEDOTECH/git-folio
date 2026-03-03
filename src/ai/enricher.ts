@@ -6,6 +6,41 @@ import { createOpenAIClient } from './client.js';
 import { buildProjectSummaryPrompt, buildSkillsAnalysisPrompt, buildBioPrompt } from './prompts.js';
 import { logger } from '../utils/logger.js';
 
+function parseJson(raw: string | null | undefined): Record<string, unknown> {
+  const text = (raw ?? '').trim();
+  if (!text) return {};
+
+  // 1. Try direct parse
+  try { return JSON.parse(text) as Record<string, unknown>; } catch { /* fall through */ }
+
+  // 2. Strip outer markdown code fences (```json ... ```) and try again
+  const unwrapped = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim();
+  try { return JSON.parse(unwrapped) as Record<string, unknown>; } catch { /* fall through */ }
+
+  // 3. Bracket-count to find every top-level {...} block, then try each from last→first.
+  //    This handles models that emit prose before/around the JSON, including stray {} in text.
+  const blocks: string[] = [];
+  let depth = 0;
+  let start = -1;
+  for (let i = 0; i < unwrapped.length; i++) {
+    if (unwrapped[i] === '{') {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (unwrapped[i] === '}') {
+      depth--;
+      if (depth === 0 && start !== -1) {
+        blocks.push(unwrapped.slice(start, i + 1));
+        start = -1;
+      }
+    }
+  }
+  for (const block of blocks.reverse()) {
+    try { return JSON.parse(block) as Record<string, unknown>; } catch { /* fall through */ }
+  }
+
+  return {};
+}
+
 export class AIEnricher {
   private openai: ReturnType<typeof createOpenAIClient>;
   private model: string;
@@ -42,15 +77,14 @@ export class AIEnricher {
             const response = await this.openai.chat.completions.create({
               model: this.model,
               messages: [{ role: 'user', content: prompt }],
-              temperature: 0.3,
-              max_tokens: 100,
-              response_format: { type: 'json_object' },
+              max_completion_tokens: 100,
             });
-            const parsed = JSON.parse(response.choices[0].message.content ?? '{}') as { summary?: string };
+            const parsed = parseJson(response.choices[0].message.content) as { summary?: string };
             logger.progress(`Summarized: ${repo.name}`);
             return { ...repo, aiSummary: parsed.summary ?? repo.description };
           } catch (err) {
-            logger.warn(`Failed to summarize ${repo.name}, using GitHub description`);
+            const reason = err instanceof Error ? err.message : String(err);
+            logger.warn(`Failed to summarize ${repo.name}: ${reason}`);
             return { ...repo, aiSummary: repo.description };
           }
         }),
@@ -79,14 +113,17 @@ export class AIEnricher {
       const response = await this.openai.chat.completions.create({
         model: this.model,
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0.4,
-        max_tokens: 800,
-        response_format: { type: 'json_object' },
+        max_completion_tokens: 1500,
       });
-      const parsed = JSON.parse(response.choices[0].message.content ?? '{}') as { skills?: SkillArea[] };
+      const raw = response.choices[0].message.content;
+      const parsed = parseJson(raw) as { skills?: SkillArea[] };
+      if (!parsed.skills?.length) {
+        logger.warn(`Skills parse empty — finish_reason: ${response.choices[0].finish_reason}, raw: ${raw?.slice(0, 120)}`);
+      }
       return parsed.skills ?? [];
     } catch (err) {
-      logger.warn('Skills analysis failed, skipping');
+      const reason = err instanceof Error ? err.message : String(err);
+      logger.warn(`Skills analysis failed: ${reason}`);
       return [];
     }
   }
@@ -97,14 +134,17 @@ export class AIEnricher {
       const response = await this.openai.chat.completions.create({
         model: this.model,
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0.5,
-        max_tokens: 200,
-        response_format: { type: 'json_object' },
+        max_completion_tokens: 400,
       });
-      const parsed = JSON.parse(response.choices[0].message.content ?? '{}') as { bio?: string };
-      return parsed.bio ?? data.viewer.bio ?? '';
+      const raw = response.choices[0].message.content;
+      const parsed = parseJson(raw) as { bio?: string };
+      if (!parsed.bio) {
+        logger.warn(`Bio parse empty — finish_reason: ${response.choices[0].finish_reason}, raw: ${raw?.slice(0, 120)}`);
+      }
+      return parsed.bio || data.viewer.bio || '';
     } catch (err) {
-      logger.warn('Bio generation failed, using GitHub bio');
+      const reason = err instanceof Error ? err.message : String(err);
+      logger.warn(`Bio generation failed: ${reason}`);
       return data.viewer.bio ?? '';
     }
   }

@@ -2,6 +2,7 @@
 import { Command } from 'commander';
 import { registerGenerate } from './cli/commands/generate.js';
 import { registerClearCache } from './cli/commands/clear-cache.js';
+import { registerServe } from './cli/commands/serve.js';
 
 const program = new Command();
 
@@ -12,5 +13,6 @@ program
 
 registerGenerate(program);
 registerClearCache(program);
+registerServe(program);
 
 program.parse(process.argv);

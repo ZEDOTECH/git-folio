@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>git-folio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0c0a09; /* stone-950 */
+      --surface:   #1c1917; /* stone-900 */
+      --border:    #292524; /* stone-800 */
+      --muted:     #57534e; /* stone-600 */
+      --text:      #f5f5f4; /* stone-100 */
+      --text-dim:  #a8a29e; /* stone-400 */
+      --amber:     #f59e0b; /* amber-500 */
+      --amber-dim: #78350f; /* amber-900 */
+      --red:       #ef4444;
+      --green:     #22c55e;
+    }
+
+    body { background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; font-size: 14px; min-height: 100vh; }
+
+    /* NAV */
+    nav { display: flex; align-items: center; gap: 0; border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
+    nav .brand { font-weight: 700; color: var(--amber); padding: 1rem 1rem 1rem 0; margin-right: 1rem; letter-spacing: -0.5px; font-size: 15px; }
+    nav button { background: none; border: none; color: var(--text-dim); cursor: pointer; padding: 1rem 1.25rem; font-size: 14px; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .15s, border-color .15s; }
+    nav button:hover { color: var(--text); }
+    nav button.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+    /* STATUS BAR */
+    #statusbar { display: flex; gap: 1.5rem; padding: .5rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); font-size: 12px; color: var(--text-dim); }
+    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--muted); margin-right: 5px; }
+    .status-dot.ok { background: var(--green); }
+    .status-dot.warn { background: var(--amber); }
+
+    /* LAYOUT */
+    main { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* TWO-COL */
+    .two-col { display: grid; grid-template-columns: 340px 1fr; gap: 1.5rem; }
+    @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* CARD */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+    .card h2 { font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 1rem; }
+
+    /* FORM */
+    label { display: block; color: var(--text-dim); font-size: 12px; margin-bottom: 4px; margin-top: .85rem; }
+    label:first-of-type { margin-top: 0; }
+    input[type=text], input[type=number], input[type=password] {
+      width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 5px;
+      color: var(--text); padding: .45rem .65rem; font-size: 14px; outline: none;
+      transition: border-color .15s;
+    }
+    input:focus { border-color: var(--amber); }
+    .checkbox-row { display: flex; align-items: center; gap: .5rem; margin-top: .75rem; color: var(--text-dim); font-size: 13px; cursor: pointer; }
+    .checkbox-row input[type=checkbox] { accent-color: var(--amber); width: 15px; height: 15px; cursor: pointer; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .5rem 1.1rem; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: opacity .15s, background .15s; }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .btn-primary { background: var(--amber); color: #000; }
+    .btn-primary:hover:not(:disabled) { opacity: .85; }
+    .btn-ghost { background: transparent; border-color: var(--border); color: var(--text-dim); }
+    .btn-ghost:hover:not(:disabled) { border-color: var(--amber); color: var(--text); }
+    .btn-danger { background: transparent; border-color: #7f1d1d; color: var(--red); }
+    .btn-danger:hover:not(:disabled) { background: #450a0a; }
+    .btn-row { display: flex; gap: .6rem; margin-top: 1.1rem; flex-wrap: wrap; }
+
+    /* LOG */
+    #gen-log { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; font-family: monospace; font-size: 12px; height: 380px; overflow-y: auto; white-space: pre-wrap; color: var(--text-dim); }
+    #gen-log .log-done { color: var(--green); }
+    #gen-log .log-error { color: var(--red); }
+    #gen-log .log-warn { color: var(--amber); }
+
+    /* REPOS LIST */
+    #repos-search { width: 100%; margin-bottom: 1rem; }
+    .repo-list { display: flex; flex-direction: column; gap: .4rem; max-height: 520px; overflow-y: auto; }
+    .repo-row { display: flex; align-items: center; gap: .75rem; padding: .6rem .75rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; transition: border-color .15s; }
+    .repo-row:hover { border-color: var(--muted); }
+    .repo-row input[type=checkbox] { accent-color: var(--amber); flex-shrink: 0; }
+    .repo-name { flex: 1; font-size: 13px; }
+    .repo-meta { font-size: 11px; color: var(--text-dim); display: flex; gap: .6rem; }
+    .badge { background: var(--border); padding: 1px 6px; border-radius: 4px; font-size: 11px; }
+    .badge-private { background: var(--amber-dim); color: var(--amber); }
+    #repos-empty { color: var(--text-dim); text-align: center; padding: 2rem; }
+
+    /* ENV GRID */
+    .env-field { position: relative; }
+    .env-field input { padding-right: 2.2rem; }
+    .eye-btn { position: absolute; right: .5rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--muted); cursor: pointer; font-size: 14px; padding: 0; }
+    .eye-btn:hover { color: var(--amber); }
+
+    /* PREVIEW */
+    #preview-status { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+    .running-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+    .running-dot.running { background: var(--green); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    #preview-iframe { width: 100%; height: calc(100vh - 220px); min-height: 400px; border: 1px solid var(--border); border-radius: 8px; display: none; background: #fff; }
+
+    /* TOAST */
+    #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: .65rem 1.1rem; border-radius: 7px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 99; }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">git-folio</span>
+  <button class="active" data-tab="generate">Generate</button>
+  <button data-tab="visibility">Visibility</button>
+  <button data-tab="settings">Settings</button>
+  <button data-tab="preview">Preview</button>
+</nav>
+
+<div id="statusbar">
+  <span><span class="status-dot" id="dot-github"></span>GitHub PAT</span>
+  <span><span class="status-dot" id="dot-openai"></span>OpenAI Key</span>
+  <span><span class="status-dot" id="dot-cache"></span>Cache</span>
+  <span><span class="status-dot" id="dot-output"></span>Output</span>
+</div>
+
+<main>
+
+  <!-- GENERATE TAB -->
+  <div id="tab-generate" class="tab-panel active">
+    <div class="two-col">
+      <div class="card">
+        <h2>Options</h2>
+        <label>Output directory</label>
+        <input type="text" id="opt-output" value="./output" />
+        <label>Max repos</label>
+        <input type="number" id="opt-max-repos" value="100" min="1" />
+        <label>Author name (override)</label>
+        <input type="text" id="opt-author" placeholder="Leave blank to use GitHub name" />
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="opt-include-private" checked />
+          Include private repos
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="opt-skip-ai" />
+          Skip AI enrichment
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="opt-skip-private-desc" />
+          Skip AI descriptions for private repos
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="opt-no-cache" />
+          No cache (force re-fetch)
+        </label>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-generate">▶ Generate</button>
+          <button class="btn btn-ghost" id="btn-clear-cache">Clear Cache</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+          <h2 style="margin:0">Log</h2>
+          <button id="btn-copy-log" title="Copy log" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px;padding:2px 4px;border-radius:4px;transition:color .15s" onmouseover="this.style.color='var(--amber)'" onmouseout="this.style.color='var(--muted)'">⎘</button>
+        </div>
+        <div id="gen-log">Ready. Configure options and click Generate.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISIBILITY TAB -->
+  <div id="tab-visibility" class="tab-panel">
+    <div class="card">
+      <h2>Repo Visibility</h2>
+      <input type="text" id="repos-search" class="repos-search" placeholder="Search repos..." />
+      <div id="repo-list" class="repo-list"></div>
+      <div id="repos-empty" style="display:none">No portfolio data. Run Generate first.</div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-save-repos">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div id="tab-settings" class="tab-panel">
+    <div class="card" style="max-width:520px">
+      <h2>Environment Settings</h2>
+
+      <label>GITHUB_PAT</label>
+      <div class="env-field">
+        <input type="password" id="env-GITHUB_PAT" placeholder="ghp_..." />
+        <button class="eye-btn" data-target="env-GITHUB_PAT">👁</button>
+      </div>
+
+      <label>OPENAI_API_KEY</label>
+      <div class="env-field">
+        <input type="password" id="env-OPENAI_API_KEY" placeholder="sk-..." />
+        <button class="eye-btn" data-target="env-OPENAI_API_KEY">👁</button>
+      </div>
+
+      <label>OPENAI_MODEL</label>
+      <input type="text" id="env-OPENAI_MODEL" placeholder="gpt-4o-mini" />
+
+      <label>AUTHOR_NAME</label>
+      <input type="text" id="env-AUTHOR_NAME" placeholder="Your Name" />
+
+      <label>SITE_URL</label>
+      <input type="text" id="env-SITE_URL" placeholder="https://yoursite.com" />
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-save-env">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREVIEW TAB -->
+  <div id="tab-preview" class="tab-panel">
+    <div class="card" style="max-width:480px">
+      <h2>Preview</h2>
+      <div id="preview-status" style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem">
+        <div class="running-dot" id="preview-dot"></div>
+        <span id="preview-status-text">Stopped</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-preview-start">Start Preview</button>
+        <button class="btn btn-ghost" id="btn-preview-stop">Stop</button>
+        <a id="preview-link" href="http://localhost:4321" target="_blank" rel="noopener"
+           class="btn btn-ghost" style="display:none;text-decoration:none">
+          Open ↗
+        </a>
+      </div>
+      <p id="preview-hint" style="margin-top:1.25rem;color:var(--text-dim);font-size:13px;display:none">
+        Portfolio is running at
+        <a href="http://localhost:4321" target="_blank" rel="noopener"
+           style="color:var(--amber)">http://localhost:4321</a>.
+        Click <strong>Open ↗</strong> to view it in a new tab.
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<div id="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -87,7 +87,7 @@ Write a 2-3 sentence professional bio in the first person. It should be honest, 
 
 Developer info:
 - GitHub name: ${viewer.name ?? viewer.login}
-- GitHub bio: ${viewer.bio ?? 'Not set'}
+- GitHub bio: ${viewer.bio || 'Not set'}
 - Company: ${viewer.company ?? 'Independent'}
 - Location: ${viewer.location ?? 'Unknown'}
 - Top repositories: ${topRepos || 'None yet'}

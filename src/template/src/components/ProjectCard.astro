@@ -44,16 +44,20 @@ const dateRange = repo.createdAt && repo.pushedAt
     <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
     </svg>
-    <a
-      href={repo.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight"
-    >
-      {repo.name}
-    </a>
+    {repo.isPrivate ? (
+      <span class="mono font-semibold text-stone-100 leading-tight">{repo.name}</span>
+    ) : (
+      <a
+        href={repo.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight"
+      >
+        {repo.name}
+      </a>
+    )}
     {repo.isPrivate && (
-      <span class="flex-shrink-0 text-xs px-1.5 py-0.5 rounded border border-stone-700 text-stone-500 mono">
+      <span class="flex-shrink-0 text-xs px-1.5 py-0.5 rounded border border-stone-700 text-stone-300 mono">
         private
       </span>
     )}
@@ -61,7 +65,7 @@ const dateRange = repo.createdAt && repo.pushedAt
 
   <!-- Date range -->
   {dateRange && (
-    <p class="mono text-xs text-stone-600 mb-3">{dateRange}</p>
+    <p class="mono text-xs text-stone-400 mb-3">{dateRange}</p>
   )}
 
   <!-- Description -->
@@ -129,9 +133,11 @@ const dateRange = repo.createdAt && repo.pushedAt
       </span>
     </div>
     <div class="flex items-center gap-3">
-      <a href={repo.url} target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">
-        GitHub →
-      </a>
+      {!repo.isPrivate && (
+        <a href={repo.url} target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">
+          GitHub →
+        </a>
+      )}
       {repo.homepageUrl && (
         <a href={repo.homepageUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">
           Demo →
