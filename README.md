@@ -1,6 +1,6 @@
 # git-folio
 
-從 GitHub 自動生成 AI 驅動的個人作品集網站。抓取所有 repos、用 GPT-4o-mini 撰寫描述、生成完整可部署的 Astro + Tailwind CSS 靜態網站。
+從 GitHub 自動生成 AI 驅動的個人作品集網站。抓取所有 repos、用 GPT-5-mini 撰寫描述、生成完整可部署的 Astro + Tailwind CSS 靜態網站。
 
 ---
 
@@ -23,7 +23,7 @@ npm run build
 
 ---
 
-## 快速開始：網頁版（推薦）
+## 快速開始：網頁版
 
 安裝完成後，啟動內建管理介面：
 
@@ -39,79 +39,34 @@ npm run ui
 
 - **GITHUB_PAT**（必填）：GitHub Personal Access Token。取得方式見[下方說明](#取得-github-personal-access-token)。若只需展示 public repos，申請時 scope 只需勾選 `public_repo` 即可。
 - **OPENAI_API_KEY**（選填）：OpenAI API Key。不需要 AI 分析的話，此欄位可留空，並在 Generate 分頁勾選 **Skip AI enrichment**。
+- **OPENAI_MODEL**（選填）：自訂 AI 模型名稱，預設為 `gpt-5-mini`。
 
-### 2. Generate — 生成作品集
+### 2. Visibility — 選擇要 Generate 的 Repos
+
+點 **Load Repos** 從 GitHub 載入 repo 清單，勾選想要包含在作品集的 repos。**勾選狀態自動儲存**，不需要額外點 Save。
+
+Generate 時會依照此處的勾選結果，只處理被選中的 repos。可隨時修改後重新 Generate。
+
+### 3. Generate — 生成作品集
 
 設定好選項後點 **▶ Generate**，右側 Log 視窗會即時顯示進度：
 
-- **Include private repos**：是否包含私有 repos（預設開啟，需要完整 `repo` scope 的 PAT）
 - **Skip AI enrichment**：跳過 AI 分析，使用 GitHub 原始描述（不需填 OPENAI_API_KEY）
-- 其餘選項可保持預設值
-
-### 3. Visibility — 選擇展示的 Repos
-
-Generate 完成後切換到此分頁，勾選或取消勾選要在作品集中展示的 repos，點 **Save** 儲存。
+- **No cache (force re-fetch)**：忽略快取，強制重新從 GitHub 抓取
 
 ### 4. Preview — 預覽作品集
 
-點 **Start Preview** 啟動本機預覽伺服器，再點 **Open ↗** 在新分頁開啟你的作品集網站。
+點 **Start Preview** 啟動本機預覽伺服器，再點 **Open ↗** 在新分頁開啟你的作品集網站（http://localhost:4321）。包含三個頁面：
 
----
-
-## 命令列使用（進階）
-
-### 步驟 1：生成作品集
-
-在 `git-folio` 根目錄執行：
-
-```bash
-node dist/index.js generate
-```
-
-這個命令會依序：
-1. 從 GitHub 抓取你所有的 repos（**預設包含 public + private**，含 README、語言統計、commit 紀錄）
-2. 呼叫 OpenAI 為每個 repo 生成 AI 描述、分析技能分布、撰寫個人 Bio
-3. 在 `./output/` 建立完整的 Astro 網站，並寫入 `src/data/portfolio.json`
-4. 自動執行 `npm install` 安裝 Astro 的依賴
-
-完成後你會看到：
-```
-✓ Portfolio generated → ./output
-  cd ./output && npm run dev
-```
-
-### 步驟 2：本機預覽
-
-```bash
-cd output
-npm run dev
-```
-
-瀏覽器開啟 `http://localhost:4321` 預覽網站。包含三個頁面：
 - `/`：首頁（個人介紹 + 精選 6 個 repos + 技能概覽）
 - `/projects`：所有 repos 列表，支援即時搜尋與語言篩選
 - `/skills`：語言比例圖 + AI 技能分析
 
-### 步驟 3：Build 靜態網站
+---
 
-確認內容無誤後，在 `output/` 目錄執行：
+## 部署
 
-```bash
-npm run build
-```
-
-這會在 `output/dist/` 生成完整的靜態 HTML/CSS/JS。
-
-> **注意**：不要直接用瀏覽器開啟 `dist/` 裡的 HTML 檔案——Astro 產生的路徑是絕對路徑（`/` 開頭），用 `file://` 開啟會找不到 CSS/JS。請用以下命令透過本機伺服器預覽：
-
-```bash
-npm run preview
-# 瀏覽器開啟 http://localhost:4321
-```
-
-確認沒問題後再部署。
-
-### 步驟 4：部署
+預覽確認無誤後，在 `output/` 目錄執行 `npm run build` 產出靜態檔案，再選擇以下方式部署：
 
 ```bash
 # Vercel（在 output/ 目錄執行）
@@ -137,107 +92,9 @@ npx vercel
 
 ---
 
-## 管理要展示的 Repos
-
-生成後，開啟 `output/src/data/portfolio.json`，每個 repo 有一個 `enable` 欄位：
-
-```json
-{
-  "repos": [
-    { "name": "awesome-project", "enable": true, ... },
-    { "name": "old-experiment",  "enable": true, ... }
-  ]
-}
-```
-
-**隱藏某個 repo**：把 `enable` 改成 `false`，存檔即生效——
-
-```json
-{ "name": "old-experiment", "enable": false, ... }
-```
-
-- 在 `npm run dev` 開發模式下：頁面**立刻**更新，不需要重跑任何命令
-- 在正式環境：重跑 `npm run build` 即可
-
-重新執行 `git-folio generate` 不會覆蓋你的 `enable` 設定，工具會讀取現有值並保留。
-
----
-
-## generate 命令選項
-
-```
-node dist/index.js generate [options]
-```
-
-| 選項 | 說明 | 預設值 |
-|------|------|--------|
-| `-o, --output <dir>` | 輸出目錄路徑 | `./output` |
-| `--public-only` | 只抓 public repos（預設含 private） | 否 |
-| `--skip-private-descriptions` | Private repos 不呼叫 AI（節省費用） | 否 |
-| `--no-cache` | 忽略快取，強制重新從 GitHub 抓取 | 否 |
-| `--cache-ttl <hours>` | 快取有效時間（小時） | `24` |
-| `--max-repos <n>` | 最多抓幾個 repos | `100` |
-| `--skip-ai` | 跳過所有 AI 分析，使用 GitHub 原始描述 | 否 |
-| `--author <name>` | 覆蓋顯示名稱 | 從 GitHub 個人資料取得 |
-
-**範例：**
-
-```bash
-# 預設：含 public + private repos
-node dist/index.js generate
-
-# 只抓 public repos
-node dist/index.js generate --public-only
-
-# 輸出到自訂目錄
-node dist/index.js generate --output ./my-portfolio
-
-# 不用 AI（免費，速度快）
-node dist/index.js generate --skip-ai
-
-# Private repos 不跑 AI 描述（節省費用）
-node dist/index.js generate --skip-private-descriptions
-
-# 強制重新抓取（不用快取）
-node dist/index.js generate --no-cache
-```
-
----
-
-## 快取機制
-
-第一次執行時會把 GitHub 資料寫入 `.git-folio-cache/github-data.json`。
-之後重跑預設會用快取（24 小時內有效），不會重複打 GitHub API。
-
-```bash
-# 清除快取
-node dist/index.js clear-cache
-
-# 強制重新抓（這次跳過快取）
-node dist/index.js generate --no-cache
-```
-
----
-
-## 更新資料
-
-```bash
-# 在 git-folio 根目錄執行（有快取就用快取）
-node dist/index.js generate
-
-# 強制重新抓 GitHub + 重跑 AI
-node dist/index.js generate --no-cache
-```
-
-更新完成後在 `output/` 重跑 `npm run build` 即可刷新靜態網站。
-
-> AI 分析每次重跑都會重新呼叫 OpenAI。50 個 repos 約 $0.007 美金。
-
----
-
 ## 費用估算
 
-| 規模 | GitHub API | OpenAI (gpt-4o-mini) |
+| 規模 | GitHub API | OpenAI (gpt-5-mini) |
 |------|-----------|----------------------|
 | 20 repos | 免費 | ~$0.003 |
 | 50 repos | 免費 | ~$0.007 |
@@ -254,7 +111,8 @@ node dist/index.js generate --no-cache
 GITHUB_PAT=ghp_...          # GitHub Personal Access Token
 
 # 選填
-OPENAI_API_KEY=sk-...       # OpenAI API Key（不需 AI 分析時可不填，搭配 --skip-ai 使用）
+OPENAI_API_KEY=sk-...       # OpenAI API Key（不需 AI 分析時可不填，搭配 Skip AI enrichment 使用）
+OPENAI_MODEL=gpt-5-mini     # AI 模型（預設 gpt-5-mini，可改用其他 OpenAI 模型）
 AUTHOR_NAME=                # 覆蓋作品集顯示名稱
 SITE_URL=                   # 網站 URL（如 https://yourname.github.io）
 ```

@@ -52,16 +52,8 @@ export class AIEnricher {
 
   async enrich(
     data: RawGitHubData,
-    opts: Pick<GenerateOptions, 'skipPrivateDescriptions'>,
   ): Promise<EnrichedData> {
     const languageBreakdown = this.computeLanguageBreakdown(data.repos);
-
-    // Determine which repos get AI summaries
-    const skipDescriptionFor = new Set(
-      opts.skipPrivateDescriptions
-        ? data.repos.filter(r => r.isPrivate).map(r => r.name)
-        : [],
-    );
 
     logger.step(`Generating AI summaries for ${data.repos.length} repos...`);
     const limit = pLimit(5);
@@ -69,9 +61,6 @@ export class AIEnricher {
     const enrichedRepos: EnrichedRepo[] = await Promise.all(
       data.repos.map(repo =>
         limit(async () => {
-          if (skipDescriptionFor.has(repo.name)) {
-            return { ...repo, aiSummary: repo.description };
-          }
           try {
             const prompt = buildProjectSummaryPrompt(repo);
             const response = await this.openai.chat.completions.create({

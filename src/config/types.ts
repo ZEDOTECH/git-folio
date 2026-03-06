@@ -9,7 +9,6 @@ export interface AppConfig {
 export interface GenerateOptions {
   output: string;
   publicOnly: boolean;
-  skipPrivateDescriptions: boolean;
   cache: boolean;
   cacheTtl: number;
   maxRepos: number;

@@ -95,7 +95,6 @@ $('btn-generate').addEventListener('click', async () => {
     maxRepos:                 10000,
     author:                   $('opt-author').value,
     skipAi:                   $('opt-skip-ai').checked,
-    skipPrivateDescriptions:  $('opt-skip-private-desc').checked,
     cache:                    !$('opt-no-cache').checked,
     cleanOutput,
   };

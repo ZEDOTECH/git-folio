@@ -29,7 +29,6 @@ generateRouter.post('/generate', async (c) => {
   const opts: GenerateOptions = {
     output: body.output || './output',
     publicOnly: false,
-    skipPrivateDescriptions: Boolean(body.skipPrivateDescriptions),
     cache: body.cache !== false,
     cacheTtl: Number(body.cacheTtl) || 24,
     maxRepos: Number(body.maxRepos) || 100,
@@ -131,7 +130,7 @@ generateRouter.post('/generate', async (c) => {
         };
       } else {
         const enricher = new AIEnricher(config);
-        enrichedData = await enricher.enrich(rawData, opts);
+        enrichedData = await enricher.enrich(rawData);
         emit('✓ AI enrichment complete');
       }
 
