@@ -15,9 +15,37 @@ export interface LanguageEdge {
   node: { name: string; color: string };
 }
 
+export interface RepoCommitAuthor {
+  login: string;
+  avatarUrl: string;
+  name: string | null;
+}
+
 export interface RepoCommit {
-  messageHeadline: string;
   committedDate: string;
+  author?: { user?: RepoCommitAuthor | null } | null;
+}
+
+export interface CommitByMonth {
+  month: string; // YYYY-MM
+  count: number;
+}
+
+export interface CommitByWeek {
+  week: string; // YYYY-MM-DD (Monday of that week)
+  count: number;
+}
+
+export interface CommitByDay {
+  day: string; // YYYY-MM-DD
+  count: number;
+}
+
+export interface Contributor {
+  login: string;
+  avatarUrl: string;
+  name: string | null;
+  count: number;
 }
 
 export interface RawRepoNode {
@@ -33,6 +61,10 @@ export interface RawRepoNode {
   topics: string[];
   readmeText: string | null;
   recentCommits: RepoCommit[];
+  commitsByMonth: CommitByMonth[];
+  commitsByWeek: CommitByWeek[];
+  commitsByDay: CommitByDay[];
+  contributors: Contributor[];
   createdAt: string;
   pushedAt: string;
   updatedAt: string;
@@ -94,7 +126,10 @@ export interface GQLRepoNode {
   defaultBranchRef: {
     target: {
       history: {
-        nodes: Array<{ messageHeadline: string; committedDate: string }>;
+        nodes: Array<{
+          committedDate: string;
+          author?: { user?: { login: string; avatarUrl: string; name: string | null } | null } | null;
+        }>;
       };
     };
   } | null;

@@ -18,7 +18,6 @@ document.querySelectorAll('nav button[data-tab]').forEach(btn => {
     btn.classList.add('active');
     $(`tab-${btn.dataset.tab}`).classList.add('active');
 
-    if (btn.dataset.tab === 'visibility') loadRepos();
     if (btn.dataset.tab === 'settings') loadEnv();
     if (btn.dataset.tab === 'preview') pollPreviewStatus();
   });
@@ -93,14 +92,22 @@ $('btn-generate').addEventListener('click', async () => {
 
   const opts = {
     output:                   outputDir,
-    maxRepos:                 parseInt($('opt-max-repos').value) || 100,
+    maxRepos:                 10000,
     author:                   $('opt-author').value,
-    publicOnly:               !$('opt-include-private').checked,
     skipAi:                   $('opt-skip-ai').checked,
     skipPrivateDescriptions:  $('opt-skip-private-desc').checked,
     cache:                    !$('opt-no-cache').checked,
     cleanOutput,
   };
+
+  // Attach includedRepos from Visibility selection (if any repos were loaded)
+  try {
+    const allStored = JSON.parse(localStorage.getItem('git-folio:all-repos-list') || 'null');
+    if (allStored && allStored.length > 0) {
+      const excluded = new Set(JSON.parse(localStorage.getItem('git-folio:excluded-repos') || '[]'));
+      opts.includedRepos = allStored.map(r => r.name).filter(n => !excluded.has(n));
+    }
+  } catch { /* ignore localStorage errors, generate all repos */ }
 
   // SSE via POST — use fetch + ReadableStream
   try {
@@ -180,93 +187,159 @@ $('btn-clear-cache').addEventListener('click', async () => {
 
 // ─── Visibility tab ───────────────────────────────────────────────────────────
 
-let allRepos = [];
+let allReposList = [];
+let visibilitySearch = '';
+let visibilityFilter = 'all'; // 'all' | 'included' | 'excluded'
 
-async function loadRepos() {
-  const list = $('repo-list');
-  const empty = $('repos-empty');
-  list.innerHTML = '<div style="color:var(--text-dim);padding:.5rem">Loading...</div>';
+function getExcluded() {
+  try { return JSON.parse(localStorage.getItem('git-folio:excluded-repos') || '[]'); }
+  catch { return []; }
+}
 
-  try {
-    const res = await fetch('/api/repos');
-    const data = await res.json();
-    allRepos = data.repos || [];
-    renderRepos($('repos-search').value);
-    empty.style.display = allRepos.length === 0 ? 'block' : 'none';
-    list.style.display  = allRepos.length === 0 ? 'none'  : 'flex';
-  } catch {
-    list.innerHTML = '';
-    empty.style.display = 'block';
+function setExcluded(arr) {
+  localStorage.setItem('git-folio:excluded-repos', JSON.stringify(arr));
+}
+
+function updateCounter(visibleRepos) {
+  const excluded = new Set(getExcluded());
+  const list = visibleRepos ?? allReposList;
+  const selected = list.filter(r => !excluded.has(r.name)).length;
+  const counter = $('visibility-counter');
+  if (counter) counter.textContent = `${selected} / ${list.length} selected`;
+  // Reflect selected count in Generate tab
+  const genInput = $('opt-max-repos');
+  if (genInput) {
+    const totalSelected = allReposList.filter(r => !excluded.has(r.name)).length;
+    genInput.value = totalSelected > 0
+      ? `${totalSelected} repo${totalSelected !== 1 ? 's' : ''} selected (from Visibility tab)`
+      : 'All selected repos (configure in Visibility tab)';
   }
 }
 
-function renderRepos(filter) {
-  const list = $('repo-list');
-  const query = (filter || '').toLowerCase();
-  const filtered = allRepos.filter(r => r.name.toLowerCase().includes(query));
+function toggleRepo(name, isIncluded) {
+  const excl = getExcluded();
+  if (isIncluded) {
+    setExcluded(excl.filter(n => n !== name));
+  } else {
+    if (!excl.includes(name)) setExcluded([...excl, name]);
+  }
+  updateCounter();
+}
 
-  list.innerHTML = '';
-  for (const repo of filtered) {
-    const row = document.createElement('div');
-    row.className = 'repo-row';
-    row.dataset.name = repo.name;
+function renderPreselectRepos() {
+  const container = $('repo-preselect-list');
+  const empty = $('repos-preselect-empty');
+  const toolbar = $('visibility-toolbar');
+  const excluded = new Set(getExcluded());
+
+  const query = visibilitySearch.toLowerCase();
+  const visible = allReposList.filter(r => {
+    if (!r.name.toLowerCase().includes(query)) return false;
+    if (visibilityFilter === 'included') return !excluded.has(r.name);
+    if (visibilityFilter === 'excluded') return excluded.has(r.name);
+    return true;
+  });
+
+  container.innerHTML = '';
+
+  for (const repo of visible) {
+    const included = !excluded.has(repo.name);
+
+    const card = document.createElement('div');
+    card.className = 'repo-card' + (included ? ' is-included' : '');
+
+    // Header row: checkbox + name + badge
+    const header = document.createElement('div');
+    header.className = 'repo-card-header';
 
     const cb = document.createElement('input');
     cb.type = 'checkbox';
-    cb.checked = repo.enable;
-    cb.addEventListener('change', () => {
-      const r = allRepos.find(x => x.name === repo.name);
-      if (r) r.enable = cb.checked;
+    cb.checked = included;
+
+    const nameEl = document.createElement('span');
+    nameEl.className = 'repo-card-name';
+    nameEl.textContent = repo.name;
+    nameEl.title = repo.name;
+
+    const badge = document.createElement('span');
+    badge.className = repo.isPrivate ? 'badge badge-private' : 'badge';
+    badge.textContent = repo.isPrivate ? 'private' : 'public';
+
+    header.appendChild(cb);
+    header.appendChild(nameEl);
+    header.appendChild(badge);
+    card.appendChild(header);
+
+    // Description row (if available)
+    if (repo.description) {
+      const desc = document.createElement('div');
+      desc.className = 'repo-card-desc';
+      desc.textContent = repo.description;
+      desc.title = repo.description;
+      card.appendChild(desc);
+    }
+
+    card.addEventListener('click', () => {
+      const nowIncluded = !cb.checked;
+      cb.checked = nowIncluded;
+      card.classList.toggle('is-included', nowIncluded);
+      toggleRepo(repo.name, nowIncluded);
     });
 
-    const name = document.createElement('span');
-    name.className = 'repo-name';
-    name.textContent = repo.name;
-
-    const meta = document.createElement('div');
-    meta.className = 'repo-meta';
-    if (repo.primaryLanguage) {
-      const lang = document.createElement('span');
-      lang.className = 'badge';
-      lang.textContent = repo.primaryLanguage;
-      meta.appendChild(lang);
-    }
-    if (repo.stargazerCount > 0) {
-      const stars = document.createElement('span');
-      stars.textContent = `★${repo.stargazerCount}`;
-      meta.appendChild(stars);
-    }
-    if (repo.isPrivate) {
-      const priv = document.createElement('span');
-      priv.className = 'badge badge-private';
-      priv.textContent = '🔒 private';
-      meta.appendChild(priv);
-    }
-
-    row.appendChild(cb);
-    row.appendChild(name);
-    row.appendChild(meta);
-    list.appendChild(row);
+    container.appendChild(card);
   }
+
+  const hasRepos = allReposList.length > 0;
+  empty.style.display = hasRepos ? 'none' : 'block';
+  toolbar.style.display = hasRepos ? 'flex' : 'none';
+  updateCounter(visible);
 }
 
-$('repos-search').addEventListener('input', e => renderRepos(e.target.value));
-
-$('btn-save-repos').addEventListener('click', async () => {
-  const btn = $('btn-save-repos');
+$('btn-load-repos').addEventListener('click', async () => {
+  const btn = $('btn-load-repos');
+  const empty = $('repos-preselect-empty');
+  const container = $('repo-preselect-list');
   btn.disabled = true;
+  btn.textContent = 'Loading…';
+
   try {
-    const res = await fetch('/api/repos', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ repos: allRepos.map(r => ({ name: r.name, enable: r.enable })) }),
-    });
+    const res = await fetch('/api/repos/list?refresh=true');
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      empty.textContent = data.message || 'Failed to load repos. Check your GitHub PAT in Settings.';
+      empty.style.display = 'block';
+      container.innerHTML = '';
+      return;
+    }
     const data = await res.json();
-    toast(data.ok ? 'Saved!' : `Error: ${data.message}`);
+    allReposList = data.repos || [];
+    localStorage.setItem('git-folio:all-repos-list', JSON.stringify(allReposList));
+    visibilitySearch = '';
+    const searchEl = $('visibility-search');
+    if (searchEl) searchEl.value = '';
+    renderPreselectRepos();
   } catch (err) {
-    toast(`Error: ${err.message}`);
+    empty.textContent = `Failed to load repos: ${err.message}`;
+    empty.style.display = 'block';
+    container.innerHTML = '';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Load Repos';
   }
-  btn.disabled = false;
+});
+
+document.querySelectorAll('.seg-ctrl button[data-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.seg-ctrl button[data-filter]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    visibilityFilter = btn.dataset.filter;
+    renderPreselectRepos();
+  });
+});
+
+$('visibility-search').addEventListener('input', e => {
+  visibilitySearch = e.target.value;
+  renderPreselectRepos();
 });
 
 // ─── Settings tab ─────────────────────────────────────────────────────────────
@@ -392,3 +465,13 @@ $('btn-preview-stop').addEventListener('click', async () => {
 // ─── Init ─────────────────────────────────────────────────────────────────────
 
 loadStatus();
+loadEnv();
+
+// Restore repos list from previous session
+try {
+  const stored = JSON.parse(localStorage.getItem('git-folio:all-repos-list') || 'null');
+  if (Array.isArray(stored) && stored.length > 0) {
+    allReposList = stored;
+    renderPreselectRepos();
+  }
+} catch { /* ignore */ }

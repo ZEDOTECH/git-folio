@@ -43,10 +43,12 @@ const REPO_FIELDS = `
   defaultBranchRef {
     target {
       ... on Commit {
-        history(first: 10) {
+        history(first: 100) {
           nodes {
-            messageHeadline
             committedDate
+            author {
+              user { login avatarUrl name }
+            }
           }
         }
       }

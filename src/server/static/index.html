@@ -77,17 +77,23 @@
     #gen-log .log-error { color: var(--red); }
     #gen-log .log-warn { color: var(--amber); }
 
-    /* REPOS LIST */
-    #repos-search { width: 100%; margin-bottom: 1rem; }
-    .repo-list { display: flex; flex-direction: column; gap: .4rem; max-height: 520px; overflow-y: auto; }
-    .repo-row { display: flex; align-items: center; gap: .75rem; padding: .6rem .75rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; transition: border-color .15s; }
-    .repo-row:hover { border-color: var(--muted); }
-    .repo-row input[type=checkbox] { accent-color: var(--amber); flex-shrink: 0; }
-    .repo-name { flex: 1; font-size: 13px; }
-    .repo-meta { font-size: 11px; color: var(--text-dim); display: flex; gap: .6rem; }
-    .badge { background: var(--border); padding: 1px 6px; border-radius: 4px; font-size: 11px; }
+    /* REPOS GRID (Visibility tab) */
+    .repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .5rem; max-height: 540px; overflow-y: auto; padding-right: 2px; }
+    .repo-card { display: flex; flex-direction: column; gap: .35rem; padding: .75rem .85rem; background: var(--bg); border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; transition: border-color .15s, background .15s; user-select: none; }
+    .repo-card:hover { border-color: var(--muted); }
+    .repo-card.is-included { border-color: var(--amber); background: rgba(245,158,11,.04); }
+    .repo-card-header { display: flex; align-items: center; gap: .65rem; }
+    .repo-card-header input[type=checkbox] { accent-color: var(--amber); flex-shrink: 0; width: 15px; height: 15px; cursor: pointer; pointer-events: none; }
+    .repo-card-name { flex: 1; font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .repo-card-desc { font-size: 11px; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: calc(15px + .65rem); }
+    .badge { background: var(--border); padding: 1px 6px; border-radius: 4px; font-size: 11px; flex-shrink: 0; }
     .badge-private { background: var(--amber-dim); color: var(--amber); }
-    #repos-empty { color: var(--text-dim); text-align: center; padding: 2rem; }
+
+    /* SEGMENTED CONTROL */
+    .seg-ctrl { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 2px; gap: 2px; flex-shrink: 0; }
+    .seg-ctrl button { background: none; border: none; color: var(--text-dim); cursor: pointer; padding: .25rem .65rem; border-radius: 4px; font-size: 12px; transition: background .12s, color .12s; white-space: nowrap; }
+    .seg-ctrl button:hover { color: var(--text); }
+    .seg-ctrl button.active { background: var(--surface); color: var(--text); }
 
     /* ENV GRID */
     .env-field { position: relative; }
@@ -111,9 +117,9 @@
 
 <nav>
   <span class="brand">git-folio</span>
-  <button class="active" data-tab="generate">Generate</button>
+  <button class="active" data-tab="settings">Settings</button>
   <button data-tab="visibility">Visibility</button>
-  <button data-tab="settings">Settings</button>
+  <button data-tab="generate">Generate</button>
   <button data-tab="preview">Preview</button>
 </nav>
 
@@ -127,21 +133,17 @@
 <main>
 
   <!-- GENERATE TAB -->
-  <div id="tab-generate" class="tab-panel active">
+  <div id="tab-generate" class="tab-panel">
     <div class="two-col">
       <div class="card">
         <h2>Options</h2>
         <label>Output directory</label>
         <input type="text" id="opt-output" value="./output" />
-        <label>Max repos</label>
-        <input type="number" id="opt-max-repos" value="100" min="1" />
+        <label>Repos to generate</label>
+        <input type="text" id="opt-max-repos" readonly style="background:var(--surface);color:var(--text-dim);cursor:default" value="All selected repos (configure in Visibility tab)" />
         <label>Author name (override)</label>
         <input type="text" id="opt-author" placeholder="Leave blank to use GitHub name" />
 
-        <label class="checkbox-row">
-          <input type="checkbox" id="opt-include-private" checked />
-          Include private repos
-        </label>
         <label class="checkbox-row">
           <input type="checkbox" id="opt-skip-ai" />
           Skip AI enrichment
@@ -174,18 +176,33 @@
   <!-- VISIBILITY TAB -->
   <div id="tab-visibility" class="tab-panel">
     <div class="card">
-      <h2>Repo Visibility</h2>
-      <input type="text" id="repos-search" class="repos-search" placeholder="Search repos..." />
-      <div id="repo-list" class="repo-list"></div>
-      <div id="repos-empty" style="display:none">No portfolio data. Run Generate first.</div>
-      <div class="btn-row">
-        <button class="btn btn-primary" id="btn-save-repos">Save</button>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+        <h2 style="margin:0">Repo Visibility</h2>
+        <button class="btn btn-primary" id="btn-load-repos">Load Repos</button>
       </div>
+      <p style="color:var(--text-dim);font-size:13px;margin-bottom:1rem">
+        Load your repos from GitHub, then uncheck any you don't want included. Selections are saved automatically.
+      </p>
+
+      <div id="visibility-toolbar" style="display:none;align-items:center;gap:.75rem;margin-bottom:.85rem;flex-wrap:wrap">
+        <input type="text" id="visibility-search" placeholder="Search repos…" style="flex:1;min-width:120px;margin:0" />
+        <div class="seg-ctrl">
+          <button class="active" data-filter="all">All</button>
+          <button data-filter="included">Selected</button>
+          <button data-filter="excluded">Excluded</button>
+        </div>
+        <span id="visibility-counter" style="font-size:12px;color:var(--text-dim);white-space:nowrap"></span>
+      </div>
+
+      <div id="repos-preselect-empty" style="color:var(--text-dim);text-align:center;padding:2rem">
+        Press <strong>Load Repos</strong> to fetch your repositories.
+      </div>
+      <div id="repo-preselect-list" class="repo-grid"></div>
     </div>
   </div>
 
   <!-- SETTINGS TAB -->
-  <div id="tab-settings" class="tab-panel">
+  <div id="tab-settings" class="tab-panel active">
     <div class="card" style="max-width:520px">
       <h2>Environment Settings</h2>
 

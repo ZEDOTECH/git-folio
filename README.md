@@ -7,8 +7,8 @@
 ## 必要條件
 
 - **Node.js 18+**
-- **GitHub Personal Access Token**（取得方式見下方）
-- **OpenAI API Key**（若不需要 AI 分析可用 `--skip-ai` 跳過）
+- **GitHub Personal Access Token**（必填，取得方式見下方）
+- **OpenAI API Key**（選填，不需要 AI 分析可跳過）
 
 ---
 
@@ -23,22 +23,42 @@ npm run build
 
 ---
 
-## 設定環境變數
+## 快速開始：網頁版（推薦）
+
+安裝完成後，啟動內建管理介面：
 
 ```bash
-cp .env.example .env
+npm run ui
 ```
 
-用文字編輯器開啟 `.env`，填入兩個必填欄位：
+瀏覽器開啟 **http://localhost:3000**，依序操作以下四個分頁：
 
-```bash
-GITHUB_PAT=ghp_your_token_here
-OPENAI_API_KEY=sk-your-key-here
-```
+### 1. Settings — 設定環境變數
+
+填入以下欄位，填完後點 **Save**：
+
+- **GITHUB_PAT**（必填）：GitHub Personal Access Token。取得方式見[下方說明](#取得-github-personal-access-token)。若只需展示 public repos，申請時 scope 只需勾選 `public_repo` 即可。
+- **OPENAI_API_KEY**（選填）：OpenAI API Key。不需要 AI 分析的話，此欄位可留空，並在 Generate 分頁勾選 **Skip AI enrichment**。
+
+### 2. Generate — 生成作品集
+
+設定好選項後點 **▶ Generate**，右側 Log 視窗會即時顯示進度：
+
+- **Include private repos**：是否包含私有 repos（預設開啟，需要完整 `repo` scope 的 PAT）
+- **Skip AI enrichment**：跳過 AI 分析，使用 GitHub 原始描述（不需填 OPENAI_API_KEY）
+- 其餘選項可保持預設值
+
+### 3. Visibility — 選擇展示的 Repos
+
+Generate 完成後切換到此分頁，勾選或取消勾選要在作品集中展示的 repos，點 **Save** 儲存。
+
+### 4. Preview — 預覽作品集
+
+點 **Start Preview** 啟動本機預覽伺服器，再點 **Open ↗** 在新分頁開啟你的作品集網站。
 
 ---
 
-## 完整使用流程
+## 命令列使用（進階）
 
 ### 步驟 1：生成作品集
 
@@ -109,8 +129,8 @@ npx vercel
 1. 前往 [github.com/settings/tokens](https://github.com/settings/tokens) → **Generate new token (classic)**
 2. 填寫名稱（如 `git-folio`），設定過期時間
 3. 勾選權限：
-   - **`repo`**（含所有 sub-items）—— 可抓 public + private repos（建議）
-   - 若只需要 public repos：勾選 **`public_repo`** 即可
+   - **`repo`**（含所有 sub-items）—— 可抓 public + private repos
+   - **只需展示 public repos**：只勾選 **`public_repo`** 即可，不需要完整的 `repo` 權限
 4. 點 **Generate token**，複製後貼到 `.env` 的 `GITHUB_PAT=` 後面
 
 > **注意**：建議使用 Classic Token，不要用 Fine-grained Token（Fine-grained 有時在 GraphQL API 上有相容性問題）
@@ -232,9 +252,9 @@ node dist/index.js generate --no-cache
 ```bash
 # 必填
 GITHUB_PAT=ghp_...          # GitHub Personal Access Token
-OPENAI_API_KEY=sk-...       # OpenAI API Key（--skip-ai 時可不填）
 
 # 選填
+OPENAI_API_KEY=sk-...       # OpenAI API Key（不需 AI 分析時可不填，搭配 --skip-ai 使用）
 AUTHOR_NAME=                # 覆蓋作品集顯示名稱
 SITE_URL=                   # 網站 URL（如 https://yourname.github.io）
 ```

@@ -8,7 +8,7 @@ export function buildProjectSummaryPrompt(repo: RawRepoNode): string {
 
   const recentWork = repo.recentCommits
     .slice(0, 5)
-    .map(c => `- ${c.messageHeadline}`)
+    .map(c => `- ${c.committedDate.slice(0, 10)}`)
     .join('\n') || 'None available';
 
   return `You are a technical writer helping a developer showcase their work.

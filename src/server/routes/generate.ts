@@ -20,12 +20,15 @@ generateRouter.post('/generate', async (c) => {
     return c.json({ message: 'Generate already running' }, 409);
   }
 
-  const body = (await c.req.json<Partial<GenerateOptions> & { cleanOutput?: boolean }>().catch(() => ({}))) as Partial<GenerateOptions> & { cleanOutput?: boolean };
+  const body = (await c.req.json<Partial<GenerateOptions> & { cleanOutput?: boolean; includedRepos?: string[] }>().catch(() => ({}))) as Partial<GenerateOptions> & { cleanOutput?: boolean; includedRepos?: string[] };
   const cleanOutput = Boolean(body.cleanOutput);
+  const includedRepos = Array.isArray(body.includedRepos) && body.includedRepos.length > 0
+    ? body.includedRepos
+    : null;
 
   const opts: GenerateOptions = {
     output: body.output || './output',
-    publicOnly: Boolean(body.publicOnly),
+    publicOnly: false,
     skipPrivateDescriptions: Boolean(body.skipPrivateDescriptions),
     cache: body.cache !== false,
     cacheTtl: Number(body.cacheTtl) || 24,
@@ -105,6 +108,12 @@ generateRouter.post('/generate', async (c) => {
         emit('Saving to cache...');
         await cache.save(rawData, !opts.publicOnly);
         emit(`✓ Fetched ${rawData.repos.length} repos — saved to cache`);
+      }
+
+      if (includedRepos) {
+        const includedSet = new Set(includedRepos);
+        rawData = { ...rawData, repos: rawData.repos.filter(r => includedSet.has(r.name)) };
+        emit(`Filtered to ${rawData.repos.length} selected repos`);
       }
 
       let enrichedData;

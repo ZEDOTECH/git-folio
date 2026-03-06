@@ -81,6 +81,12 @@ export async function writePortfolioData(
     pushedAt: r.pushedAt,
     updatedAt: r.updatedAt,
     homepageUrl: r.homepageUrl,
+    license: r.licenseInfo?.name ?? null,
+    diskUsage: r.diskUsage,
+    commitsByMonth: r.commitsByMonth,
+    commitsByWeek: r.commitsByWeek,
+    commitsByDay: r.commitsByDay,
+    contributors: r.contributors,
     enable: existingEnableMap.get(r.name) ?? true,
   });
 
