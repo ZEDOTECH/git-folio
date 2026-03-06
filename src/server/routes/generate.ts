@@ -8,7 +8,7 @@ import { AIEnricher } from '../../ai/enricher.js';
 import { CacheManager } from '../../cache/index.js';
 import { SiteGenerator } from '../../generator/index.js';
 import { logger } from '../../utils/logger.js';
-import { stopPreview } from '../astro-preview.js';
+import { stopPreview } from '../static-preview.js';
 import type { GenerateOptions } from '../../config/types.js';
 
 export const generateRouter = new Hono();

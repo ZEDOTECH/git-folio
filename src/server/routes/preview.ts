@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { startPreview, stopPreview, getPreviewStatus } from '../astro-preview.js';
+import { startPreview, stopPreview, getPreviewStatus } from '../static-preview.js';
 
 export const previewRouter = new Hono();
 

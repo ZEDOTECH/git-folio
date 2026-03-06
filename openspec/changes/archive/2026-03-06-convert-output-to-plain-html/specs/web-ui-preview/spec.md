@@ -1,4 +1,12 @@
-## Requirements
+## REMOVED Requirements
+
+### Requirement: Astro Dev Server Lifecycle Management
+**Reason**: Output 不再是 Astro 專案，不需要 `npm run dev`。靜態 HTML 改由內建 Node.js static file server 提供。
+**Migration**: 以 `src/server/static-preview.ts` 取代 `src/server/astro-preview.ts`，使用 Node.js `node:http` 模組在 port 4321 serve `output/` 目錄下的靜態檔案。
+
+---
+
+## ADDED Requirements
 
 ### Requirement: Static File Server Lifecycle Management
 系統 SHALL 在 `src/server/static-preview.ts` 維護一個全域 Node.js static file server（`http.Server | null`）。`POST /api/preview/start` SHALL 啟動一個 HTTP server 在 port 4321 serve `output/` 目錄。`POST /api/preview/stop` SHALL 關閉該 server。同一時間只允許一個 static file server 執行。
@@ -29,6 +37,8 @@
 
 ---
 
+## MODIFIED Requirements
+
 ### Requirement: Preview Status API
 `GET /api/preview/status` SHALL 回傳 static file server 的目前狀態。
 
@@ -38,14 +48,7 @@
 
 ---
 
-### Requirement: Preview 存取方式
-Preview tab 以「Open ↗」外部連結取代 iframe 方案（iframe 因 X-Frame-Options 無法嵌入）。
-
-#### Scenario: 開啟 portfolio 預覽
-- **WHEN** static file server 在 localhost:4321 執行，使用者點擊「Open ↗」
-- **THEN** 瀏覽器在新分頁開啟 `http://localhost:4321`，portfolio 網站正常顯示
-
----
+## MODIFIED Requirements
 
 ### Requirement: Process Cleanup on Server Exit
 Web UI server 關閉時（`process.on('exit')`、`SIGINT`、`SIGTERM`），SHALL 自動關閉 static file server，避免 port 佔用。

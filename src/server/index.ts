@@ -9,7 +9,7 @@ import { statusRouter } from './routes/status.js';
 import { reposRouter } from './routes/repos.js';
 import { envRouter } from './routes/env.js';
 import { previewRouter } from './routes/preview.js';
-import { stopPreview } from './astro-preview.js';
+import { stopPreview } from './static-preview.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Static files live in src/server/static; __dirname is dist/server at runtime

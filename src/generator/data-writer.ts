@@ -2,15 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import type { EnrichedData, EnrichedRepo, SkillArea } from '../ai/types.js';
 import type { GenerateOptions } from '../config/types.js';
-
-interface ExistingPortfolioRepo {
-  name: string;
-  enable?: boolean;
-}
-
-interface ExistingPortfolio {
-  repos?: ExistingPortfolioRepo[];
-}
+import { renderHtmlFiles } from './html/render.js';
 
 /** Compute per-repo language breakdown sorted by usage percentage */
 function repoLanguages(r: EnrichedRepo) {
@@ -51,20 +43,7 @@ export async function writePortfolioData(
   const dataDir = path.join(outputDir, 'src', 'data');
   await fs.mkdir(dataDir, { recursive: true });
 
-  // Preserve existing enable values from portfolio.json (user may have edited them)
   const portfolioPath = path.join(dataDir, 'portfolio.json');
-  const existingEnableMap = new Map<string, boolean>();
-  try {
-    const raw = await fs.readFile(portfolioPath, 'utf-8');
-    const existing = JSON.parse(raw) as ExistingPortfolio;
-    for (const r of existing.repos ?? []) {
-      if (r.enable === false) {
-        existingEnableMap.set(r.name, false);
-      }
-    }
-  } catch {
-    // first run — no existing portfolio.json
-  }
 
   const repoEntry = (r: EnrichedRepo) => ({
     name: r.name,
@@ -87,12 +66,11 @@ export async function writePortfolioData(
     commitsByWeek: r.commitsByWeek,
     commitsByDay: r.commitsByDay,
     contributors: r.contributors,
-    enable: existingEnableMap.get(r.name) ?? true,
   });
 
-  // Featured: top 6 public repos where enable is not false, sorted by most recently pushed
+  // Featured: top 6 public repos, sorted by most recently pushed
   const featuredRepos = data.repos
-    .filter(r => !r.isPrivate && existingEnableMap.get(r.name) !== false)
+    .filter(r => !r.isPrivate)
     .sort((a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime())
     .slice(0, 6)
     .map(repoEntry);
@@ -128,4 +106,6 @@ export async function writePortfolioData(
     JSON.stringify(portfolioData, null, 2),
     'utf-8',
   );
+
+  await renderHtmlFiles(portfolioData, outputDir);
 }

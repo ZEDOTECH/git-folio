@@ -25,7 +25,6 @@ export function registerGenerate(program: Command): void {
       const opts: GenerateOptions = {
         output: rawOpts.output as string,
         publicOnly: rawOpts.publicOnly as boolean,
-        skipPrivateDescriptions: rawOpts.skipPrivateDescriptions as boolean,
         cache: rawOpts.cache as boolean,
         cacheTtl: parseInt(rawOpts.cacheTtl as string, 10),
         maxRepos: parseInt(rawOpts.maxRepos as string, 10),
@@ -73,7 +72,7 @@ export function registerGenerate(program: Command): void {
           };
         } else {
           const enricher = new AIEnricher(config);
-          enrichedData = await enricher.enrich(rawData, opts);
+          enrichedData = await enricher.enrich(rawData);
           logger.success('AI enrichment complete');
         }
 
