@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of ZEDOTECH" />
+    <title>Skills — Nicky Liu&#39;s Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style type="text/tailwindcss">
+      @layer base {
+        html { font-family: 'Inter', system-ui, sans-serif; }
+        ::selection { @apply bg-amber-500/30 text-amber-100; }
+        ::-webkit-scrollbar { @apply w-1.5; }
+        ::-webkit-scrollbar-track { @apply bg-stone-900; }
+        ::-webkit-scrollbar-thumb { @apply bg-stone-700 rounded-full; }
+      }
+      @layer components {
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .card { @apply bg-stone-900 border border-stone-800 rounded-xl p-6 transition-colors duration-200; }
+        .card:hover { @apply border-amber-500/50; }
+        .tag { @apply text-xs px-2.5 py-1 rounded-full bg-stone-800 text-stone-400 font-mono; }
+        .lang-badge { @apply text-xs px-2.5 py-1 rounded-full font-mono font-medium; }
+        .btn-ghost { @apply text-sm text-stone-400 hover:text-amber-400 transition-colors duration-150; }
+        .section-title { @apply text-2xl font-bold text-stone-100 mb-2; }
+        .section-subtitle { @apply text-stone-500 text-sm mb-8; }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col bg-stone-950 text-stone-100 antialiased">
+    <header class="sticky top-0 z-50 border-b border-stone-800/80 bg-stone-950/90 backdrop-blur-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <a href="index.html" class="mono text-amber-400 font-bold text-sm hover:text-amber-300 transition-colors">
+          ~/ZEDOTECH
+        </a>
+        <nav class="flex items-center gap-6">
+          <a href="index.html" class="text-sm transition-colors duration-150 text-stone-400 hover:text-stone-200">Home</a>
+          <a href="projects.html" class="text-sm transition-colors duration-150 text-stone-400 hover:text-stone-200">Projects</a>
+          <a href="skills.html" class="text-sm transition-colors duration-150 text-amber-400 font-medium">Skills</a>
+          <a href="https://github.com/ZEDOTECH" target="_blank" rel="noopener noreferrer"
+             class="text-stone-500 hover:text-stone-300 transition-colors" aria-label="GitHub profile">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main class="flex-1">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+  <h1 class="text-4xl font-bold text-stone-100 mb-2">Skills</h1>
+  <p class="text-stone-500 mono text-sm mb-12">Technical expertise across all repositories</p>
+  <section class="mb-16">
+    <h2 class="section-title">Languages</h2>
+    <p class="section-subtitle">Distribution across 78 repositories</p>
+    <div class="space-y-4">
+    <div class="flex h-3 rounded-full overflow-hidden gap-px"><div style="width:38.10%;background-color:#f1e05a;" title="JavaScript: 38.1%"></div><div style="width:15.93%;background-color:#178600;" title="C#: 15.9%"></div><div style="width:15.53%;background-color:#663399;" title="CSS: 15.5%"></div><div style="width:14.75%;background-color:#e34c26;" title="HTML: 14.8%"></div><div style="width:6.00%;background-color:#4F5D95;" title="PHP: 6.0%"></div><div style="width:4.93%;background-color:#c6538c;" title="SCSS: 4.9%"></div><div style="width:1.86%;background-color:#6a40fd;" title="ASP: 1.9%"></div><div style="width:1.69%;background-color:#336790;" title="PLpgSQL: 1.7%"></div><div style="width:0.46%;background-color:#3572A5;" title="Python: 0.5%"></div><div style="width:0.41%;background-color:#E3F171;" title="Pascal: 0.4%"></div><div style="width:0.11%;background-color:#1d365d;" title="Less: 0.1%"></div><div style="width:0.10%;background-color:#3178c6;" title="TypeScript: 0.1%"></div></div>
+    <div class="flex flex-wrap gap-x-5 gap-y-2"><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#f1e05a;"></span>
+        <span class="mono">JavaScript</span>
+        <span class="text-stone-600">38.1%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#178600;"></span>
+        <span class="mono">C#</span>
+        <span class="text-stone-600">15.9%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#663399;"></span>
+        <span class="mono">CSS</span>
+        <span class="text-stone-600">15.5%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#e34c26;"></span>
+        <span class="mono">HTML</span>
+        <span class="text-stone-600">14.8%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#4F5D95;"></span>
+        <span class="mono">PHP</span>
+        <span class="text-stone-600">6.0%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#c6538c;"></span>
+        <span class="mono">SCSS</span>
+        <span class="text-stone-600">4.9%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#6a40fd;"></span>
+        <span class="mono">ASP</span>
+        <span class="text-stone-600">1.9%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#336790;"></span>
+        <span class="mono">PLpgSQL</span>
+        <span class="text-stone-600">1.7%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#3572A5;"></span>
+        <span class="mono">Python</span>
+        <span class="text-stone-600">0.5%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#E3F171;"></span>
+        <span class="mono">Pascal</span>
+        <span class="text-stone-600">0.4%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#1d365d;"></span>
+        <span class="mono">Less</span>
+        <span class="text-stone-600">0.1%</span>
+      </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+        <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#3178c6;"></span>
+        <span class="mono">TypeScript</span>
+        <span class="text-stone-600">0.1%</span>
+      </div></div>
+  </div>
+    <div class="mt-8 space-y-3">
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">JavaScript</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:38.10%;background-color:#f1e05a;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">38.1%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">C#</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:15.93%;background-color:#178600;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">15.9%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">CSS</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:15.53%;background-color:#663399;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">15.5%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">HTML</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:14.75%;background-color:#e34c26;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">14.8%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">PHP</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:6.00%;background-color:#4F5D95;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">6.0%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">SCSS</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:4.93%;background-color:#c6538c;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">4.9%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">ASP</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:1.86%;background-color:#6a40fd;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">1.9%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">PLpgSQL</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:1.69%;background-color:#336790;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">1.7%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">Python</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:0.46%;background-color:#3572A5;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">0.5%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">Pascal</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:0.41%;background-color:#E3F171;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">0.4%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">Less</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:0.11%;background-color:#1d365d;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">0.1%</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="w-28 text-right">
+          <span class="mono text-xs text-stone-400">TypeScript</span>
+        </div>
+        <div class="flex-1 bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div class="h-full rounded-full" style="width:0.10%;background-color:#3178c6;"></div>
+        </div>
+        <span class="mono text-xs text-stone-500 w-12 text-right">0.1%</span>
+      </div>
+    </div>
+  </section>
+</div>
+    </main>
+    <footer class="border-t border-stone-800 py-8 mt-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-stone-500">
+        <span class="mono">
+          Built with <a href="https://github.com/zedotech/git-folio" class="text-amber-500/70 hover:text-amber-400 transition-colors">git-folio</a>
+        </span>
+        <span>Generated March 7, 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>

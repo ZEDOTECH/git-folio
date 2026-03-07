@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of ZEDOTECH" />
+    <title>Nicky Liu&#39;s Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style type="text/tailwindcss">
+      @layer base {
+        html { font-family: 'Inter', system-ui, sans-serif; }
+        ::selection { @apply bg-amber-500/30 text-amber-100; }
+        ::-webkit-scrollbar { @apply w-1.5; }
+        ::-webkit-scrollbar-track { @apply bg-stone-900; }
+        ::-webkit-scrollbar-thumb { @apply bg-stone-700 rounded-full; }
+      }
+      @layer components {
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .card { @apply bg-stone-900 border border-stone-800 rounded-xl p-6 transition-colors duration-200; }
+        .card:hover { @apply border-amber-500/50; }
+        .tag { @apply text-xs px-2.5 py-1 rounded-full bg-stone-800 text-stone-400 font-mono; }
+        .lang-badge { @apply text-xs px-2.5 py-1 rounded-full font-mono font-medium; }
+        .btn-ghost { @apply text-sm text-stone-400 hover:text-amber-400 transition-colors duration-150; }
+        .section-title { @apply text-2xl font-bold text-stone-100 mb-2; }
+        .section-subtitle { @apply text-stone-500 text-sm mb-8; }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col bg-stone-950 text-stone-100 antialiased">
+    <header class="sticky top-0 z-50 border-b border-stone-800/80 bg-stone-950/90 backdrop-blur-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <a href="index.html" class="mono text-amber-400 font-bold text-sm hover:text-amber-300 transition-colors">
+          ~/ZEDOTECH
+        </a>
+        <nav class="flex items-center gap-6">
+          <a href="index.html" class="text-sm transition-colors duration-150 text-amber-400 font-medium">Home</a>
+          <a href="projects.html" class="text-sm transition-colors duration-150 text-stone-400 hover:text-stone-200">Projects</a>
+          <a href="skills.html" class="text-sm transition-colors duration-150 text-stone-400 hover:text-stone-200">Skills</a>
+          <a href="https://github.com/ZEDOTECH" target="_blank" rel="noopener noreferrer"
+             class="text-stone-500 hover:text-stone-300 transition-colors" aria-label="GitHub profile">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main class="flex-1">
+      <section class="relative py-20 sm:py-28 overflow-hidden">
+  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #a8a29e 1px, transparent 1px); background-size: 32px 32px;"></div>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center gap-8">
+    <div class="relative flex-shrink-0">
+      <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden ring-2 ring-amber-500/30">
+        <img src="https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4" alt="Nicky Liu" class="w-full h-full object-cover" />
+      </div>
+      <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-amber-500 rounded-full ring-2 ring-stone-950"></div>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="mono text-amber-500 text-sm mb-2">@ZEDOTECH</div>
+      <h1 class="text-3xl sm:text-4xl font-bold text-stone-100 mb-3">Nicky Liu</h1>
+      <p class="text-stone-400 text-lg leading-relaxed max-w-2xl mb-5">Software developer at ZEDOTECH, based in Taiwan. Works primarily in JavaScript, C# and CSS across 78 repositories.</p>
+      <div class="flex flex-wrap items-center gap-4">
+        <span class="flex items-center gap-1.5 text-sm text-stone-500">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>Taiwan</span>
+        <a href="https://github.com/ZEDOTECH" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-1.5 text-sm text-stone-400 hover:text-amber-400 transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>GitHub
+        </a>
+        <a href="https://zedotech.com" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-1.5 text-sm text-stone-400 hover:text-amber-400 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>Website
+        </a>
+      </div>
+    </div>
+  </div>
+</section><section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <h2 class="section-title">Recently Updated</h2>
+      <p class="section-subtitle">Latest activity from my repositories</p>
+    </div>
+    <a href="projects.html" class="text-sm text-amber-500 hover:text-amber-400 transition-colors mono">View all →</a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="card group flex flex-col h-full">
+    <div class="flex items-start gap-2 mb-3">
+      <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+      </svg>
+      <a href="https://github.com/ZEDOTECH/official" target="_blank" rel="noopener noreferrer"
+         class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight">
+        official
+      </a>
+    </div>
+    <p class="mono text-xs text-stone-100 mb-3">2023-03 ~ 2026-02</p>
+    <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">ZedoTech official site</p>
+    <div class="mb-3">
+      <div class="flex h-1.5 rounded-full overflow-hidden mb-2 bg-stone-800"><div style="width:72%;background-color:#e34c26;" title="HTML 72%"></div><div style="width:16%;background-color:#663399;" title="CSS 16%"></div><div style="width:6%;background-color:#f1e05a;" title="JavaScript 6%"></div><div style="width:6%;background-color:#c6538c;" title="SCSS 6%"></div></div>
+      <div class="flex flex-wrap gap-x-3 gap-y-1"><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#e34c26;"></span>
+      HTML<span class="text-stone-600">72%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#663399;"></span>
+      CSS<span class="text-stone-600">16%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#f1e05a;"></span>
+      JavaScript<span class="text-stone-600">6%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#c6538c;"></span>
+      SCSS<span class="text-stone-600">6%</span>
+    </span></div>
+    </div>
+    <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-800">
+      <div class="flex items-center gap-4 text-xs text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>0
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>0
+        </span>
+      </div>
+      <div class="flex items-center gap-3"><a href="https://github.com/ZEDOTECH/official" target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">GitHub →</a></div>
+    </div>
+  </div>
+    <div class="card group flex flex-col h-full">
+    <div class="flex items-start gap-2 mb-3">
+      <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+      </svg>
+      <a href="https://github.com/ZEDOTECH/coffeeShop-demo" target="_blank" rel="noopener noreferrer"
+         class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight">
+        coffeeShop-demo
+      </a>
+    </div>
+    <p class="mono text-xs text-stone-100 mb-3">2024-05 ~ 2024-05</p>
+    <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">No description available.</p>
+    <div class="mb-3">
+      <div class="flex h-1.5 rounded-full overflow-hidden mb-2 bg-stone-800"><div style="width:91%;background-color:#663399;" title="CSS 91%"></div><div style="width:7%;background-color:#e34c26;" title="HTML 7%"></div><div style="width:2%;background-color:#178600;" title="C# 2%"></div><div style="width:0%;background-color:#f1e05a;" title="JavaScript 0%"></div></div>
+      <div class="flex flex-wrap gap-x-3 gap-y-1"><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#663399;"></span>
+      CSS<span class="text-stone-600">91%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#e34c26;"></span>
+      HTML<span class="text-stone-600">7%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#178600;"></span>
+      C#<span class="text-stone-600">2%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#f1e05a;"></span>
+      JavaScript<span class="text-stone-600">0%</span>
+    </span></div>
+    </div>
+    <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-800">
+      <div class="flex items-center gap-4 text-xs text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>0
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>0
+        </span>
+      </div>
+      <div class="flex items-center gap-3"><a href="https://github.com/ZEDOTECH/coffeeShop-demo" target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">GitHub →</a></div>
+    </div>
+  </div>
+    <div class="card group flex flex-col h-full">
+    <div class="flex items-start gap-2 mb-3">
+      <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+      </svg>
+      <a href="https://github.com/ZEDOTECH/gitteach0107" target="_blank" rel="noopener noreferrer"
+         class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight">
+        gitteach0107
+      </a>
+    </div>
+    <p class="mono text-xs text-stone-100 mb-3">2024-01 ~ 2024-01</p>
+    <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">No description available.</p>
+    <div class="mb-3">
+      <div class="flex h-1.5 rounded-full overflow-hidden mb-2 bg-stone-800"><div style="width:91%;background-color:#e34c26;" title="HTML 91%"></div><div style="width:9%;background-color:#663399;" title="CSS 9%"></div></div>
+      <div class="flex flex-wrap gap-x-3 gap-y-1"><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#e34c26;"></span>
+      HTML<span class="text-stone-600">91%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#663399;"></span>
+      CSS<span class="text-stone-600">9%</span>
+    </span></div>
+    </div>
+    <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-800">
+      <div class="flex items-center gap-4 text-xs text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>0
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>0
+        </span>
+      </div>
+      <div class="flex items-center gap-3"><a href="https://github.com/ZEDOTECH/gitteach0107" target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">GitHub →</a></div>
+    </div>
+  </div>
+    <div class="card group flex flex-col h-full">
+    <div class="flex items-start gap-2 mb-3">
+      <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+      </svg>
+      <a href="https://github.com/ZEDOTECH/SignalRChat" target="_blank" rel="noopener noreferrer"
+         class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight">
+        SignalRChat
+      </a>
+    </div>
+    <p class="mono text-xs text-stone-100 mb-3">2021-07 ~ 2021-07</p>
+    <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">No description available.</p>
+    <div class="mb-3">
+      <div class="flex h-1.5 rounded-full overflow-hidden mb-2 bg-stone-800"><div style="width:42%;background-color:#178600;" title="C# 42%"></div><div style="width:42%;background-color:#e34c26;" title="HTML 42%"></div><div style="width:11%;background-color:#f1e05a;" title="JavaScript 11%"></div><div style="width:4%;background-color:#663399;" title="CSS 4%"></div></div>
+      <div class="flex flex-wrap gap-x-3 gap-y-1"><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#178600;"></span>
+      C#<span class="text-stone-600">42%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#e34c26;"></span>
+      HTML<span class="text-stone-600">42%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#f1e05a;"></span>
+      JavaScript<span class="text-stone-600">11%</span>
+    </span><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#663399;"></span>
+      CSS<span class="text-stone-600">4%</span>
+    </span></div>
+    </div>
+    <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-800">
+      <div class="flex items-center gap-4 text-xs text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>0
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>0
+        </span>
+      </div>
+      <div class="flex items-center gap-3"><a href="https://github.com/ZEDOTECH/SignalRChat" target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">GitHub →</a></div>
+    </div>
+  </div>
+    <div class="card group flex flex-col h-full">
+    <div class="flex items-start gap-2 mb-3">
+      <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+      </svg>
+      <a href="https://github.com/ZEDOTECH/git-tech" target="_blank" rel="noopener noreferrer"
+         class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight">
+        git-tech
+      </a>
+    </div>
+    <p class="mono text-xs text-stone-100 mb-3">2018-01 ~ 2018-01</p>
+    <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">Nicky Git教學</p>
+    
+    <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-800">
+      <div class="flex items-center gap-4 text-xs text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>0
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>0
+        </span>
+      </div>
+      <div class="flex items-center gap-3"><a href="https://github.com/ZEDOTECH/git-tech" target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">GitHub →</a></div>
+    </div>
+  </div>
+    <div class="card group flex flex-col h-full">
+    <div class="flex items-start gap-2 mb-3">
+      <svg class="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+      </svg>
+      <a href="https://github.com/ZEDOTECH/read-write-excel-using-npoi" target="_blank" rel="noopener noreferrer"
+         class="mono font-semibold text-stone-100 hover:text-amber-400 transition-colors leading-tight">
+        read-write-excel-using-npoi
+      </a>
+    </div>
+    <p class="mono text-xs text-stone-100 mb-3">2018-01 ~ 2018-01</p>
+    <p class="text-stone-400 text-sm leading-relaxed flex-1 mb-4">ASP.NET C# Console 用NPOI讀寫Excel</p>
+    <div class="mb-3">
+      <div class="flex h-1.5 rounded-full overflow-hidden mb-2 bg-stone-800"><div style="width:100%;background-color:#178600;" title="C# 100%"></div></div>
+      <div class="flex flex-wrap gap-x-3 gap-y-1"><span class="flex items-center gap-1 text-xs text-stone-400 mono">
+      <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color:#178600;"></span>
+      C#<span class="text-stone-600">100%</span>
+    </span></div>
+    </div>
+    <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-800">
+      <div class="flex items-center gap-4 text-xs text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>0
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>0
+        </span>
+      </div>
+      <div class="flex items-center gap-3"><a href="https://github.com/ZEDOTECH/read-write-excel-using-npoi" target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">GitHub →</a></div>
+    </div>
+  </div>
+  </div>
+</section><section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+  <h2 class="section-title">Languages</h2>
+  <p class="section-subtitle">Code written across all repositories</p>
+  <div class="space-y-4">
+    <div class="flex h-3 rounded-full overflow-hidden gap-px"><div style="width:38.10%;background-color:#f1e05a;" title="JavaScript: 38.1%"></div><div style="width:15.93%;background-color:#178600;" title="C#: 15.9%"></div><div style="width:15.53%;background-color:#663399;" title="CSS: 15.5%"></div><div style="width:14.75%;background-color:#e34c26;" title="HTML: 14.8%"></div><div style="width:6.00%;background-color:#4F5D95;" title="PHP: 6.0%"></div><div style="width:4.93%;background-color:#c6538c;" title="SCSS: 4.9%"></div><div style="width:1.86%;background-color:#6a40fd;" title="ASP: 1.9%"></div><div style="width:1.69%;background-color:#336790;" title="PLpgSQL: 1.7%"></div></div>
+    <div class="flex flex-wrap gap-x-5 gap-y-2"><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#f1e05a;"></span>
+      <span class="mono">JavaScript</span>
+      <span class="text-stone-600">38.1%</span>
+    </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#178600;"></span>
+      <span class="mono">C#</span>
+      <span class="text-stone-600">15.9%</span>
+    </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#663399;"></span>
+      <span class="mono">CSS</span>
+      <span class="text-stone-600">15.5%</span>
+    </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#e34c26;"></span>
+      <span class="mono">HTML</span>
+      <span class="text-stone-600">14.8%</span>
+    </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#4F5D95;"></span>
+      <span class="mono">PHP</span>
+      <span class="text-stone-600">6.0%</span>
+    </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#c6538c;"></span>
+      <span class="mono">SCSS</span>
+      <span class="text-stone-600">4.9%</span>
+    </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#6a40fd;"></span>
+      <span class="mono">ASP</span>
+      <span class="text-stone-600">1.9%</span>
+    </div><div class="flex items-center gap-1.5 text-xs text-stone-400">
+      <span class="w-2.5 h-2.5 rounded-sm flex-shrink-0" style="background-color:#336790;"></span>
+      <span class="mono">PLpgSQL</span>
+      <span class="text-stone-600">1.7%</span>
+    </div></div>
+  </div>
+</section>
+    </main>
+    <footer class="border-t border-stone-800 py-8 mt-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-stone-500">
+        <span class="mono">
+          Built with <a href="https://github.com/zedotech/git-folio" class="text-amber-500/70 hover:text-amber-400 transition-colors">git-folio</a>
+        </span>
+        <span>Generated March 7, 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>
