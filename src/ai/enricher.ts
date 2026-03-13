@@ -66,7 +66,7 @@ export class AIEnricher {
             const response = await this.openai.chat.completions.create({
               model: this.model,
               messages: [{ role: 'user', content: prompt }],
-              max_completion_tokens: 100,
+              max_completion_tokens: 150,
             });
             const parsed = parseJson(response.choices[0].message.content) as { summary?: string };
             logger.progress(`Summarized: ${repo.name}`);
@@ -102,7 +102,7 @@ export class AIEnricher {
       const response = await this.openai.chat.completions.create({
         model: this.model,
         messages: [{ role: 'user', content: prompt }],
-        max_completion_tokens: 1500,
+        max_completion_tokens: 2000,
       });
       const raw = response.choices[0].message.content;
       const parsed = parseJson(raw) as { skills?: SkillArea[] };
@@ -129,7 +129,7 @@ export class AIEnricher {
       const response = await this.openai.chat.completions.create({
         model: this.model,
         messages: [{ role: 'user', content: prompt }],
-        max_completion_tokens: 400,
+        max_completion_tokens: 2000,
       });
       const raw = response.choices[0].message.content;
       const parsed = parseJson(raw) as { bio?: string };

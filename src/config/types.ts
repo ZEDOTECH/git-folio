@@ -9,8 +9,6 @@ export interface AppConfig {
 export interface GenerateOptions {
   output: string;
   publicOnly: boolean;
-  cache: boolean;
-  cacheTtl: number;
   maxRepos: number;
   skipAi: boolean;
   theme: string;

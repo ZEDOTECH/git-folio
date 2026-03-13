@@ -5,7 +5,6 @@ import path from 'node:path';
 import { loadConfig } from '../../config/index.js';
 import { GitHubFetcher } from '../../github/fetcher.js';
 import { AIEnricher } from '../../ai/enricher.js';
-import { CacheManager } from '../../cache/index.js';
 import { SiteGenerator } from '../../generator/index.js';
 import { logger } from '../../utils/logger.js';
 import { stopPreview } from '../static-preview.js';
@@ -29,8 +28,6 @@ generateRouter.post('/generate', async (c) => {
   const opts: GenerateOptions = {
     output: body.output || './output',
     publicOnly: false,
-    cache: body.cache !== false,
-    cacheTtl: Number(body.cacheTtl) || 24,
     maxRepos: Number(body.maxRepos) || 100,
     skipAi: Boolean(body.skipAi),
     theme: body.theme || 'default',
@@ -92,22 +89,13 @@ generateRouter.post('/generate', async (c) => {
       emit('Loading config...');
       const config = await loadConfig(opts);
 
-      const cache = new CacheManager('.git-folio-cache');
-      let rawData = opts.cache ? await cache.load(opts.cacheTtl, !opts.publicOnly) : null;
-
-      if (rawData) {
-        emit('✓ Using cached GitHub data (use no-cache to refresh)');
-      } else {
-        emit('Fetching GitHub profile and repos...');
-        const fetcher = new GitHubFetcher(config);
-        rawData = await fetcher.fetchAll({
-          includePrivate: !opts.publicOnly,
-          maxRepos: opts.maxRepos,
-        });
-        emit('Saving to cache...');
-        await cache.save(rawData, !opts.publicOnly);
-        emit(`✓ Fetched ${rawData.repos.length} repos — saved to cache`);
-      }
+      emit('Fetching GitHub profile and repos...');
+      const fetcher = new GitHubFetcher(config);
+      let rawData = await fetcher.fetchAll({
+        includePrivate: !opts.publicOnly,
+        maxRepos: opts.maxRepos,
+      });
+      emit(`✓ Fetched ${rawData.repos.length} repos`);
 
       if (includedRepos) {
         const includedSet = new Set(includedRepos);

@@ -47,6 +47,18 @@ export function renderSkills(portfolio: Portfolio): string {
   <p class="text-stone-500 mono text-sm mb-12">Technical expertise across all repositories</p>
 `;
 
+  if (skills.length > 0) {
+    const skillCards = skills.map(renderSkillCard).join('\n      ');
+    content += `  <section class="mb-16">
+    <h2 class="section-title">Expertise Areas</h2>
+    <p class="section-subtitle">AI-analyzed skill clusters from repository history</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      ${skillCards}
+    </div>
+  </section>
+`;
+  }
+
   if (langSlice.length > 0) {
     const perLangBars = langSlice.map(lang =>
       `<div class="flex items-center gap-4">
@@ -60,24 +72,12 @@ export function renderSkills(portfolio: Portfolio): string {
       </div>`
     ).join('\n      ');
 
-    content += `  <section class="mb-16">
+    content += `  <section>
     <h2 class="section-title">Languages</h2>
     <p class="section-subtitle">Distribution across ${enabledRepoCount} repositories</p>
     ${renderLanguageBreakdown(langSlice)}
     <div class="mt-8 space-y-3">
       ${perLangBars}
-    </div>
-  </section>
-`;
-  }
-
-  if (skills.length > 0) {
-    const skillCards = skills.map(renderSkillCard).join('\n      ');
-    content += `  <section>
-    <h2 class="section-title">Expertise Areas</h2>
-    <p class="section-subtitle">AI-analyzed skill clusters from repository history</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      ${skillCards}
     </div>
   </section>
 `;

@@ -68,9 +68,8 @@ export async function writePortfolioData(
     contributors: r.contributors,
   });
 
-  // Featured: top 6 public repos, sorted by most recently pushed
+  // Featured: top 6 repos (public + private), sorted by most recently pushed
   const featuredRepos = data.repos
-    .filter(r => !r.isPrivate)
     .sort((a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime())
     .slice(0, 6)
     .map(repoEntry);

@@ -2,6 +2,18 @@
 
 function $(id) { return document.getElementById(id); }
 
+function showOutputModal(outputDir) {
+  return new Promise(resolve => {
+    $('modal-msg').textContent = `"${outputDir}" already exists and will be deleted before regenerating. This cannot be undone.`;
+    const overlay = $('modal-overlay');
+    overlay.classList.add('show');
+    const done = (confirmed) => { overlay.classList.remove('show'); resolve(confirmed); };
+    $('modal-confirm').onclick = () => done(true);
+    $('modal-cancel').onclick  = () => done(false);
+    overlay.onclick = (e) => { if (e.target === overlay) done(false); };
+  });
+}
+
 function toast(msg, duration = 2500) {
   const el = $('toast');
   el.textContent = msg;
@@ -31,7 +43,6 @@ async function loadStatus() {
     const data = await res.json();
     setDot('dot-github', data.env?.githubPat);
     setDot('dot-openai', data.env?.openaiKey);
-    setDot('dot-cache', data.cache?.exists);
     setDot('dot-output', data.outputExists);
   } catch {
     // ignore
@@ -76,9 +87,7 @@ $('btn-generate').addEventListener('click', async () => {
     const statusRes = await fetch('/api/status');
     const status = await statusRes.json();
     if (status.outputExists) {
-      const confirmed = window.confirm(
-        `Output directory "${outputDir}" already exists.\n\nDelete it and regenerate from scratch?`
-      );
+      const confirmed = await showOutputModal(outputDir);
       if (!confirmed) return;
       cleanOutput = true;
     }
@@ -95,7 +104,6 @@ $('btn-generate').addEventListener('click', async () => {
     maxRepos:                 10000,
     author:                   $('opt-author').value,
     skipAi:                   $('opt-skip-ai').checked,
-    cache:                    !$('opt-no-cache').checked,
     cleanOutput,
   };
 
@@ -170,19 +178,6 @@ $('btn-generate').addEventListener('click', async () => {
   btn.disabled = false;
 });
 
-$('btn-clear-cache').addEventListener('click', async () => {
-  const btn = $('btn-clear-cache');
-  btn.disabled = true;
-  try {
-    const res = await fetch('/api/clear-cache', { method: 'POST' });
-    const data = await res.json();
-    appendLog(data.message || 'Cache cleared.');
-    loadStatus();
-  } catch (err) {
-    appendLog(`✗ ${err.message}`, 'log-error');
-  }
-  btn.disabled = false;
-});
 
 // ─── Visibility tab ───────────────────────────────────────────────────────────
 
@@ -338,6 +333,31 @@ document.querySelectorAll('.seg-ctrl button[data-filter]').forEach(btn => {
 
 $('visibility-search').addEventListener('input', e => {
   visibilitySearch = e.target.value;
+  renderPreselectRepos();
+});
+
+function getVisibleRepos() {
+  const excluded = new Set(getExcluded());
+  const query = visibilitySearch.toLowerCase();
+  return allReposList.filter(r => {
+    if (!r.name.toLowerCase().includes(query)) return false;
+    if (visibilityFilter === 'included') return !excluded.has(r.name);
+    if (visibilityFilter === 'excluded') return excluded.has(r.name);
+    return true;
+  });
+}
+
+$('btn-select-all').addEventListener('click', () => {
+  const excl = getExcluded();
+  const visibleNames = new Set(getVisibleRepos().map(r => r.name));
+  setExcluded(excl.filter(n => !visibleNames.has(n)));
+  renderPreselectRepos();
+});
+
+$('btn-deselect-all').addEventListener('click', () => {
+  const excl = new Set(getExcluded());
+  getVisibleRepos().forEach(r => excl.add(r.name));
+  setExcluded([...excl]);
   renderPreselectRepos();
 });
 
