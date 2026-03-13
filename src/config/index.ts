@@ -27,7 +27,7 @@ export async function loadConfig(opts: Partial<GenerateOptions>): Promise<AppCon
   return {
     githubToken,
     openaiApiKey: openaiKey,
-    openaiModel: process.env.OPENAI_MODEL ?? 'gpt-4o-mini',
+    openaiModel: process.env.OPENAI_MODEL ?? 'gpt-5-mini',
     authorName: (opts.author ?? '') || (process.env.AUTHOR_NAME ?? ''),
     siteUrl: process.env.SITE_URL ?? '',
   };

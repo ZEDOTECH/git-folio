@@ -6,6 +6,7 @@ dist/
 
 # Cache
 .git-folio-cache/
+.git-folio-repos-list-cache.json
 
 # Environment variables
 .env
