@@ -45,7 +45,7 @@ export function renderLayout(content: string, opts: LayoutOpts): string {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="${escape(opts.description ?? `Portfolio of ${opts.login}`)}" />
     <title>${escape(opts.title)}</title>
-    <link rel="icon" type="image/svg+xml" href="${base}favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="${base}favicon.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
