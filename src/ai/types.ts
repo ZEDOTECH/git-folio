@@ -16,6 +16,8 @@ export interface LanguageBreakdown {
 
 export interface EnrichedRepo extends RawRepoNode {
   aiSummary: string | null;
+  repoTechTags: string[];
+  repoSkillCategories: string[];
 }
 
 export interface EnrichedData {

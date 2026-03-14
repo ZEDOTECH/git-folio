@@ -185,15 +185,22 @@ export function renderRepo(repo: PortfolioRepo, portfolio: Portfolio): string {
   </div>` : '';
 
   // Topics & skills
-  const tagsHtml = (repo.topics.length > 0 || (repo.matchedSkills && repo.matchedSkills.length > 0))
+  const hasTechTags = (repo.techTags ?? []).length > 0;
+  const hasCategories = (repo.skillCategories ?? []).length > 0;
+  const tagsHtml = (repo.topics.length > 0 || hasTechTags || hasCategories)
     ? `<div class="card mb-8">
     <h2 class="text-lg font-semibold text-stone-100 mb-4">Tags</h2>
     ${repo.topics.length > 0
       ? `<div class="flex flex-wrap gap-2 mb-3">${repo.topics.map(t => `<span class="tag">${escape(t)}</span>`).join('')}</div>`
       : ''}
-    ${(repo.matchedSkills && repo.matchedSkills.length > 0)
-      ? `<div class="flex flex-wrap gap-2">${repo.matchedSkills.map(s =>
-          `<span class="text-xs px-2 py-0.5 rounded-full border border-amber-500/30 text-amber-400/80 mono">${escape(s)}</span>`
+    ${hasTechTags
+      ? `<div class="flex flex-wrap gap-2 mb-2">${(repo.techTags ?? []).map(t =>
+          `<span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 mono">${escape(t)}</span>`
+        ).join('')}</div>`
+      : ''}
+    ${hasCategories
+      ? `<div class="flex flex-wrap gap-2">${(repo.skillCategories ?? []).map(c =>
+          `<span class="text-xs px-2 py-0.5 rounded-full border border-stone-600 text-stone-400 mono">${escape(c)}</span>`
         ).join('')}</div>`
       : ''}
   </div>` : '';

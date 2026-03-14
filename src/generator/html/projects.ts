@@ -42,10 +42,18 @@ function renderCard(repo: PortfolioRepo): string {
     ? `<div class="flex flex-wrap gap-1.5 mb-3">${repo.topics.slice(0, 4).map(t => `<span class="tag">${escape(t)}</span>`).join('')}</div>`
     : '';
 
-  const skillsHtml = (repo.matchedSkills && repo.matchedSkills.length > 0)
-    ? `<div class="flex flex-wrap gap-1.5 mb-3">${repo.matchedSkills.map(s =>
-        `<span class="text-xs px-2 py-0.5 rounded-full border border-amber-500/30 text-amber-400/80 mono">${escape(s)}</span>`
-      ).join('')}</div>`
+  const techTagsHtml = (repo.techTags ?? []).length > 0
+    ? (repo.techTags ?? []).map(t =>
+        `<span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 mono">${escape(t)}</span>`
+      ).join('')
+    : '';
+  const categoryHtml = (repo.skillCategories ?? []).length > 0
+    ? (repo.skillCategories ?? []).map(c =>
+        `<span class="text-xs px-2 py-0.5 rounded-full border border-stone-600 text-stone-400 mono">${escape(c)}</span>`
+      ).join('')
+    : '';
+  const skillsHtml = (techTagsHtml || categoryHtml)
+    ? `<div class="flex flex-wrap gap-1.5 mb-3">${techTagsHtml}${categoryHtml}</div>`
     : '';
 
   const footerLinks = [

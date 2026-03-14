@@ -1,23 +1,35 @@
 import type { RawRepoNode, ViewerProfile } from '../github/types.js';
 import type { SkillArea, LanguageBreakdown } from './types.js';
 
-export function buildProjectSummaryPrompt(repo: RawRepoNode): string {
+export function buildProjectSummaryPrompt(repo: RawRepoNode, skillNames: string[] = []): string {
   const readmeExcerpt = repo.readmeText
     ? repo.readmeText.slice(0, 1500)
     : 'No README available.';
 
+  const total = repo.languages.edges.reduce((sum, e) => sum + e.size, 0);
+  const langList = repo.languages.edges
+    .map(e => `${e.node.name}: ${total > 0 ? Math.round((e.size / total) * 100) : 0}%`)
+    .join(', ') || 'None';
+
   const recentWork = repo.recentCommits
-    .slice(0, 5)
-    .map(c => `- ${c.committedDate.slice(0, 10)}`)
+    .slice(0, 20)
+    .map(c => `- ${c.message ?? '(no message)'}`)
     .join('\n') || 'None available';
+
+  const skillNamesStr = skillNames.length > 0
+    ? skillNames.join(', ')
+    : 'None';
 
   return `You are a technical writer helping a developer showcase their work.
 
-Analyze this GitHub repository and write a single compelling sentence (max 25 words) that describes what this project does and why it matters. Focus on the user value or technical achievement, not the tech stack.
+Analyze this GitHub repository and return:
+1. A single compelling sentence (max 25 words) describing what this project does and why it matters.
+2. Up to 5 specific technology tags (concrete tools/frameworks/libraries actually used, e.g. "React", "Docker", "PostgreSQL").
+3. Up to 3 skill categories chosen ONLY from the provided list (leave empty if none fit).
 
 Repository: ${repo.name}
 GitHub description: ${repo.description ?? 'None'}
-Primary language: ${repo.primaryLanguage?.name ?? 'Unknown'}
+Languages: ${langList}
 Topics/tags: ${repo.topics.join(', ') || 'None'}
 Stars: ${repo.stargazerCount}
 
@@ -27,8 +39,11 @@ ${readmeExcerpt}
 Recent commit messages:
 ${recentWork}
 
+Available skill categories (choose from these only):
+${skillNamesStr}
+
 Respond with ONLY a JSON object:
-{"summary": "your one-sentence summary here"}`;
+{"summary": "your one-sentence summary here", "techTags": ["tag1", "tag2"], "skillCategories": ["category1"]}`;
 }
 
 export function buildSkillsAnalysisPrompt(

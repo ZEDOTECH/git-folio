@@ -55,33 +55,46 @@ export class AIEnricher {
   ): Promise<EnrichedData> {
     const languageBreakdown = this.computeLanguageBreakdown(data.repos);
 
+    logger.step('Analyzing skills across all repos...');
+    const skills = await this.generateSkills(data.repos, languageBreakdown);
+    const skillNames = skills.map(s => s.name);
+
     logger.step(`Generating AI summaries for ${data.repos.length} repos...`);
     const limit = pLimit(5);
+    const skillNamesSet = new Set(skillNames);
 
     const enrichedRepos: EnrichedRepo[] = await Promise.all(
       data.repos.map(repo =>
         limit(async () => {
           try {
-            const prompt = buildProjectSummaryPrompt(repo);
+            const prompt = buildProjectSummaryPrompt(repo, skillNames);
             const response = await this.openai.chat.completions.create({
               model: this.model,
               messages: [{ role: 'user', content: prompt }],
-              max_completion_tokens: 150,
+              max_completion_tokens: 2000,
             });
-            const parsed = parseJson(response.choices[0].message.content) as { summary?: string };
+            const parsed = parseJson(response.choices[0].message.content) as {
+              summary?: string;
+              techTags?: string[];
+              skillCategories?: string[];
+            };
             logger.progress(`Summarized: ${repo.name}`);
-            return { ...repo, aiSummary: parsed.summary ?? repo.description };
+            return {
+              ...repo,
+              aiSummary: parsed.summary ?? repo.description,
+              repoTechTags: (parsed.techTags ?? []).slice(0, 5),
+              repoSkillCategories: (parsed.skillCategories ?? [])
+                .filter(c => skillNamesSet.has(c))
+                .slice(0, 3),
+            };
           } catch (err) {
             const reason = err instanceof Error ? err.message : String(err);
             logger.warn(`Failed to summarize ${repo.name}: ${reason}`);
-            return { ...repo, aiSummary: repo.description };
+            return { ...repo, aiSummary: repo.description, repoTechTags: [], repoSkillCategories: [] };
           }
         }),
       ),
     );
-
-    logger.step('Analyzing skills across all repos...');
-    const skills = await this.generateSkills(data.repos, languageBreakdown);
 
     logger.step('Generating professional bio...');
     const bio = await this.generateBio(data, skills, languageBreakdown);
@@ -102,7 +115,7 @@ export class AIEnricher {
       const response = await this.openai.chat.completions.create({
         model: this.model,
         messages: [{ role: 'user', content: prompt }],
-        max_completion_tokens: 2000,
+        max_completion_tokens: 8000,
       });
       const raw = response.choices[0].message.content;
       const parsed = parseJson(raw) as { skills?: SkillArea[] };
@@ -129,7 +142,7 @@ export class AIEnricher {
       const response = await this.openai.chat.completions.create({
         model: this.model,
         messages: [{ role: 'user', content: prompt }],
-        max_completion_tokens: 2000,
+        max_completion_tokens: 4000,
       });
       const raw = response.choices[0].message.content;
       const parsed = parseJson(raw) as { bio?: string };
@@ -159,6 +172,17 @@ export class AIEnricher {
     const topSkills = skills.slice(0, 2).map(s => s.name);
     const skillStr = topSkills.length > 0 ? ` with expertise in ${topSkills.join(' and ')}` : '';
     return `Software developer${companyPart}${locationPart}. Works primarily in ${langStr} across ${repos.length} repositories${skillStr}.`;
+  }
+
+  static skipAiEnrich(data: RawGitHubData, langBreakdown: LanguageBreakdown[]): EnrichedData {
+    return {
+      viewer: data.viewer,
+      repos: data.repos.map(r => ({ ...r, aiSummary: r.description, repoTechTags: [], repoSkillCategories: [] })),
+      skills: [],
+      bio: data.viewer.bio || AIEnricher.composeFallbackBio(data.viewer, langBreakdown, [], data.repos),
+      languageBreakdown: langBreakdown,
+      generatedAt: new Date().toISOString(),
+    };
   }
 
   computeLanguageBreakdown(repos: RawRepoNode[]): LanguageBreakdown[] {

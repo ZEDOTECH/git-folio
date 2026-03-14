@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import type { EnrichedData, EnrichedRepo, SkillArea } from '../ai/types.js';
+import type { EnrichedData, EnrichedRepo } from '../ai/types.js';
 import type { GenerateOptions } from '../config/types.js';
 import { renderHtmlFiles } from './html/render.js';
 
@@ -18,22 +18,6 @@ function repoLanguages(r: EnrichedRepo) {
     .slice(0, 6);
 }
 
-/** Find global skill names whose relatedTech overlaps with the repo's languages or topics */
-function matchedSkills(r: EnrichedRepo, skills: SkillArea[]): string[] {
-  const repoLangs = new Set(r.languages.edges.map(e => e.node.name.toLowerCase()));
-  const repoTopics = new Set(r.topics.map(t => t.toLowerCase()));
-
-  return skills
-    .filter(skill =>
-      skill.relatedTech.some(tech => {
-        const t = tech.toLowerCase();
-        return repoLangs.has(t) || [...repoLangs].some(l => l.includes(t) || t.includes(l))
-          || [...repoTopics].some(tp => tp.includes(t) || t.includes(tp));
-      }),
-    )
-    .map(s => s.name)
-    .slice(0, 3);
-}
 
 export async function writePortfolioData(
   data: EnrichedData,
@@ -54,7 +38,8 @@ export async function writePortfolioData(
     forks: r.forkCount,
     primaryLanguage: r.primaryLanguage,
     languages: repoLanguages(r),
-    matchedSkills: matchedSkills(r, data.skills),
+    techTags: r.repoTechTags,
+    skillCategories: r.repoSkillCategories,
     topics: r.topics,
     createdAt: r.createdAt,
     pushedAt: r.pushedAt,

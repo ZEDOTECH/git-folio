@@ -108,14 +108,7 @@ generateRouter.post('/generate', async (c) => {
         emit('Skipping AI enrichment (skip-ai)');
         const enricher = new AIEnricher(config);
         const langBreakdown = enricher.computeLanguageBreakdown(rawData.repos);
-        enrichedData = {
-          viewer: rawData.viewer,
-          repos: rawData.repos.map(r => ({ ...r, aiSummary: r.description })),
-          skills: [],
-          bio: rawData.viewer.bio || AIEnricher.composeFallbackBio(rawData.viewer, langBreakdown, [], rawData.repos),
-          languageBreakdown: langBreakdown,
-          generatedAt: new Date().toISOString(),
-        };
+        enrichedData = AIEnricher.skipAiEnrich(rawData, langBreakdown);
       } else {
         const enricher = new AIEnricher(config);
         enrichedData = await enricher.enrich(rawData);

@@ -46,6 +46,7 @@ const REPO_FIELDS = `
         history(first: 100) {
           nodes {
             committedDate
+            message
             author {
               user { login avatarUrl name }
             }

@@ -23,6 +23,7 @@ export interface RepoCommitAuthor {
 
 export interface RepoCommit {
   committedDate: string;
+  message?: string;
   author?: { user?: RepoCommitAuthor | null } | null;
 }
 
@@ -128,6 +129,7 @@ export interface GQLRepoNode {
       history: {
         nodes: Array<{
           committedDate: string;
+          message?: string;
           author?: { user?: { login: string; avatarUrl: string; name: string | null } | null } | null;
         }>;
       };

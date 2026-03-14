@@ -20,7 +20,8 @@ export interface PortfolioRepo {
   forks: number;
   primaryLanguage: { name: string; color: string } | null;
   languages: PortfolioLanguage[];
-  matchedSkills: string[];
+  techTags: string[];
+  skillCategories: string[];
   topics: string[];
   createdAt: string;
   pushedAt: string;

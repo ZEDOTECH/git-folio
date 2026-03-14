@@ -1,6 +1,6 @@
 import type { GQLRepoNode, RawRepoNode, CommitByMonth, CommitByWeek, CommitByDay, Contributor } from './types.js';
 
-function computeCommitsByMonth(nodes: Array<{ committedDate: string }>): CommitByMonth[] {
+function computeCommitsByMonth(nodes: Array<{ committedDate: string; message?: string }>): CommitByMonth[] {
   const counts = new Map<string, number>();
   for (const c of nodes) {
     const d = new Date(c.committedDate);
@@ -19,7 +19,7 @@ function getWeekStart(date: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
-function computeCommitsByWeek(nodes: Array<{ committedDate: string }>): CommitByWeek[] {
+function computeCommitsByWeek(nodes: Array<{ committedDate: string; message?: string }>): CommitByWeek[] {
   const counts = new Map<string, number>();
   for (const c of nodes) {
     const week = getWeekStart(new Date(c.committedDate));
@@ -30,7 +30,7 @@ function computeCommitsByWeek(nodes: Array<{ committedDate: string }>): CommitBy
     .map(([week, count]) => ({ week, count }));
 }
 
-function computeCommitsByDay(nodes: Array<{ committedDate: string }>): CommitByDay[] {
+function computeCommitsByDay(nodes: Array<{ committedDate: string; message?: string }>): CommitByDay[] {
   const counts = new Map<string, number>();
   for (const c of nodes) {
     const day = c.committedDate.slice(0, 10);
