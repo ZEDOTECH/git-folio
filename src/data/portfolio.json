@@ -2,7 +2,7 @@
   "profile": {
     "login": "ZEDOTECH",
     "name": "Nicky Liu",
-    "bio": "Software developer at ZEDOTECH, based in Taiwan. Works primarily in JavaScript, C# and CSS across 78 repositories.",
+    "bio": "I'm Nicky Liu, a full-stack engineer at ZEDOTECH in Taiwan who designs and ships end-to-end web apps that pair modern frontends with .NET backends. I build REST/WebSocket APIs and OAuth flows (see google-oauth-sample), create interactive visualizations and static portfolios (git-folio), and assemble automation and audio pipelines — including Whisper-based speech-to-text and AI-driven content generation — to turn prototypes into deployable products.",
     "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
     "websiteUrl": "https://zedotech.com",
     "company": "ZEDOTECH",
@@ -14,7 +14,7 @@
       "name": "git-folio",
       "description": "從 GitHub 自動生成 AI 驅動的個人作品集網站。抓取所有 repos、用 AI 撰寫描述、生成完整可部署的 Astro + Tailwind CSS 靜態網站。",
       "url": "https://github.com/ZEDOTECH/git-folio",
-      "isPrivate": true,
+      "isPrivate": false,
       "stars": 0,
       "forks": 0,
       "primaryLanguage": {
@@ -25,12 +25,7 @@
         {
           "name": "TypeScript",
           "color": "#3178c6",
-          "percentage": 45
-        },
-        {
-          "name": "Astro",
-          "color": "#ff5a03",
-          "percentage": 31
+          "percentage": 76
         },
         {
           "name": "JavaScript",
@@ -40,32 +35,35 @@
         {
           "name": "HTML",
           "color": "#e34c26",
-          "percentage": 10
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 1
+          "percentage": 11
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2026-03-02T17:29:32Z",
-      "pushedAt": "2026-03-06T15:27:32Z",
-      "updatedAt": "2026-03-06T15:27:35Z",
+      "pushedAt": "2026-03-14T09:56:59Z",
+      "updatedAt": "2026-03-14T09:57:02Z",
       "homepageUrl": null,
       "license": null,
-      "diskUsage": 188,
+      "diskUsage": 259,
       "commitsByMonth": [
         {
           "month": "2026-03",
-          "count": 5
+          "count": 11
         }
       ],
       "commitsByWeek": [
         {
           "week": "2026-03-02",
-          "count": 5
+          "count": 7
+        },
+        {
+          "week": "2026-03-09",
+          "count": 4
         }
       ],
       "commitsByDay": [
@@ -79,11 +77,29 @@
         },
         {
           "day": "2026-03-06",
+          "count": 3
+        },
+        {
+          "day": "2026-03-07",
+          "count": 1
+        },
+        {
+          "day": "2026-03-13",
+          "count": 2
+        },
+        {
+          "day": "2026-03-14",
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": [
+        {
+          "login": "ZEDOTECH",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
+          "name": "Nicky Liu",
+          "count": 11
+        }
+      ]
     },
     {
       "name": "auto-blog",
@@ -116,21 +132,20 @@
           "name": "HTML",
           "color": "#e34c26",
           "percentage": 5
-        },
-        {
-          "name": "PLpgSQL",
-          "color": "#336790",
-          "percentage": 1
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2026-02-11T12:39:53Z",
-      "pushedAt": "2026-03-06T08:37:53Z",
-      "updatedAt": "2026-03-06T08:37:57Z",
+      "pushedAt": "2026-03-13T16:06:56Z",
+      "updatedAt": "2026-03-13T16:07:00Z",
       "homepageUrl": null,
       "license": null,
-      "diskUsage": 18353,
+      "diskUsage": 19261,
       "commitsByMonth": [
         {
           "month": "2026-02",
@@ -138,7 +153,7 @@
         },
         {
           "month": "2026-03",
-          "count": 10
+          "count": 12
         }
       ],
       "commitsByWeek": [
@@ -157,6 +172,10 @@
         {
           "week": "2026-03-02",
           "count": 7
+        },
+        {
+          "week": "2026-03-09",
+          "count": 2
         }
       ],
       "commitsByDay": [
@@ -227,10 +246,61 @@
         {
           "day": "2026-03-06",
           "count": 2
+        },
+        {
+          "day": "2026-03-13",
+          "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "whisper-opencc",
+      "description": "透過 [faster-whisper](https://github.com/SYSTRAN/faster-whisper) 進行語音辨識，並自動將結果轉換為繁體中文 SRT 字幕檔。",
+      "url": "https://github.com/ZEDOTECH/whisper-opencc",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "Python",
+        "color": "#3572A5"
+      },
+      "languages": [
+        {
+          "name": "Python",
+          "color": "#3572A5",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "Audio Processing & Speech-to-Text"
+      ],
+      "topics": [],
+      "createdAt": "2026-03-09T18:49:23Z",
+      "pushedAt": "2026-03-09T18:49:41Z",
+      "updatedAt": "2026-03-09T18:49:45Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 40,
+      "commitsByMonth": [
+        {
+          "month": "2026-03",
+          "count": 1
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2026-03-09",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2026-03-09",
+          "count": 1
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "music-vizualizer",
@@ -250,7 +320,9 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Audio Processing & Speech-to-Text"
+      ],
       "topics": [],
       "createdAt": "2026-02-28T12:36:00Z",
       "pushedAt": "2026-03-01T13:08:32Z",
@@ -292,8 +364,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "music-merge",
@@ -328,7 +399,11 @@
           "percentage": 8
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2026-02-28T16:52:59Z",
       "pushedAt": "2026-02-28T16:53:15Z",
@@ -354,8 +429,7 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "silvercore-ai",
@@ -395,7 +469,11 @@
           "percentage": 2
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2026-02-22T07:49:05Z",
       "pushedAt": "2026-02-26T16:05:10Z",
@@ -449,8 +527,7 @@
           "count": 5
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "js-drawing",
@@ -475,7 +552,11 @@
           "percentage": 41
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2026-02-12T06:26:54Z",
       "pushedAt": "2026-02-12T06:27:10Z",
@@ -501,8 +582,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "cowork-platform",
@@ -532,7 +612,11 @@
           "percentage": 1
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2026-02-01T06:57:13Z",
       "pushedAt": "2026-02-09T14:31:44Z",
@@ -574,8 +658,7 @@
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "official",
@@ -610,7 +693,11 @@
           "percentage": 6
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2023-03-13T04:53:59Z",
       "pushedAt": "2026-02-08T09:07:11Z",
@@ -851,8 +938,7 @@
           "name": "Nicky Liu",
           "count": 51
         }
-      ],
-      "enable": true
+      ]
     },
     {
       "name": "SilverCoreLite",
@@ -887,7 +973,11 @@
           "percentage": 6
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2025-12-04T12:46:40Z",
       "pushedAt": "2026-02-08T08:53:46Z",
@@ -997,8 +1087,7 @@
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "NLCoreLibrary",
@@ -1033,7 +1122,11 @@
           "percentage": 1
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2021-09-20T07:59:09Z",
       "pushedAt": "2026-01-19T05:31:32Z",
@@ -1427,8 +1520,81 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "SilverConsoleApp",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/SilverConsoleApp",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2024-05-05T08:30:07Z",
+      "pushedAt": "2026-01-12T05:49:59Z",
+      "updatedAt": "2026-01-12T05:50:03Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 34,
+      "commitsByMonth": [
+        {
+          "month": "2024-05",
+          "count": 2
+        },
+        {
+          "month": "2025-02",
+          "count": 1
+        },
+        {
+          "month": "2026-01",
+          "count": 1
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2024-04-29",
+          "count": 2
+        },
+        {
+          "week": "2025-02-24",
+          "count": 1
+        },
+        {
+          "week": "2026-01-12",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2024-05-05",
+          "count": 2
+        },
+        {
+          "day": "2025-02-28",
+          "count": 1
+        },
+        {
+          "day": "2026-01-12",
+          "count": 1
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "tagflow",
@@ -1453,7 +1619,9 @@
           "percentage": 4
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Audio Processing & Speech-to-Text"
+      ],
       "topics": [],
       "createdAt": "2026-01-03T15:35:45Z",
       "pushedAt": "2026-01-12T05:28:14Z",
@@ -1507,200 +1675,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "python-crawler",
-      "description": "痞客邦部落格洗流量，使用 playwright 爬蟲模擬訪問",
-      "url": "https://github.com/ZEDOTECH/python-crawler",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "Python",
-        "color": "#3572A5"
-      },
-      "languages": [
-        {
-          "name": "Python",
-          "color": "#3572A5",
-          "percentage": 100
-        },
-        {
-          "name": "Shell",
-          "color": "#89e051",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2025-04-28T05:54:20Z",
-      "pushedAt": "2025-12-18T13:00:17Z",
-      "updatedAt": "2025-12-18T13:00:20Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 104,
-      "commitsByMonth": [
-        {
-          "month": "2025-04",
-          "count": 8
-        },
-        {
-          "month": "2025-05",
-          "count": 13
-        },
-        {
-          "month": "2025-06",
-          "count": 2
-        },
-        {
-          "month": "2025-07",
-          "count": 2
-        },
-        {
-          "month": "2025-10",
-          "count": 5
-        },
-        {
-          "month": "2025-11",
-          "count": 6
-        },
-        {
-          "month": "2025-12",
-          "count": 5
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2025-04-28",
-          "count": 8
-        },
-        {
-          "week": "2025-05-05",
-          "count": 7
-        },
-        {
-          "week": "2025-05-12",
-          "count": 6
-        },
-        {
-          "week": "2025-06-09",
-          "count": 2
-        },
-        {
-          "week": "2025-06-30",
-          "count": 1
-        },
-        {
-          "week": "2025-07-28",
-          "count": 1
-        },
-        {
-          "week": "2025-10-27",
-          "count": 5
-        },
-        {
-          "week": "2025-11-17",
-          "count": 3
-        },
-        {
-          "week": "2025-11-24",
-          "count": 3
-        },
-        {
-          "week": "2025-12-01",
-          "count": 2
-        },
-        {
-          "week": "2025-12-15",
-          "count": 3
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2025-04-28",
-          "count": 3
-        },
-        {
-          "day": "2025-04-29",
-          "count": 3
-        },
-        {
-          "day": "2025-04-30",
-          "count": 2
-        },
-        {
-          "day": "2025-05-05",
-          "count": 2
-        },
-        {
-          "day": "2025-05-06",
-          "count": 5
-        },
-        {
-          "day": "2025-05-12",
-          "count": 1
-        },
-        {
-          "day": "2025-05-13",
-          "count": 4
-        },
-        {
-          "day": "2025-05-14",
-          "count": 1
-        },
-        {
-          "day": "2025-06-14",
-          "count": 2
-        },
-        {
-          "day": "2025-07-01",
-          "count": 1
-        },
-        {
-          "day": "2025-07-31",
-          "count": 1
-        },
-        {
-          "day": "2025-10-27",
-          "count": 5
-        },
-        {
-          "day": "2025-11-22",
-          "count": 2
-        },
-        {
-          "day": "2025-11-23",
-          "count": 1
-        },
-        {
-          "day": "2025-11-24",
-          "count": 2
-        },
-        {
-          "day": "2025-11-27",
-          "count": 1
-        },
-        {
-          "day": "2025-12-02",
-          "count": 2
-        },
-        {
-          "day": "2025-12-15",
-          "count": 1
-        },
-        {
-          "day": "2025-12-16",
-          "count": 1
-        },
-        {
-          "day": "2025-12-18",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "post-tool",
@@ -1720,7 +1695,10 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2025-12-04T13:37:33Z",
       "pushedAt": "2025-12-04T13:37:43Z",
@@ -1746,60 +1724,7 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "modern-minesweeper",
-      "description": "AI寫的踩地雷小遊戲",
-      "url": "https://github.com/ZEDOTECH/modern-minesweeper",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "TypeScript",
-        "color": "#3178c6"
-      },
-      "languages": [
-        {
-          "name": "TypeScript",
-          "color": "#3178c6",
-          "percentage": 95
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 5
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2025-11-28T04:00:11Z",
-      "pushedAt": "2025-11-28T04:00:49Z",
-      "updatedAt": "2025-11-28T04:22:47Z",
-      "homepageUrl": "",
-      "license": null,
-      "diskUsage": 10,
-      "commitsByMonth": [
-        {
-          "month": "2025-11",
-          "count": 1
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2025-11-24",
-          "count": 1
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2025-11-28",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "zedotechStore",
@@ -1844,7 +1769,11 @@
           "percentage": 1
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2025-10-27T06:53:34Z",
       "pushedAt": "2025-11-23T12:44:27Z",
@@ -1946,8 +1875,7 @@
           "count": 4
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "personal-dashboard-ptototype",
@@ -1967,7 +1895,10 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2025-10-16T13:38:22Z",
       "pushedAt": "2025-10-16T13:43:41Z",
@@ -1993,8 +1924,7 @@
           "count": 5
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "SilverCoreSample-beta",
@@ -2039,7 +1969,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2024-04-04T08:20:26Z",
       "pushedAt": "2025-09-28T08:32:14Z",
@@ -2309,8 +2243,7 @@
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "game-exchange",
@@ -2330,7 +2263,10 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2025-08-07T17:42:44Z",
       "pushedAt": "2025-09-03T11:24:33Z",
@@ -2396,8 +2332,73 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "hamuhamu100",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/hamuhamu100",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2025-04-22T03:43:39Z",
+      "pushedAt": "2025-04-24T05:43:22Z",
+      "updatedAt": "2025-04-24T05:43:25Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 14,
+      "commitsByMonth": [
+        {
+          "month": "2025-04",
+          "count": 11
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2025-04-14",
+          "count": 3
+        },
+        {
+          "week": "2025-04-21",
+          "count": 8
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2025-04-20",
+          "count": 3
+        },
+        {
+          "day": "2025-04-22",
+          "count": 3
+        },
+        {
+          "day": "2025-04-23",
+          "count": 3
+        },
+        {
+          "day": "2025-04-24",
+          "count": 2
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "linebot-with-gpt",
@@ -2417,7 +2418,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2023-06-12T11:50:23Z",
       "pushedAt": "2025-02-28T06:03:52Z",
@@ -2511,8 +2516,423 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "NLServices",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/NLServices",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 89
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 8
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 2
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 0
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2023-07-02T06:50:50Z",
+      "pushedAt": "2025-02-28T05:32:33Z",
+      "updatedAt": "2025-02-28T05:32:37Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 912,
+      "commitsByMonth": [
+        {
+          "month": "2023-07",
+          "count": 5
+        },
+        {
+          "month": "2025-02",
+          "count": 1
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2023-06-26",
+          "count": 4
+        },
+        {
+          "week": "2023-07-03",
+          "count": 1
+        },
+        {
+          "week": "2025-02-24",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2023-07-02",
+          "count": 4
+        },
+        {
+          "day": "2023-07-04",
+          "count": 1
+        },
+        {
+          "day": "2025-02-28",
+          "count": 1
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "officalDemo",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/officalDemo",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "JavaScript",
+        "color": "#f1e05a"
+      },
+      "languages": [
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 60
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 12
+        },
+        {
+          "name": "SCSS",
+          "color": "#c6538c",
+          "percentage": 11
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 9
+        },
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 9
+        },
+        {
+          "name": "PHP",
+          "color": "#4F5D95",
+          "percentage": 0
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2025-02-09T14:57:09Z",
+      "pushedAt": "2025-02-09T15:26:51Z",
+      "updatedAt": "2025-02-09T15:26:54Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 84565,
+      "commitsByMonth": [
+        {
+          "month": "2025-02",
+          "count": 3
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2025-02-03",
+          "count": 3
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2025-02-09",
+          "count": 3
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "openai_realtime_api_csharp",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/openai_realtime_api_csharp",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2024-10-17T06:14:37Z",
+      "pushedAt": "2024-10-17T06:14:52Z",
+      "updatedAt": "2024-10-17T06:14:56Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 6,
+      "commitsByMonth": [
+        {
+          "month": "2024-10",
+          "count": 2
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2024-10-14",
+          "count": 2
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2024-10-17",
+          "count": 2
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "zedotechAPI",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/zedotechAPI",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2024-05-03T03:46:51Z",
+      "pushedAt": "2024-08-26T09:35:33Z",
+      "updatedAt": "2024-08-26T09:35:36Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 72,
+      "commitsByMonth": [
+        {
+          "month": "2024-05",
+          "count": 21
+        },
+        {
+          "month": "2024-07",
+          "count": 11
+        },
+        {
+          "month": "2024-08",
+          "count": 12
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2024-04-29",
+          "count": 5
+        },
+        {
+          "week": "2024-05-13",
+          "count": 12
+        },
+        {
+          "week": "2024-05-20",
+          "count": 1
+        },
+        {
+          "week": "2024-05-27",
+          "count": 3
+        },
+        {
+          "week": "2024-07-08",
+          "count": 9
+        },
+        {
+          "week": "2024-07-15",
+          "count": 2
+        },
+        {
+          "week": "2024-08-12",
+          "count": 11
+        },
+        {
+          "week": "2024-08-26",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2024-05-03",
+          "count": 5
+        },
+        {
+          "day": "2024-05-16",
+          "count": 9
+        },
+        {
+          "day": "2024-05-18",
+          "count": 1
+        },
+        {
+          "day": "2024-05-19",
+          "count": 2
+        },
+        {
+          "day": "2024-05-20",
+          "count": 1
+        },
+        {
+          "day": "2024-05-28",
+          "count": 3
+        },
+        {
+          "day": "2024-07-10",
+          "count": 8
+        },
+        {
+          "day": "2024-07-13",
+          "count": 1
+        },
+        {
+          "day": "2024-07-21",
+          "count": 2
+        },
+        {
+          "day": "2024-08-17",
+          "count": 11
+        },
+        {
+          "day": "2024-08-26",
+          "count": 1
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "google-oauth-sample",
+      "description": "Demonstrate how to use Google OAuth 2.0 through pure javascript and combine it with .NET Core cookie-based Authentication",
+      "url": "https://github.com/ZEDOTECH/google-oauth-sample",
+      "isPrivate": false,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "HTML",
+        "color": "#e34c26"
+      },
+      "languages": [
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 54
+        },
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 24
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 17
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 5
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2024-08-13T13:49:15Z",
+      "pushedAt": "2024-08-16T16:32:31Z",
+      "updatedAt": "2024-08-16T16:32:34Z",
+      "homepageUrl": "",
+      "license": null,
+      "diskUsage": 1520,
+      "commitsByMonth": [
+        {
+          "month": "2024-08",
+          "count": 5
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2024-08-12",
+          "count": 5
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2024-08-13",
+          "count": 3
+        },
+        {
+          "day": "2024-08-15",
+          "count": 1
+        },
+        {
+          "day": "2024-08-16",
+          "count": 1
+        }
+      ],
+      "contributors": [
+        {
+          "login": "ZEDOTECH",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
+          "name": "Nicky Liu",
+          "count": 5
+        }
+      ]
     },
     {
       "name": "search-text-extension",
@@ -2542,7 +2962,11 @@
           "percentage": 7
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2023-12-15T14:22:21Z",
       "pushedAt": "2024-08-07T14:13:22Z",
@@ -2592,8 +3016,143 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "auto-chat",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/auto-chat",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "JavaScript",
+        "color": "#f1e05a"
+      },
+      "languages": [
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 77
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 19
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 4
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2024-07-30T05:30:06Z",
+      "pushedAt": "2024-07-30T05:32:21Z",
+      "updatedAt": "2024-07-30T05:32:24Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 9,
+      "commitsByMonth": [
+        {
+          "month": "2024-07",
+          "count": 1
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2024-07-29",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2024-07-30",
+          "count": 1
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "cookbook_demo",
+      "description": "Produce by Claude 3.5 Sonnet",
+      "url": "https://github.com/ZEDOTECH/cookbook_demo",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "JavaScript",
+        "color": "#f1e05a"
+      },
+      "languages": [
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 61
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 22
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 17
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2024-07-09T06:09:38Z",
+      "pushedAt": "2024-07-21T12:58:36Z",
+      "updatedAt": "2024-07-21T12:58:39Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 40,
+      "commitsByMonth": [
+        {
+          "month": "2024-07",
+          "count": 66
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2024-07-08",
+          "count": 46
+        },
+        {
+          "week": "2024-07-15",
+          "count": 20
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2024-07-09",
+          "count": 21
+        },
+        {
+          "day": "2024-07-10",
+          "count": 22
+        },
+        {
+          "day": "2024-07-13",
+          "count": 3
+        },
+        {
+          "day": "2024-07-21",
+          "count": 20
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "FUMEI",
@@ -2628,7 +3187,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2024-07-21T03:54:10Z",
       "pushedAt": "2024-07-21T12:46:49Z",
@@ -2654,8 +3217,7 @@
           "count": 4
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "novel-formatter",
@@ -2675,7 +3237,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2024-06-03T08:30:08Z",
       "pushedAt": "2024-06-21T11:24:19Z",
@@ -2721,8 +3287,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "coffeeShop-demo",
@@ -2757,7 +3322,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2024-05-26T03:16:09Z",
       "pushedAt": "2024-05-26T03:16:53Z",
@@ -2790,8 +3359,7 @@
           "name": "Nicky Liu",
           "count": 6
         }
-      ],
-      "enable": true
+      ]
     },
     {
       "name": "comingsoon-web",
@@ -2821,7 +3389,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2024-04-24T11:36:52Z",
       "pushedAt": "2024-05-22T12:53:00Z",
@@ -2859,8 +3431,171 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "CombineExcel-sample",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/CombineExcel-sample",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2024-05-05T07:58:28Z",
+      "pushedAt": "2024-05-05T07:58:32Z",
+      "updatedAt": "2024-05-05T07:58:35Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 7,
+      "commitsByMonth": [
+        {
+          "month": "2024-05",
+          "count": 2
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2024-04-29",
+          "count": 2
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2024-05-05",
+          "count": 2
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "zedotechapicenter",
+      "description": "ZedoTech Api Center",
+      "url": "https://github.com/ZEDOTECH/zedotechapicenter",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2019-01-15T05:06:55Z",
+      "pushedAt": "2024-04-12T08:31:47Z",
+      "updatedAt": "2022-08-15T08:33:04Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 28,
+      "commitsByMonth": [
+        {
+          "month": "2019-01",
+          "count": 4
+        },
+        {
+          "month": "2019-08",
+          "count": 1
+        },
+        {
+          "month": "2019-12",
+          "count": 1
+        },
+        {
+          "month": "2020-12",
+          "count": 10
+        },
+        {
+          "month": "2022-08",
+          "count": 6
+        },
+        {
+          "month": "2024-04",
+          "count": 1
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2019-01-14",
+          "count": 4
+        },
+        {
+          "week": "2019-08-26",
+          "count": 1
+        },
+        {
+          "week": "2019-12-09",
+          "count": 1
+        },
+        {
+          "week": "2020-12-14",
+          "count": 10
+        },
+        {
+          "week": "2022-08-15",
+          "count": 6
+        },
+        {
+          "week": "2024-04-08",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2019-01-15",
+          "count": 4
+        },
+        {
+          "day": "2019-08-30",
+          "count": 1
+        },
+        {
+          "day": "2019-12-09",
+          "count": 1
+        },
+        {
+          "day": "2020-12-17",
+          "count": 8
+        },
+        {
+          "day": "2020-12-18",
+          "count": 2
+        },
+        {
+          "day": "2022-08-15",
+          "count": 6
+        },
+        {
+          "day": "2024-04-12",
+          "count": 1
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "SilverCoreSample",
@@ -2905,7 +3640,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2021-12-01T09:07:42Z",
       "pushedAt": "2024-04-04T07:44:00Z",
@@ -3183,8 +3922,7 @@
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "txtToJsonLines",
@@ -3204,7 +3942,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2024-02-26T05:39:52Z",
       "pushedAt": "2024-02-26T05:40:38Z",
@@ -3238,8 +3980,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "gitteach0107",
@@ -3264,7 +4005,11 @@
           "percentage": 9
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "Front-end UI & Visualizations",
+        "Static Site Generation & Content Automation"
+      ],
       "topics": [],
       "createdAt": "2024-01-07T02:54:51Z",
       "pushedAt": "2024-01-07T03:21:30Z",
@@ -3303,8 +4048,7 @@
           "name": null,
           "count": 1
         }
-      ],
-      "enable": true
+      ]
     },
     {
       "name": "anysizeAzureFunction",
@@ -3324,7 +4068,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2023-12-03T07:44:45Z",
       "pushedAt": "2023-12-10T10:02:28Z",
@@ -3378,8 +4126,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "domainImport",
@@ -3399,7 +4146,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2021-10-14T13:17:01Z",
       "pushedAt": "2023-11-28T11:49:10Z",
@@ -3437,8 +4188,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "ZedoTechNuGetServer",
@@ -3463,7 +4213,11 @@
           "percentage": 48
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        ".NET & C# Application Development"
+      ],
       "topics": [],
       "createdAt": "2023-07-02T08:27:40Z",
       "pushedAt": "2023-07-02T08:44:59Z",
@@ -3489,8 +4243,77 @@
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "portfolio",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/portfolio",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "HTML",
+        "color": "#e34c26"
+      },
+      "languages": [
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 51
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 21
+        },
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 15
+        },
+        {
+          "name": "Shell",
+          "color": "#89e051",
+          "percentage": 11
+        },
+        {
+          "name": "Dockerfile",
+          "color": "#384d54",
+          "percentage": 2
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2023-04-18T15:25:41Z",
+      "pushedAt": "2023-04-18T15:25:44Z",
+      "updatedAt": "2023-04-18T15:25:50Z",
+      "homepageUrl": null,
+      "license": "MIT License",
+      "diskUsage": 9343,
+      "commitsByMonth": [
+        {
+          "month": "2023-04",
+          "count": 1
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2023-04-17",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2023-04-18",
+          "count": 1
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "chrome_extension_image_downloader",
@@ -3515,7 +4338,11 @@
           "percentage": 10
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2023-02-23T05:59:44Z",
       "pushedAt": "2023-02-23T08:59:10Z",
@@ -3541,250 +4368,7 @@
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "RandomMaze",
-      "description": null,
-      "url": "https://github.com/ZEDOTECH/RandomMaze",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "CSS",
-        "color": "#663399"
-      },
-      "languages": [
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 39
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 32
-        },
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 25
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 5
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2022-01-20T10:07:32Z",
-      "pushedAt": "2022-07-07T18:11:46Z",
-      "updatedAt": "2022-06-24T03:40:53Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 36683,
-      "commitsByMonth": [
-        {
-          "month": "2017-03",
-          "count": 6
-        },
-        {
-          "month": "2017-07",
-          "count": 5
-        },
-        {
-          "month": "2020-01",
-          "count": 7
-        },
-        {
-          "month": "2022-01",
-          "count": 3
-        },
-        {
-          "month": "2022-03",
-          "count": 4
-        },
-        {
-          "month": "2022-04",
-          "count": 5
-        },
-        {
-          "month": "2022-06",
-          "count": 8
-        },
-        {
-          "month": "2022-07",
-          "count": 13
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2017-03-13",
-          "count": 3
-        },
-        {
-          "week": "2017-03-20",
-          "count": 3
-        },
-        {
-          "week": "2017-06-26",
-          "count": 1
-        },
-        {
-          "week": "2017-07-03",
-          "count": 3
-        },
-        {
-          "week": "2017-07-10",
-          "count": 1
-        },
-        {
-          "week": "2020-01-20",
-          "count": 7
-        },
-        {
-          "week": "2022-01-17",
-          "count": 3
-        },
-        {
-          "week": "2022-03-14",
-          "count": 4
-        },
-        {
-          "week": "2022-04-18",
-          "count": 1
-        },
-        {
-          "week": "2022-04-25",
-          "count": 4
-        },
-        {
-          "week": "2022-06-06",
-          "count": 1
-        },
-        {
-          "week": "2022-06-13",
-          "count": 2
-        },
-        {
-          "week": "2022-06-20",
-          "count": 5
-        },
-        {
-          "week": "2022-06-27",
-          "count": 11
-        },
-        {
-          "week": "2022-07-04",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2017-03-15",
-          "count": 3
-        },
-        {
-          "day": "2017-03-24",
-          "count": 3
-        },
-        {
-          "day": "2017-07-02",
-          "count": 3
-        },
-        {
-          "day": "2017-07-04",
-          "count": 1
-        },
-        {
-          "day": "2017-07-16",
-          "count": 1
-        },
-        {
-          "day": "2020-01-20",
-          "count": 2
-        },
-        {
-          "day": "2020-01-21",
-          "count": 2
-        },
-        {
-          "day": "2020-01-22",
-          "count": 3
-        },
-        {
-          "day": "2022-01-20",
-          "count": 3
-        },
-        {
-          "day": "2022-03-17",
-          "count": 3
-        },
-        {
-          "day": "2022-03-19",
-          "count": 1
-        },
-        {
-          "day": "2022-04-19",
-          "count": 1
-        },
-        {
-          "day": "2022-04-26",
-          "count": 1
-        },
-        {
-          "day": "2022-04-27",
-          "count": 1
-        },
-        {
-          "day": "2022-04-30",
-          "count": 2
-        },
-        {
-          "day": "2022-06-12",
-          "count": 2
-        },
-        {
-          "day": "2022-06-13",
-          "count": 1
-        },
-        {
-          "day": "2022-06-21",
-          "count": 1
-        },
-        {
-          "day": "2022-06-22",
-          "count": 1
-        },
-        {
-          "day": "2022-06-23",
-          "count": 2
-        },
-        {
-          "day": "2022-06-24",
-          "count": 1
-        },
-        {
-          "day": "2022-07-02",
-          "count": 9
-        },
-        {
-          "day": "2022-07-03",
-          "count": 2
-        },
-        {
-          "day": "2022-07-04",
-          "count": 1
-        },
-        {
-          "day": "2022-07-07",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "ztNFT",
@@ -3819,7 +4403,11 @@
           "percentage": 3
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2022-06-23T01:56:47Z",
       "pushedAt": "2022-06-23T10:01:45Z",
@@ -3845,8 +4433,7 @@
           "count": 4
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "SilverConsole",
@@ -3866,7 +4453,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2022-01-21T09:27:29Z",
       "pushedAt": "2022-05-03T03:02:19Z",
@@ -3936,8 +4527,7 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "MaicoinAPI",
@@ -3957,7 +4547,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2022-01-10T10:17:24Z",
       "pushedAt": "2022-03-04T08:37:48Z",
@@ -4011,55 +4605,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "NethereumSample",
-      "description": null,
-      "url": "https://github.com/ZEDOTECH/NethereumSample",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
-      },
-      "languages": [
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 100
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2022-02-04T17:02:43Z",
-      "pushedAt": "2022-02-04T17:02:48Z",
-      "updatedAt": "2022-02-04T17:02:51Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 7,
-      "commitsByMonth": [
-        {
-          "month": "2022-02",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2022-01-31",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2022-02-04",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "jsQR",
@@ -4081,8 +4627,7 @@
       "commitsByMonth": [],
       "commitsByWeek": [],
       "commitsByDay": [],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "TwilioChat_custom",
@@ -4122,7 +4667,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2021-12-12T07:32:20Z",
       "pushedAt": "2021-12-12T07:32:36Z",
@@ -4276,8 +4825,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "ReadDataFromMemory",
@@ -4297,7 +4845,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2021-12-12T07:22:43Z",
       "pushedAt": "2021-12-12T07:22:56Z",
@@ -4335,79 +4887,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "MahJong",
-      "description": "計算可聽牌的牌型",
-      "url": "https://github.com/ZEDOTECH/MahJong",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
-      },
-      "languages": [
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 100
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2021-12-12T06:59:01Z",
-      "pushedAt": "2021-12-12T06:59:23Z",
-      "updatedAt": "2021-12-12T06:59:26Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 9,
-      "commitsByMonth": [
-        {
-          "month": "2020-04",
-          "count": 1
-        },
-        {
-          "month": "2021-07",
-          "count": 1
-        },
-        {
-          "month": "2021-12",
-          "count": 1
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2020-04-06",
-          "count": 1
-        },
-        {
-          "week": "2021-07-19",
-          "count": 1
-        },
-        {
-          "week": "2021-12-06",
-          "count": 1
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2020-04-07",
-          "count": 1
-        },
-        {
-          "day": "2021-07-19",
-          "count": 1
-        },
-        {
-          "day": "2021-12-12",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "nicky-nllibrary",
@@ -4427,7 +4907,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:33:08Z",
       "pushedAt": "2021-09-20T07:00:09Z",
@@ -4465,8 +4949,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "allen-filtertext",
@@ -4486,7 +4969,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:40:56Z",
       "pushedAt": "2021-07-13T15:49:17Z",
@@ -4560,8 +5047,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "SignalRChat",
@@ -4596,7 +5082,11 @@
           "percentage": 4
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2021-07-12T10:13:53Z",
       "pushedAt": "2021-07-12T10:13:59Z",
@@ -4629,8 +5119,7 @@
           "name": "Nicky Liu",
           "count": 2
         }
-      ],
-      "enable": true
+      ]
     },
     {
       "name": "BitfinexAPI",
@@ -4650,7 +5139,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2021-06-29T10:43:39Z",
       "pushedAt": "2021-07-05T08:38:47Z",
@@ -4688,13 +5181,12 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
-      "name": "maximaCore-template",
+      "name": "ProjectTimer",
       "description": null,
-      "url": "https://github.com/ZEDOTECH/maximaCore-template",
+      "url": "https://github.com/ZEDOTECH/ProjectTimer",
       "isPrivate": true,
       "stars": 0,
       "forks": 0,
@@ -4706,516 +5198,90 @@
         {
           "name": "JavaScript",
           "color": "#f1e05a",
-          "percentage": 46
+          "percentage": 84
         },
         {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 38
-        },
-        {
-          "name": "SCSS",
-          "color": "#c6538c",
-          "percentage": 12
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 4
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2021-01-10T06:14:45Z",
-      "pushedAt": "2021-01-10T06:16:05Z",
-      "updatedAt": "2021-01-10T06:16:11Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 21874,
-      "commitsByMonth": [
-        {
-          "month": "2020-09",
-          "count": 3
-        },
-        {
-          "month": "2020-11",
-          "count": 2
-        },
-        {
-          "month": "2020-12",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2020-09-28",
-          "count": 3
-        },
-        {
-          "week": "2020-11-09",
-          "count": 2
-        },
-        {
-          "week": "2020-11-30",
-          "count": 1
-        },
-        {
-          "week": "2020-12-28",
-          "count": 1
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2020-09-30",
-          "count": 3
-        },
-        {
-          "day": "2020-11-13",
-          "count": 2
-        },
-        {
-          "day": "2020-12-02",
-          "count": 1
-        },
-        {
-          "day": "2020-12-29",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "maximaCore",
-      "description": null,
-      "url": "https://github.com/ZEDOTECH/maximaCore",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 38
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 32
-        },
-        {
-          "name": "SCSS",
-          "color": "#c6538c",
+          "name": "C#",
+          "color": "#178600",
           "percentage": 10
         },
         {
           "name": "HTML",
           "color": "#e34c26",
-          "percentage": 8
-        },
-        {
-          "name": "Pascal",
-          "color": "#E3F171",
-          "percentage": 7
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 4
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2021-01-04T08:19:47Z",
-      "pushedAt": "2021-01-04T08:22:38Z",
-      "updatedAt": "2021-01-04T08:22:59Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 29826,
-      "commitsByMonth": [
-        {
-          "month": "2020-05",
-          "count": 3
-        },
-        {
-          "month": "2020-06",
-          "count": 8
-        },
-        {
-          "month": "2020-07",
-          "count": 3
-        },
-        {
-          "month": "2020-08",
-          "count": 14
-        },
-        {
-          "month": "2020-09",
-          "count": 50
-        },
-        {
-          "month": "2020-10",
-          "count": 5
-        },
-        {
-          "month": "2020-11",
-          "count": 5
-        },
-        {
-          "month": "2020-12",
-          "count": 11
-        },
-        {
-          "month": "2021-01",
-          "count": 1
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2020-05-11",
-          "count": 1
-        },
-        {
-          "week": "2020-05-18",
-          "count": 2
-        },
-        {
-          "week": "2020-06-01",
-          "count": 3
-        },
-        {
-          "week": "2020-06-08",
-          "count": 1
-        },
-        {
-          "week": "2020-06-15",
-          "count": 4
-        },
-        {
-          "week": "2020-06-29",
-          "count": 1
-        },
-        {
-          "week": "2020-07-27",
-          "count": 2
-        },
-        {
-          "week": "2020-08-10",
-          "count": 1
-        },
-        {
-          "week": "2020-08-17",
-          "count": 12
-        },
-        {
-          "week": "2020-08-24",
-          "count": 1
-        },
-        {
-          "week": "2020-08-31",
-          "count": 7
-        },
-        {
-          "week": "2020-09-07",
-          "count": 19
-        },
-        {
-          "week": "2020-09-14",
-          "count": 20
-        },
-        {
-          "week": "2020-09-21",
-          "count": 2
-        },
-        {
-          "week": "2020-09-28",
-          "count": 2
-        },
-        {
-          "week": "2020-10-19",
-          "count": 2
-        },
-        {
-          "week": "2020-10-26",
-          "count": 3
-        },
-        {
-          "week": "2020-11-09",
-          "count": 2
-        },
-        {
-          "week": "2020-11-16",
-          "count": 3
-        },
-        {
-          "week": "2020-11-30",
-          "count": 6
-        },
-        {
-          "week": "2020-12-21",
-          "count": 2
-        },
-        {
-          "week": "2020-12-28",
-          "count": 3
-        },
-        {
-          "week": "2021-01-04",
-          "count": 1
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2020-05-14",
-          "count": 1
-        },
-        {
-          "day": "2020-05-18",
-          "count": 2
-        },
-        {
-          "day": "2020-06-03",
-          "count": 1
-        },
-        {
-          "day": "2020-06-05",
-          "count": 2
-        },
-        {
-          "day": "2020-06-11",
-          "count": 1
-        },
-        {
-          "day": "2020-06-15",
-          "count": 2
-        },
-        {
-          "day": "2020-06-16",
-          "count": 1
-        },
-        {
-          "day": "2020-06-19",
-          "count": 1
-        },
-        {
-          "day": "2020-07-01",
-          "count": 1
-        },
-        {
-          "day": "2020-07-27",
-          "count": 1
-        },
-        {
-          "day": "2020-07-29",
-          "count": 1
-        },
-        {
-          "day": "2020-08-11",
-          "count": 1
-        },
-        {
-          "day": "2020-08-18",
-          "count": 12
-        },
-        {
-          "day": "2020-08-28",
-          "count": 1
-        },
-        {
-          "day": "2020-09-01",
-          "count": 1
-        },
-        {
-          "day": "2020-09-02",
-          "count": 2
-        },
-        {
-          "day": "2020-09-03",
-          "count": 3
-        },
-        {
-          "day": "2020-09-04",
-          "count": 1
-        },
-        {
-          "day": "2020-09-07",
-          "count": 5
-        },
-        {
-          "day": "2020-09-08",
-          "count": 2
-        },
-        {
-          "day": "2020-09-09",
-          "count": 3
-        },
-        {
-          "day": "2020-09-10",
-          "count": 3
-        },
-        {
-          "day": "2020-09-11",
-          "count": 6
-        },
-        {
-          "day": "2020-09-14",
-          "count": 4
-        },
-        {
-          "day": "2020-09-15",
-          "count": 1
-        },
-        {
-          "day": "2020-09-16",
-          "count": 9
-        },
-        {
-          "day": "2020-09-17",
-          "count": 4
-        },
-        {
-          "day": "2020-09-18",
-          "count": 2
-        },
-        {
-          "day": "2020-09-24",
-          "count": 1
-        },
-        {
-          "day": "2020-09-25",
-          "count": 1
-        },
-        {
-          "day": "2020-09-29",
-          "count": 2
-        },
-        {
-          "day": "2020-10-20",
-          "count": 2
-        },
-        {
-          "day": "2020-10-26",
-          "count": 3
-        },
-        {
-          "day": "2020-11-13",
-          "count": 2
-        },
-        {
-          "day": "2020-11-16",
-          "count": 3
-        },
-        {
-          "day": "2020-12-03",
-          "count": 3
-        },
-        {
-          "day": "2020-12-04",
-          "count": 3
-        },
-        {
-          "day": "2020-12-24",
-          "count": 1
-        },
-        {
-          "day": "2020-12-25",
-          "count": 1
-        },
-        {
-          "day": "2020-12-29",
-          "count": 3
-        },
-        {
-          "day": "2021-01-04",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "cashier",
-      "description": null,
-      "url": "https://github.com/ZEDOTECH/cashier",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 44
+          "percentage": 6
         },
         {
           "name": "CSS",
           "color": "#663399",
-          "percentage": 34
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 15
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 7
+          "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
-      "createdAt": "2020-02-23T10:07:15Z",
-      "pushedAt": "2020-03-23T14:56:50Z",
-      "updatedAt": "2020-03-23T14:56:52Z",
+      "createdAt": "2020-02-04T08:58:49Z",
+      "pushedAt": "2021-05-14T13:28:08Z",
+      "updatedAt": "2021-05-14T13:28:11Z",
       "homepageUrl": null,
       "license": null,
-      "diskUsage": 10881,
+      "diskUsage": 1760,
       "commitsByMonth": [
         {
-          "month": "2019-12",
-          "count": 21
-        },
-        {
-          "month": "2020-01",
-          "count": 7
-        },
-        {
           "month": "2020-02",
-          "count": 3
+          "count": 13
         },
         {
           "month": "2020-03",
-          "count": 11
+          "count": 1
+        },
+        {
+          "month": "2020-04",
+          "count": 1
+        },
+        {
+          "month": "2020-05",
+          "count": 1
+        },
+        {
+          "month": "2020-06",
+          "count": 1
+        },
+        {
+          "month": "2020-07",
+          "count": 1
+        },
+        {
+          "month": "2020-08",
+          "count": 6
+        },
+        {
+          "month": "2020-10",
+          "count": 6
+        },
+        {
+          "month": "2020-11",
+          "count": 2
+        },
+        {
+          "month": "2020-12",
+          "count": 13
+        },
+        {
+          "month": "2021-05",
+          "count": 2
         }
       ],
       "commitsByWeek": [
         {
-          "week": "2019-12-02",
-          "count": 9
+          "week": "2020-02-03",
+          "count": 5
         },
         {
-          "week": "2019-12-09",
-          "count": 11
-        },
-        {
-          "week": "2019-12-16",
-          "count": 1
-        },
-        {
-          "week": "2020-01-06",
-          "count": 1
-        },
-        {
-          "week": "2020-01-27",
-          "count": 6
+          "week": "2020-02-10",
+          "count": 5
         },
         {
           "week": "2020-02-17",
@@ -5226,98 +5292,477 @@
           "count": 1
         },
         {
-          "week": "2020-03-02",
-          "count": 1
-        },
-        {
-          "week": "2020-03-09",
-          "count": 8
-        },
-        {
-          "week": "2020-03-16",
-          "count": 1
-        },
-        {
           "week": "2020-03-23",
           "count": 1
+        },
+        {
+          "week": "2020-04-13",
+          "count": 1
+        },
+        {
+          "week": "2020-05-11",
+          "count": 1
+        },
+        {
+          "week": "2020-06-22",
+          "count": 1
+        },
+        {
+          "week": "2020-07-27",
+          "count": 1
+        },
+        {
+          "week": "2020-08-10",
+          "count": 3
+        },
+        {
+          "week": "2020-08-17",
+          "count": 2
+        },
+        {
+          "week": "2020-08-24",
+          "count": 1
+        },
+        {
+          "week": "2020-10-19",
+          "count": 6
+        },
+        {
+          "week": "2020-11-02",
+          "count": 1
+        },
+        {
+          "week": "2020-11-30",
+          "count": 2
+        },
+        {
+          "week": "2020-12-07",
+          "count": 1
+        },
+        {
+          "week": "2020-12-14",
+          "count": 11
+        },
+        {
+          "week": "2021-05-10",
+          "count": 2
         }
       ],
       "commitsByDay": [
         {
-          "day": "2019-12-03",
-          "count": 4
-        },
-        {
-          "day": "2019-12-04",
-          "count": 1
-        },
-        {
-          "day": "2019-12-05",
-          "count": 4
-        },
-        {
-          "day": "2019-12-09",
+          "day": "2020-02-03",
           "count": 2
         },
         {
-          "day": "2019-12-11",
-          "count": 7
+          "day": "2020-02-04",
+          "count": 1
         },
         {
-          "day": "2019-12-14",
+          "day": "2020-02-09",
           "count": 2
         },
         {
-          "day": "2019-12-17",
+          "day": "2020-02-10",
+          "count": 2
+        },
+        {
+          "day": "2020-02-12",
           "count": 1
         },
         {
-          "day": "2020-01-10",
-          "count": 1
-        },
-        {
-          "day": "2020-01-27",
-          "count": 6
+          "day": "2020-02-13",
+          "count": 2
         },
         {
           "day": "2020-02-17",
-          "count": 1
-        },
-        {
-          "day": "2020-02-23",
-          "count": 1
+          "count": 2
         },
         {
           "day": "2020-02-25",
           "count": 1
         },
         {
-          "day": "2020-03-08",
+          "day": "2020-03-26",
           "count": 1
         },
         {
-          "day": "2020-03-11",
+          "day": "2020-04-18",
+          "count": 1
+        },
+        {
+          "day": "2020-05-11",
+          "count": 1
+        },
+        {
+          "day": "2020-06-22",
+          "count": 1
+        },
+        {
+          "day": "2020-07-30",
+          "count": 1
+        },
+        {
+          "day": "2020-08-14",
+          "count": 1
+        },
+        {
+          "day": "2020-08-16",
+          "count": 2
+        },
+        {
+          "day": "2020-08-18",
+          "count": 1
+        },
+        {
+          "day": "2020-08-19",
+          "count": 1
+        },
+        {
+          "day": "2020-08-27",
+          "count": 1
+        },
+        {
+          "day": "2020-10-19",
+          "count": 2
+        },
+        {
+          "day": "2020-10-21",
+          "count": 2
+        },
+        {
+          "day": "2020-10-23",
+          "count": 1
+        },
+        {
+          "day": "2020-10-24",
+          "count": 1
+        },
+        {
+          "day": "2020-11-06",
+          "count": 1
+        },
+        {
+          "day": "2020-11-30",
+          "count": 1
+        },
+        {
+          "day": "2020-12-05",
+          "count": 1
+        },
+        {
+          "day": "2020-12-09",
+          "count": 1
+        },
+        {
+          "day": "2020-12-15",
           "count": 4
         },
         {
-          "day": "2020-03-12",
+          "day": "2020-12-17",
+          "count": 2
+        },
+        {
+          "day": "2020-12-18",
+          "count": 4
+        },
+        {
+          "day": "2020-12-19",
           "count": 1
         },
         {
-          "day": "2020-03-15",
+          "day": "2021-05-14",
+          "count": 2
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "zedotech-dotnet-core-website",
+      "description": "ZedoTech .net core official website.",
+      "url": "https://github.com/ZEDOTECH/zedotech-dotnet-core-website",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "HTML",
+        "color": "#e34c26"
+      },
+      "languages": [
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 49
+        },
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 26
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 14
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 6
+        },
+        {
+          "name": "SCSS",
+          "color": "#c6538c",
+          "percentage": 4
+        },
+        {
+          "name": "PHP",
+          "color": "#4F5D95",
+          "percentage": 0
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2018-06-01T03:57:11Z",
+      "pushedAt": "2021-03-25T09:28:38Z",
+      "updatedAt": "2021-03-25T09:28:41Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 10520,
+      "commitsByMonth": [
+        {
+          "month": "2018-05",
+          "count": 2
+        },
+        {
+          "month": "2018-06",
+          "count": 9
+        },
+        {
+          "month": "2018-11",
+          "count": 1
+        },
+        {
+          "month": "2019-07",
+          "count": 1
+        },
+        {
+          "month": "2019-08",
+          "count": 1
+        },
+        {
+          "month": "2020-04",
+          "count": 2
+        },
+        {
+          "month": "2020-12",
+          "count": 9
+        },
+        {
+          "month": "2021-01",
+          "count": 2
+        },
+        {
+          "month": "2021-02",
+          "count": 1
+        },
+        {
+          "month": "2021-03",
+          "count": 4
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2018-05-28",
+          "count": 8
+        },
+        {
+          "week": "2018-06-04",
           "count": 3
         },
         {
-          "day": "2020-03-22",
+          "week": "2018-11-19",
           "count": 1
         },
         {
-          "day": "2020-03-23",
+          "week": "2019-07-22",
           "count": 1
+        },
+        {
+          "week": "2019-07-29",
+          "count": 1
+        },
+        {
+          "week": "2020-03-30",
+          "count": 1
+        },
+        {
+          "week": "2020-04-06",
+          "count": 1
+        },
+        {
+          "week": "2020-11-30",
+          "count": 2
+        },
+        {
+          "week": "2020-12-14",
+          "count": 7
+        },
+        {
+          "week": "2021-01-11",
+          "count": 2
+        },
+        {
+          "week": "2021-02-15",
+          "count": 1
+        },
+        {
+          "week": "2021-03-22",
+          "count": 4
         }
       ],
-      "contributors": [],
-      "enable": true
+      "commitsByDay": [
+        {
+          "day": "2018-05-31",
+          "count": 2
+        },
+        {
+          "day": "2018-06-01",
+          "count": 3
+        },
+        {
+          "day": "2018-06-02",
+          "count": 1
+        },
+        {
+          "day": "2018-06-03",
+          "count": 2
+        },
+        {
+          "day": "2018-06-04",
+          "count": 2
+        },
+        {
+          "day": "2018-06-05",
+          "count": 1
+        },
+        {
+          "day": "2018-11-22",
+          "count": 1
+        },
+        {
+          "day": "2019-07-22",
+          "count": 1
+        },
+        {
+          "day": "2019-08-01",
+          "count": 1
+        },
+        {
+          "day": "2020-04-01",
+          "count": 1
+        },
+        {
+          "day": "2020-04-06",
+          "count": 1
+        },
+        {
+          "day": "2020-12-05",
+          "count": 2
+        },
+        {
+          "day": "2020-12-17",
+          "count": 4
+        },
+        {
+          "day": "2020-12-18",
+          "count": 2
+        },
+        {
+          "day": "2020-12-19",
+          "count": 1
+        },
+        {
+          "day": "2021-01-11",
+          "count": 2
+        },
+        {
+          "day": "2021-02-16",
+          "count": 1
+        },
+        {
+          "day": "2021-03-25",
+          "count": 4
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "megaCashflow",
+      "description": "兆豐金流-微信QRCode 支付demo",
+      "url": "https://github.com/ZEDOTECH/megaCashflow",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 85
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 10
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 4
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 1
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2020-11-11T16:20:03Z",
+      "pushedAt": "2020-11-11T16:25:18Z",
+      "updatedAt": "2020-11-11T16:25:20Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 689,
+      "commitsByMonth": [
+        {
+          "month": "2020-11",
+          "count": 4
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2020-11-09",
+          "count": 4
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2020-11-11",
+          "count": 4
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "SilverCore_old",
@@ -5352,7 +5797,11 @@
           "percentage": 4
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2019-12-03T16:05:58Z",
       "pushedAt": "2020-03-10T12:29:56Z",
@@ -5462,8 +5911,230 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "DemoSwaggerUI",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/DemoSwaggerUI",
+      "isPrivate": false,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2020-01-27T12:20:19Z",
+      "pushedAt": "2020-01-27T14:15:14Z",
+      "updatedAt": "2020-01-27T14:15:16Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 8,
+      "commitsByMonth": [
+        {
+          "month": "2020-01",
+          "count": 3
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2020-01-27",
+          "count": 3
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2020-01-27",
+          "count": 3
+        }
+      ],
+      "contributors": [
+        {
+          "login": "ZEDOTECH",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
+          "name": "Nicky Liu",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "name": "DemoDependencyInjection",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/DemoDependencyInjection",
+      "isPrivate": false,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 60
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 28
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 10
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 2
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2020-01-27T06:52:25Z",
+      "pushedAt": "2020-01-27T11:53:32Z",
+      "updatedAt": "2020-01-27T11:53:34Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 684,
+      "commitsByMonth": [
+        {
+          "month": "2020-01",
+          "count": 4
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2020-01-27",
+          "count": 4
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2020-01-27",
+          "count": 4
+        }
+      ],
+      "contributors": [
+        {
+          "login": "ZEDOTECH",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
+          "name": "Nicky Liu",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "name": "DemoLocalization",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/DemoLocalization",
+      "isPrivate": false,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 62
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 30
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 7
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 1
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2020-01-27T07:19:23Z",
+      "pushedAt": "2020-01-27T08:57:16Z",
+      "updatedAt": "2020-01-27T08:57:18Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 688,
+      "commitsByMonth": [
+        {
+          "month": "2020-01",
+          "count": 3
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2020-01-27",
+          "count": 3
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2020-01-27",
+          "count": 3
+        }
+      ],
+      "contributors": [
+        {
+          "login": "ZEDOTECH",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
+          "name": "Nicky Liu",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "name": "MobileID-sample",
+      "description": null,
+      "url": "https://github.com/ZEDOTECH/MobileID-sample",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": null,
+      "languages": [],
+      "matchedSkills": [],
+      "topics": [],
+      "createdAt": "2019-12-31T08:39:25Z",
+      "pushedAt": "2019-12-31T08:39:25Z",
+      "updatedAt": "2019-12-31T08:39:25Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 0,
+      "commitsByMonth": [],
+      "commitsByWeek": [],
+      "commitsByDay": [],
+      "contributors": []
     },
     {
       "name": "fumei-events",
@@ -5498,7 +6169,11 @@
           "percentage": 3
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2019-10-15T07:51:10Z",
       "pushedAt": "2019-10-22T14:53:48Z",
@@ -5548,813 +6223,7 @@
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "ecommerce-infra",
-      "description": "eCommerce infrastructure using ASP.NET Core 3.0 Database first",
-      "url": "https://github.com/ZEDOTECH/ecommerce-infra",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
-      },
-      "languages": [
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 57
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 35
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 6
-        },
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 1
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-25T08:01:33Z",
-      "pushedAt": "2019-10-04T15:40:35Z",
-      "updatedAt": "2019-10-15T07:52:20Z",
-      "homepageUrl": "",
-      "license": null,
-      "diskUsage": 707,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        },
-        {
-          "month": "2019-10",
-          "count": 3
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-23",
-          "count": 2
-        },
-        {
-          "week": "2019-09-30",
-          "count": 3
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-25",
-          "count": 2
-        },
-        {
-          "day": "2019-10-03",
-          "count": 2
-        },
-        {
-          "day": "2019-10-04",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-domainlist",
-      "description": "Icefork Domain List",
-      "url": "https://github.com/ZEDOTECH/icefork-domainlist",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 81
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 15
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 3
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 1
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T16:04:59Z",
-      "pushedAt": "2019-09-22T16:06:20Z",
-      "updatedAt": "2019-09-22T16:06:23Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 387,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-23",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-gamble",
-      "description": "Icefork Gamble",
-      "url": "https://github.com/ZEDOTECH/icefork-gamble",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 44
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 28
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 10
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 9
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 8
-        },
-        {
-          "name": "PHP",
-          "color": "#4F5D95",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T16:02:17Z",
-      "pushedAt": "2019-09-22T16:02:45Z",
-      "updatedAt": "2019-09-22T16:02:51Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 13957,
-      "commitsByMonth": [
-        {
-          "month": "2016-06",
-          "count": 9
-        },
-        {
-          "month": "2016-07",
-          "count": 3
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2016-06-06",
-          "count": 6
-        },
-        {
-          "week": "2016-06-13",
-          "count": 3
-        },
-        {
-          "week": "2016-07-04",
-          "count": 3
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2016-06-11",
-          "count": 5
-        },
-        {
-          "day": "2016-06-12",
-          "count": 1
-        },
-        {
-          "day": "2016-06-17",
-          "count": 2
-        },
-        {
-          "day": "2016-06-19",
-          "count": 1
-        },
-        {
-          "day": "2016-07-04",
-          "count": 2
-        },
-        {
-          "day": "2016-07-07",
-          "count": 1
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-anfdemo-market",
-      "description": "Icefork anfdemo market",
-      "url": "https://github.com/ZEDOTECH/icefork-anfdemo-market",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "ASP",
-        "color": "#6a40fd"
-      },
-      "languages": [
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 29
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 27
-        },
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 23
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 16
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 4
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:58:32Z",
-      "pushedAt": "2019-09-22T15:58:48Z",
-      "updatedAt": "2019-09-22T15:58:52Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 693,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-anfdemo",
-      "description": "Icefork anfdemo",
-      "url": "https://github.com/ZEDOTECH/icefork-anfdemo",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 46
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 21
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 12
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 11
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 10
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:57:30Z",
-      "pushedAt": "2019-09-22T15:58:01Z",
-      "updatedAt": "2019-09-22T15:58:06Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 27296,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-fiverrmp",
-      "description": "Icefork Fiverrmp",
-      "url": "https://github.com/ZEDOTECH/icefork-fiverrmp",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "PHP",
-        "color": "#4F5D95"
-      },
-      "languages": [
-        {
-          "name": "PHP",
-          "color": "#4F5D95",
-          "percentage": 56
-        },
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 37
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 6
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 0
-        },
-        {
-          "name": "Python",
-          "color": "#3572A5",
-          "percentage": 0
-        },
-        {
-          "name": "Makefile",
-          "color": "#427819",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:48:49Z",
-      "pushedAt": "2019-09-22T15:50:06Z",
-      "updatedAt": "2019-09-22T15:50:12Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 9210,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-dropread",
-      "description": "Icefork Dropread",
-      "url": "https://github.com/ZEDOTECH/icefork-dropread",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 48
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 31
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 10
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 6
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 5
-        },
-        {
-          "name": "PHP",
-          "color": "#4F5D95",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:46:04Z",
-      "pushedAt": "2019-09-22T15:46:54Z",
-      "updatedAt": "2019-09-22T15:46:59Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 12325,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-cloudflyer",
-      "description": "Icefork Cloudflyer",
-      "url": "https://github.com/ZEDOTECH/icefork-cloudflyer",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 48
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 31
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 10
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 6
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 5
-        },
-        {
-          "name": "PHP",
-          "color": "#4F5D95",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:44:17Z",
-      "pushedAt": "2019-09-22T15:45:35Z",
-      "updatedAt": "2019-09-22T15:45:40Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 12293,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-artkit",
-      "description": "Icefork Artkit",
-      "url": "https://github.com/ZEDOTECH/icefork-artkit",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 47
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 33
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 9
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 6
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 5
-        },
-        {
-          "name": "PHP",
-          "color": "#4F5D95",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:38:50Z",
-      "pushedAt": "2019-09-22T15:43:43Z",
-      "updatedAt": "2019-09-22T15:43:47Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 11786,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-artdm-backend",
-      "description": "Icefork ArtDMBackend",
-      "url": "https://github.com/ZEDOTECH/icefork-artdm-backend",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "HTML",
-        "color": "#e34c26"
-      },
-      "languages": [
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 89
-        },
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 8
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 1
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 1
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 1
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:34:52Z",
-      "pushedAt": "2019-09-22T15:35:20Z",
-      "updatedAt": "2019-09-22T15:35:23Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 2264,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "icefork-ArtDM",
-      "description": "Icefork ArtDM website artdm.com.tw",
-      "url": "https://github.com/ZEDOTECH/icefork-ArtDM",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "JavaScript",
-        "color": "#f1e05a"
-      },
-      "languages": [
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 27
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 25
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 22
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 15
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 11
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2019-09-22T15:24:45Z",
-      "pushedAt": "2019-09-22T15:33:51Z",
-      "updatedAt": "2019-09-22T15:34:12Z",
-      "homepageUrl": "",
-      "license": null,
-      "diskUsage": 36796,
-      "commitsByMonth": [
-        {
-          "month": "2019-09",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2019-09-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2019-09-22",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "excel-read-write",
@@ -6374,7 +6243,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2019-01-22T01:30:56Z",
       "pushedAt": "2019-01-22T01:31:27Z",
@@ -6420,135 +6293,183 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
-      "name": "UploadFileToGoogleDriveSample",
+      "name": "fumei-linebot",
       "description": null,
-      "url": "https://github.com/ZEDOTECH/UploadFileToGoogleDriveSample",
+      "url": "https://github.com/ZEDOTECH/fumei-linebot",
       "isPrivate": true,
       "stars": 0,
       "forks": 0,
       "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
+        "name": "JavaScript",
+        "color": "#f1e05a"
       },
       "languages": [
         {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 100
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2018-07-03T08:22:09Z",
-      "pushedAt": "2018-07-17T05:40:57Z",
-      "updatedAt": "2018-07-17T05:40:59Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 15,
-      "commitsByMonth": [
-        {
-          "month": "2018-07",
-          "count": 4
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2018-07-02",
-          "count": 2
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 60
         },
-        {
-          "week": "2018-07-16",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2018-07-03",
-          "count": 2
-        },
-        {
-          "day": "2018-07-17",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    },
-    {
-      "name": "tisinop-dev",
-      "description": "Tisi.tw dev",
-      "url": "https://github.com/ZEDOTECH/tisinop-dev",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
-      },
-      "languages": [
         {
           "name": "C#",
           "color": "#178600",
-          "percentage": 76
-        },
-        {
-          "name": "PLpgSQL",
-          "color": "#336790",
-          "percentage": 13
+          "percentage": 39
         },
         {
           "name": "CSS",
           "color": "#663399",
-          "percentage": 6
+          "percentage": 1
         },
         {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 5
-        },
-        {
-          "name": "SQLPL",
-          "color": "#e38c00",
-          "percentage": 0
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
+          "name": "ASP",
+          "color": "#6a40fd",
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
-      "createdAt": "2018-06-15T15:02:07Z",
-      "pushedAt": "2018-06-15T15:04:38Z",
-      "updatedAt": "2018-06-15T15:04:48Z",
+      "createdAt": "2018-09-30T02:34:31Z",
+      "pushedAt": "2018-09-30T02:35:05Z",
+      "updatedAt": "2018-09-30T02:35:07Z",
       "homepageUrl": null,
       "license": null,
-      "diskUsage": 22031,
+      "diskUsage": 552,
       "commitsByMonth": [
         {
-          "month": "2018-06",
+          "month": "2018-09",
           "count": 3
         }
       ],
       "commitsByWeek": [
         {
-          "week": "2018-06-11",
+          "week": "2018-09-24",
           "count": 3
         }
       ],
       "commitsByDay": [
         {
-          "day": "2018-06-15",
+          "day": "2018-09-30",
           "count": 3
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "deshengwater-website",
+      "description": "Deshengwater 德生堂 電子商務網站、管理後台",
+      "url": "https://github.com/ZEDOTECH/deshengwater-website",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "JavaScript",
+        "color": "#f1e05a"
+      },
+      "languages": [
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 47
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 35
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 11
+        },
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 4
+        },
+        {
+          "name": "ASP",
+          "color": "#6a40fd",
+          "percentage": 2
+        },
+        {
+          "name": "PHP",
+          "color": "#4F5D95",
+          "percentage": 0
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2018-01-16T02:49:18Z",
+      "pushedAt": "2018-08-08T12:38:15Z",
+      "updatedAt": "2018-08-08T12:38:20Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 16921,
+      "commitsByMonth": [
+        {
+          "month": "2018-01",
+          "count": 2
+        },
+        {
+          "month": "2018-06",
+          "count": 1
+        },
+        {
+          "month": "2018-07",
+          "count": 1
+        },
+        {
+          "month": "2018-08",
+          "count": 1
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2018-01-15",
+          "count": 2
+        },
+        {
+          "week": "2018-06-04",
+          "count": 1
+        },
+        {
+          "week": "2018-07-09",
+          "count": 1
+        },
+        {
+          "week": "2018-08-06",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2018-01-16",
+          "count": 2
+        },
+        {
+          "day": "2018-06-05",
+          "count": 1
+        },
+        {
+          "day": "2018-07-11",
+          "count": 1
+        },
+        {
+          "day": "2018-08-08",
+          "count": 1
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "project-dotnet-core-webapp",
@@ -6578,7 +6499,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2018-06-06T03:24:01Z",
       "pushedAt": "2018-06-06T03:24:48Z",
@@ -6604,8 +6529,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "zedotech-edm",
@@ -6635,7 +6559,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2018-01-23T16:45:58Z",
       "pushedAt": "2018-06-03T06:17:26Z",
@@ -6833,8 +6761,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "zedotech-website",
@@ -6879,7 +6806,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:04:11Z",
       "pushedAt": "2018-05-09T00:56:13Z",
@@ -6929,8 +6860,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "zedotech-projm-website",
@@ -6975,7 +6905,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:19:17Z",
       "pushedAt": "2018-05-09T00:53:29Z",
@@ -7041,8 +6975,7 @@
           "count": 1
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "zedotech-botapp",
@@ -7077,7 +7010,11 @@
           "percentage": 1
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2018-05-02T06:12:42Z",
       "pushedAt": "2018-05-02T06:13:03Z",
@@ -7103,8 +7040,72 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "coremvc-website-sample",
+      "description": "ASP.NET Core MVC Website 基礎建置",
+      "url": "https://github.com/ZEDOTECH/coremvc-website-sample",
+      "isPrivate": false,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2018-01-20T03:09:19Z",
+      "pushedAt": "2018-01-23T03:24:40Z",
+      "updatedAt": "2018-12-24T17:50:28Z",
+      "homepageUrl": "",
+      "license": null,
+      "diskUsage": 12,
+      "commitsByMonth": [
+        {
+          "month": "2018-01",
+          "count": 4
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2018-01-15",
+          "count": 3
+        },
+        {
+          "week": "2018-01-22",
+          "count": 1
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2018-01-20",
+          "count": 3
+        },
+        {
+          "day": "2018-01-23",
+          "count": 1
+        }
+      ],
+      "contributors": [
+        {
+          "login": "ZEDOTECH",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
+          "name": "Nicky Liu",
+          "count": 4
+        }
+      ]
     },
     {
       "name": "git-tech",
@@ -7156,8 +7157,7 @@
           "name": "Nicky Liu",
           "count": 4
         }
-      ],
-      "enable": true
+      ]
     },
     {
       "name": "zedotech-projm-website-coremvc",
@@ -7179,8 +7179,104 @@
       "commitsByMonth": [],
       "commitsByWeek": [],
       "commitsByDay": [],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "zedotech-documaintain",
+      "description": "ZEDOTECH Document maintain website",
+      "url": "https://github.com/ZEDOTECH/zedotech-documaintain",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": null,
+      "languages": [],
+      "matchedSkills": [],
+      "topics": [],
+      "createdAt": "2018-01-19T06:30:46Z",
+      "pushedAt": "2018-01-19T06:30:47Z",
+      "updatedAt": "2018-01-19T06:30:46Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 0,
+      "commitsByMonth": [],
+      "commitsByWeek": [],
+      "commitsByDay": [],
+      "contributors": []
+    },
+    {
+      "name": "coremvc-userauthorization",
+      "description": "ASP.NET Core MVC User authorization",
+      "url": "https://github.com/ZEDOTECH/coremvc-userauthorization",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "HTML",
+        "color": "#e34c26"
+      },
+      "languages": [
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 37
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 29
+        },
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 17
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 15
+        },
+        {
+          "name": "CoffeeScript",
+          "color": "#244776",
+          "percentage": 2
+        },
+        {
+          "name": "Ruby",
+          "color": "#701516",
+          "percentage": 0
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2018-01-17T04:50:19Z",
+      "pushedAt": "2018-01-17T17:11:45Z",
+      "updatedAt": "2018-01-17T05:03:08Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 1028,
+      "commitsByMonth": [
+        {
+          "month": "2018-01",
+          "count": 5
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2018-01-15",
+          "count": 5
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2018-01-17",
+          "count": 5
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "read-write-excel-using-npoi",
@@ -7200,7 +7296,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2018-01-16T03:04:17Z",
       "pushedAt": "2018-01-16T04:13:10Z",
@@ -7233,80 +7333,7 @@
           "name": "Nicky Liu",
           "count": 4
         }
-      ],
-      "enable": true
-    },
-    {
-      "name": "ursquare-ezfabs-website",
-      "description": "UrSquare 億平方 電子商務網站、後台",
-      "url": "https://github.com/ZEDOTECH/ursquare-ezfabs-website",
-      "isPrivate": true,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
-      },
-      "languages": [
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 25
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 24
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 19
-        },
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 17
-        },
-        {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 13
-        },
-        {
-          "name": "PHP",
-          "color": "#4F5D95",
-          "percentage": 1
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2018-01-15T14:58:29Z",
-      "pushedAt": "2018-01-15T15:02:08Z",
-      "updatedAt": "2018-01-15T15:53:36Z",
-      "homepageUrl": "",
-      "license": null,
-      "diskUsage": 93904,
-      "commitsByMonth": [
-        {
-          "month": "2018-01",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2018-01-15",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2018-01-15",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
+      ]
     },
     {
       "name": "allen-matchpolicy",
@@ -7326,7 +7353,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:57:43Z",
       "pushedAt": "2018-01-15T12:57:58Z",
@@ -7352,8 +7383,7 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "allen-changemyresolution",
@@ -7373,7 +7403,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:52:40Z",
       "pushedAt": "2018-01-15T12:54:21Z",
@@ -7399,8 +7433,7 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "allen-commandcontrol",
@@ -7420,7 +7453,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:48:07Z",
       "pushedAt": "2018-01-15T12:50:26Z",
@@ -7446,8 +7483,7 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
     },
     {
       "name": "nicky-godaddy-auction",
@@ -7467,7 +7503,11 @@
           "percentage": 100
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:36:43Z",
       "pushedAt": "2018-01-15T12:37:53Z",
@@ -7493,8 +7533,132 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    },
+    {
+      "name": "zedotech-mystocknote-website",
+      "description": "ZedoTech 股票交易自我記錄網站",
+      "url": "https://github.com/ZEDOTECH/zedotech-mystocknote-website",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "JavaScript",
+        "color": "#f1e05a"
+      },
+      "languages": [
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 75
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 22
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 2
+        },
+        {
+          "name": "ASP",
+          "color": "#6a40fd",
+          "percentage": 1
+        },
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 1
+        },
+        {
+          "name": "CoffeeScript",
+          "color": "#244776",
+          "percentage": 0
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2018-01-15T12:27:16Z",
+      "pushedAt": "2018-01-15T12:30:53Z",
+      "updatedAt": "2018-01-15T15:54:58Z",
+      "homepageUrl": "",
+      "license": null,
+      "diskUsage": 19798,
+      "commitsByMonth": [
+        {
+          "month": "2018-01",
+          "count": 2
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2018-01-15",
+          "count": 2
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2018-01-15",
+          "count": 2
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "nicky-websitestatusdetector",
+      "description": "Nicky 偵測網站狀態",
+      "url": "https://github.com/ZEDOTECH/nicky-websitestatusdetector",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "C#",
+        "color": "#178600"
+      },
+      "languages": [
+        {
+          "name": "C#",
+          "color": "#178600",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "API Design & Integration",
+        ".NET & C# Application Development",
+        "Automation & Chatbots"
+      ],
+      "topics": [],
+      "createdAt": "2018-01-15T12:15:12Z",
+      "pushedAt": "2018-01-15T12:17:04Z",
+      "updatedAt": "2018-01-15T15:57:42Z",
+      "homepageUrl": "",
+      "license": null,
+      "diskUsage": 14,
+      "commitsByMonth": [
+        {
+          "month": "2018-01",
+          "count": 2
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2018-01-15",
+          "count": 2
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2018-01-15",
+          "count": 2
+        }
+      ],
+      "contributors": []
     },
     {
       "name": "nicky-stockdata-website",
@@ -7529,7 +7693,11 @@
           "percentage": 0
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
       "createdAt": "2018-01-15T12:08:42Z",
       "pushedAt": "2018-01-15T12:13:06Z",
@@ -7555,13 +7723,105 @@
           "count": 2
         }
       ],
-      "contributors": [],
-      "enable": true
+      "contributors": []
+    }
+  ],
+  "featuredRepos": [
+    {
+      "name": "git-folio",
+      "description": "從 GitHub 自動生成 AI 驅動的個人作品集網站。抓取所有 repos、用 AI 撰寫描述、生成完整可部署的 Astro + Tailwind CSS 靜態網站。",
+      "url": "https://github.com/ZEDOTECH/git-folio",
+      "isPrivate": false,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "TypeScript",
+        "color": "#3178c6"
+      },
+      "languages": [
+        {
+          "name": "TypeScript",
+          "color": "#3178c6",
+          "percentage": 76
+        },
+        {
+          "name": "JavaScript",
+          "color": "#f1e05a",
+          "percentage": 13
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 11
+        }
+      ],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
+      "topics": [],
+      "createdAt": "2026-03-02T17:29:32Z",
+      "pushedAt": "2026-03-14T09:56:59Z",
+      "updatedAt": "2026-03-14T09:57:02Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 259,
+      "commitsByMonth": [
+        {
+          "month": "2026-03",
+          "count": 11
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2026-03-02",
+          "count": 7
+        },
+        {
+          "week": "2026-03-09",
+          "count": 4
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2026-03-02",
+          "count": 1
+        },
+        {
+          "day": "2026-03-03",
+          "count": 2
+        },
+        {
+          "day": "2026-03-06",
+          "count": 3
+        },
+        {
+          "day": "2026-03-07",
+          "count": 1
+        },
+        {
+          "day": "2026-03-13",
+          "count": 2
+        },
+        {
+          "day": "2026-03-14",
+          "count": 2
+        }
+      ],
+      "contributors": [
+        {
+          "login": "ZEDOTECH",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
+          "name": "Nicky Liu",
+          "count": 11
+        }
+      ]
     },
     {
-      "name": "flyweb-fafabo-website",
-      "description": "飛祥資訊 發發寶電子商務網站",
-      "url": "https://github.com/ZEDOTECH/flyweb-fafabo-website",
+      "name": "auto-blog",
+      "description": "Facebook, Instagram, Threads 自動化貼文",
+      "url": "https://github.com/ZEDOTECH/auto-blog",
       "isPrivate": true,
       "stars": 0,
       "forks": 0,
@@ -7573,86 +7833,12 @@
         {
           "name": "CSS",
           "color": "#663399",
-          "percentage": 36
-        },
-        {
-          "name": "JavaScript",
-          "color": "#f1e05a",
-          "percentage": 29
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 26
-        },
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 6
-        },
-        {
-          "name": "ASP",
-          "color": "#6a40fd",
-          "percentage": 3
-        },
-        {
-          "name": "PHP",
-          "color": "#4F5D95",
-          "percentage": 0
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2018-01-15T11:48:24Z",
-      "pushedAt": "2018-01-15T11:51:18Z",
-      "updatedAt": "2018-01-15T15:59:23Z",
-      "homepageUrl": "http://fafabo.azurewebsites.net",
-      "license": null,
-      "diskUsage": 27971,
-      "commitsByMonth": [
-        {
-          "month": "2018-01",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2018-01-15",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2018-01-15",
-          "count": 2
-        }
-      ],
-      "contributors": [],
-      "enable": true
-    }
-  ],
-  "featuredRepos": [
-    {
-      "name": "official",
-      "description": "ZedoTech official site",
-      "url": "https://github.com/ZEDOTECH/official",
-      "isPrivate": false,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "HTML",
-        "color": "#e34c26"
-      },
-      "languages": [
-        {
-          "name": "HTML",
-          "color": "#e34c26",
           "percentage": 72
         },
         {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 16
+          "name": "Python",
+          "color": "#3572A5",
+          "percentage": 17
         },
         {
           "name": "JavaScript",
@@ -7660,329 +7846,313 @@
           "percentage": 6
         },
         {
-          "name": "SCSS",
-          "color": "#c6538c",
-          "percentage": 6
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 5
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
-      "createdAt": "2023-03-13T04:53:59Z",
-      "pushedAt": "2026-02-08T09:07:11Z",
-      "updatedAt": "2026-02-08T09:07:15Z",
+      "createdAt": "2026-02-11T12:39:53Z",
+      "pushedAt": "2026-03-13T16:06:56Z",
+      "updatedAt": "2026-03-13T16:07:00Z",
       "homepageUrl": null,
       "license": null,
       "diskUsage": 19261,
       "commitsByMonth": [
         {
-          "month": "2023-03",
-          "count": 19
+          "month": "2026-02",
+          "count": 34
         },
         {
-          "month": "2023-04",
-          "count": 5
+          "month": "2026-03",
+          "count": 12
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2026-02-09",
+          "count": 21
         },
         {
-          "month": "2023-08",
-          "count": 4
+          "week": "2026-02-16",
+          "count": 9
         },
         {
-          "month": "2023-09",
+          "week": "2026-02-23",
+          "count": 7
+        },
+        {
+          "week": "2026-03-02",
+          "count": 7
+        },
+        {
+          "week": "2026-03-09",
           "count": 2
-        },
+        }
+      ],
+      "commitsByDay": [
         {
-          "month": "2023-12",
-          "count": 3
-        },
-        {
-          "month": "2024-03",
-          "count": 3
-        },
-        {
-          "month": "2024-07",
-          "count": 2
-        },
-        {
-          "month": "2024-08",
-          "count": 2
-        },
-        {
-          "month": "2025-02",
-          "count": 2
-        },
-        {
-          "month": "2025-10",
+          "day": "2026-02-11",
           "count": 1
         },
         {
-          "month": "2025-11",
-          "count": 1
+          "day": "2026-02-12",
+          "count": 7
         },
         {
-          "month": "2025-12",
+          "day": "2026-02-13",
           "count": 6
         },
         {
-          "month": "2026-02",
+          "day": "2026-02-14",
+          "count": 2
+        },
+        {
+          "day": "2026-02-15",
+          "count": 5
+        },
+        {
+          "day": "2026-02-16",
+          "count": 3
+        },
+        {
+          "day": "2026-02-17",
+          "count": 1
+        },
+        {
+          "day": "2026-02-18",
+          "count": 1
+        },
+        {
+          "day": "2026-02-19",
+          "count": 3
+        },
+        {
+          "day": "2026-02-22",
+          "count": 1
+        },
+        {
+          "day": "2026-02-26",
+          "count": 3
+        },
+        {
+          "day": "2026-02-27",
+          "count": 1
+        },
+        {
+          "day": "2026-03-01",
+          "count": 3
+        },
+        {
+          "day": "2026-03-02",
+          "count": 1
+        },
+        {
+          "day": "2026-03-03",
+          "count": 1
+        },
+        {
+          "day": "2026-03-04",
+          "count": 3
+        },
+        {
+          "day": "2026-03-06",
+          "count": 2
+        },
+        {
+          "day": "2026-03-13",
+          "count": 2
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "whisper-opencc",
+      "description": "透過 [faster-whisper](https://github.com/SYSTRAN/faster-whisper) 進行語音辨識，並自動將結果轉換為繁體中文 SRT 字幕檔。",
+      "url": "https://github.com/ZEDOTECH/whisper-opencc",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "Python",
+        "color": "#3572A5"
+      },
+      "languages": [
+        {
+          "name": "Python",
+          "color": "#3572A5",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "Audio Processing & Speech-to-Text"
+      ],
+      "topics": [],
+      "createdAt": "2026-03-09T18:49:23Z",
+      "pushedAt": "2026-03-09T18:49:41Z",
+      "updatedAt": "2026-03-09T18:49:45Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 40,
+      "commitsByMonth": [
+        {
+          "month": "2026-03",
           "count": 1
         }
       ],
       "commitsByWeek": [
         {
-          "week": "2023-03-13",
-          "count": 17
-        },
-        {
-          "week": "2023-03-20",
-          "count": 2
-        },
-        {
-          "week": "2023-04-10",
-          "count": 5
-        },
-        {
-          "week": "2023-08-14",
-          "count": 4
-        },
-        {
-          "week": "2023-09-11",
-          "count": 2
-        },
-        {
-          "week": "2023-12-04",
-          "count": 2
-        },
-        {
-          "week": "2023-12-11",
-          "count": 1
-        },
-        {
-          "week": "2024-03-04",
-          "count": 3
-        },
-        {
-          "week": "2024-07-08",
-          "count": 2
-        },
-        {
-          "week": "2024-08-12",
-          "count": 2
-        },
-        {
-          "week": "2025-02-24",
-          "count": 2
-        },
-        {
-          "week": "2025-10-06",
-          "count": 1
-        },
-        {
-          "week": "2025-11-17",
-          "count": 1
-        },
-        {
-          "week": "2025-12-01",
-          "count": 3
-        },
-        {
-          "week": "2025-12-08",
-          "count": 1
-        },
-        {
-          "week": "2025-12-15",
-          "count": 2
-        },
-        {
-          "week": "2026-02-02",
+          "week": "2026-03-09",
           "count": 1
         }
       ],
       "commitsByDay": [
         {
-          "day": "2023-03-13",
-          "count": 5
-        },
-        {
-          "day": "2023-03-15",
-          "count": 6
-        },
-        {
-          "day": "2023-03-16",
-          "count": 1
-        },
-        {
-          "day": "2023-03-18",
-          "count": 2
-        },
-        {
-          "day": "2023-03-19",
-          "count": 5
-        },
-        {
-          "day": "2023-04-15",
-          "count": 5
-        },
-        {
-          "day": "2023-08-20",
-          "count": 4
-        },
-        {
-          "day": "2023-09-17",
-          "count": 2
-        },
-        {
-          "day": "2023-12-05",
-          "count": 1
-        },
-        {
-          "day": "2023-12-09",
-          "count": 1
-        },
-        {
-          "day": "2023-12-11",
-          "count": 1
-        },
-        {
-          "day": "2024-03-07",
-          "count": 2
-        },
-        {
-          "day": "2024-03-08",
-          "count": 1
-        },
-        {
-          "day": "2024-07-12",
-          "count": 1
-        },
-        {
-          "day": "2024-07-13",
-          "count": 1
-        },
-        {
-          "day": "2024-08-11",
-          "count": 1
-        },
-        {
-          "day": "2024-08-13",
-          "count": 1
-        },
-        {
-          "day": "2025-02-28",
-          "count": 2
-        },
-        {
-          "day": "2025-10-08",
-          "count": 1
-        },
-        {
-          "day": "2025-11-21",
-          "count": 1
-        },
-        {
-          "day": "2025-12-03",
-          "count": 3
-        },
-        {
-          "day": "2025-12-10",
-          "count": 1
-        },
-        {
-          "day": "2025-12-16",
-          "count": 1
-        },
-        {
-          "day": "2025-12-18",
-          "count": 1
-        },
-        {
-          "day": "2026-02-08",
+          "day": "2026-03-09",
           "count": 1
         }
       ],
-      "contributors": [
-        {
-          "login": "ZEDOTECH",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
-          "name": "Nicky Liu",
-          "count": 51
-        }
-      ],
-      "enable": true
+      "contributors": []
     },
     {
-      "name": "coffeeShop-demo",
-      "description": null,
-      "url": "https://github.com/ZEDOTECH/coffeeShop-demo",
-      "isPrivate": false,
+      "name": "music-vizualizer",
+      "description": "一個基於 Python 的音樂可視化工具，能夠根據音頻波形自動生成帶有動態圓形波形效果的視頻。",
+      "url": "https://github.com/ZEDOTECH/music-vizualizer",
+      "isPrivate": true,
       "stars": 0,
       "forks": 0,
       "primaryLanguage": {
-        "name": "CSS",
-        "color": "#663399"
+        "name": "Python",
+        "color": "#3572A5"
       },
       "languages": [
         {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 91
+          "name": "Python",
+          "color": "#3572A5",
+          "percentage": 100
+        }
+      ],
+      "matchedSkills": [
+        "Audio Processing & Speech-to-Text"
+      ],
+      "topics": [],
+      "createdAt": "2026-02-28T12:36:00Z",
+      "pushedAt": "2026-03-01T13:08:32Z",
+      "updatedAt": "2026-03-01T13:08:35Z",
+      "homepageUrl": null,
+      "license": null,
+      "diskUsage": 90004,
+      "commitsByMonth": [
+        {
+          "month": "2026-02",
+          "count": 6
         },
         {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 7
+          "month": "2026-03",
+          "count": 2
+        }
+      ],
+      "commitsByWeek": [
+        {
+          "week": "2026-02-02",
+          "count": 5
         },
         {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 2
+          "week": "2026-02-23",
+          "count": 3
+        }
+      ],
+      "commitsByDay": [
+        {
+          "day": "2026-02-06",
+          "count": 5
+        },
+        {
+          "day": "2026-02-28",
+          "count": 2
+        },
+        {
+          "day": "2026-03-01",
+          "count": 1
+        }
+      ],
+      "contributors": []
+    },
+    {
+      "name": "music-merge",
+      "description": "將多個 `.wav` 音樂檔案串接合併成一個，保持原始音質零損失。",
+      "url": "https://github.com/ZEDOTECH/music-merge",
+      "isPrivate": true,
+      "stars": 0,
+      "forks": 0,
+      "primaryLanguage": {
+        "name": "Python",
+        "color": "#3572A5"
+      },
+      "languages": [
+        {
+          "name": "Python",
+          "color": "#3572A5",
+          "percentage": 44
         },
         {
           "name": "JavaScript",
           "color": "#f1e05a",
-          "percentage": 0
+          "percentage": 31
+        },
+        {
+          "name": "CSS",
+          "color": "#663399",
+          "percentage": 17
+        },
+        {
+          "name": "HTML",
+          "color": "#e34c26",
+          "percentage": 8
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
-      "createdAt": "2024-05-26T03:16:09Z",
-      "pushedAt": "2024-05-26T03:16:53Z",
-      "updatedAt": "2024-05-26T03:16:58Z",
+      "createdAt": "2026-02-28T16:52:59Z",
+      "pushedAt": "2026-02-28T16:53:15Z",
+      "updatedAt": "2026-02-28T16:53:19Z",
       "homepageUrl": null,
       "license": null,
-      "diskUsage": 7969,
+      "diskUsage": 65,
       "commitsByMonth": [
         {
-          "month": "2024-05",
-          "count": 6
+          "month": "2026-03",
+          "count": 2
         }
       ],
       "commitsByWeek": [
         {
-          "week": "2024-05-20",
-          "count": 6
+          "week": "2026-02-23",
+          "count": 2
         }
       ],
       "commitsByDay": [
         {
-          "day": "2024-05-26",
-          "count": 6
+          "day": "2026-02-28",
+          "count": 2
         }
       ],
-      "contributors": [
-        {
-          "login": "ZEDOTECH",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
-          "name": "Nicky Liu",
-          "count": 6
-        }
-      ],
-      "enable": true
+      "contributors": []
     },
     {
-      "name": "gitteach0107",
-      "description": null,
-      "url": "https://github.com/ZEDOTECH/gitteach0107",
-      "isPrivate": false,
+      "name": "silvercore-ai",
+      "description": "SilverCore 提供完整的商家管理解決方案，包含角色權限控管、即時通知、多語言支援， 讓您輕鬆管理旗下所有商家與操作人員。",
+      "url": "https://github.com/ZEDOTECH/silvercore-ai",
+      "isPrivate": true,
       "stars": 0,
       "forks": 0,
       "primaryLanguage": {
@@ -7993,77 +8163,12 @@
         {
           "name": "HTML",
           "color": "#e34c26",
-          "percentage": 91
+          "percentage": 64
         },
         {
           "name": "CSS",
           "color": "#663399",
-          "percentage": 9
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2024-01-07T02:54:51Z",
-      "pushedAt": "2024-01-07T03:21:30Z",
-      "updatedAt": "2024-01-07T02:56:41Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 2,
-      "commitsByMonth": [
-        {
-          "month": "2024-01",
-          "count": 9
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2024-01-01",
-          "count": 9
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2024-01-07",
-          "count": 9
-        }
-      ],
-      "contributors": [
-        {
-          "login": "ZEDOTECH",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
-          "name": "Nicky Liu",
-          "count": 8
-        },
-        {
-          "login": "cjshea63",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/155863456?v=4",
-          "name": null,
-          "count": 1
-        }
-      ],
-      "enable": true
-    },
-    {
-      "name": "SignalRChat",
-      "description": null,
-      "url": "https://github.com/ZEDOTECH/SignalRChat",
-      "isPrivate": false,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
-      },
-      "languages": [
-        {
-          "name": "C#",
-          "color": "#178600",
-          "percentage": 42
-        },
-        {
-          "name": "HTML",
-          "color": "#e34c26",
-          "percentage": 42
+          "percentage": 15
         },
         {
           "name": "JavaScript",
@@ -8071,231 +8176,241 @@
           "percentage": 11
         },
         {
-          "name": "CSS",
-          "color": "#663399",
-          "percentage": 4
-        }
-      ],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2021-07-12T10:13:53Z",
-      "pushedAt": "2021-07-12T10:13:59Z",
-      "updatedAt": "2021-07-12T10:14:03Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 327,
-      "commitsByMonth": [
-        {
-          "month": "2021-07",
-          "count": 2
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2021-07-12",
-          "count": 2
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2021-07-12",
-          "count": 2
-        }
-      ],
-      "contributors": [
-        {
-          "login": "ZEDOTECH",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
-          "name": "Nicky Liu",
-          "count": 2
-        }
-      ],
-      "enable": true
-    },
-    {
-      "name": "git-tech",
-      "description": "Nicky Git教學",
-      "url": "https://github.com/ZEDOTECH/git-tech",
-      "isPrivate": false,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": null,
-      "languages": [],
-      "matchedSkills": [],
-      "topics": [],
-      "createdAt": "2018-01-18T07:04:55Z",
-      "pushedAt": "2018-01-20T02:13:35Z",
-      "updatedAt": "2018-01-19T03:56:51Z",
-      "homepageUrl": null,
-      "license": null,
-      "diskUsage": 354,
-      "commitsByMonth": [
-        {
-          "month": "2018-01",
-          "count": 4
-        }
-      ],
-      "commitsByWeek": [
-        {
-          "week": "2018-01-15",
-          "count": 4
-        }
-      ],
-      "commitsByDay": [
-        {
-          "day": "2018-01-18",
-          "count": 1
+          "name": "SCSS",
+          "color": "#c6538c",
+          "percentage": 7
         },
-        {
-          "day": "2018-01-19",
-          "count": 2
-        },
-        {
-          "day": "2018-01-20",
-          "count": 1
-        }
-      ],
-      "contributors": [
-        {
-          "login": "ZEDOTECH",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
-          "name": "Nicky Liu",
-          "count": 4
-        }
-      ],
-      "enable": true
-    },
-    {
-      "name": "read-write-excel-using-npoi",
-      "description": "ASP.NET C# Console 用NPOI讀寫Excel",
-      "url": "https://github.com/ZEDOTECH/read-write-excel-using-npoi",
-      "isPrivate": false,
-      "stars": 0,
-      "forks": 0,
-      "primaryLanguage": {
-        "name": "C#",
-        "color": "#178600"
-      },
-      "languages": [
         {
           "name": "C#",
           "color": "#178600",
-          "percentage": 100
+          "percentage": 2
         }
       ],
-      "matchedSkills": [],
+      "matchedSkills": [
+        "Full-Stack Web Development",
+        "API Design & Integration",
+        "Front-end UI & Visualizations"
+      ],
       "topics": [],
-      "createdAt": "2018-01-16T03:04:17Z",
-      "pushedAt": "2018-01-16T04:13:10Z",
-      "updatedAt": "2018-01-16T03:07:03Z",
+      "createdAt": "2026-02-22T07:49:05Z",
+      "pushedAt": "2026-02-26T16:05:10Z",
+      "updatedAt": "2026-02-26T16:07:46Z",
       "homepageUrl": null,
       "license": null,
-      "diskUsage": 8,
+      "diskUsage": 20261,
       "commitsByMonth": [
         {
-          "month": "2018-01",
-          "count": 4
+          "month": "2026-02",
+          "count": 34
         }
       ],
       "commitsByWeek": [
         {
-          "week": "2018-01-15",
-          "count": 4
+          "week": "2026-02-16",
+          "count": 14
+        },
+        {
+          "week": "2026-02-23",
+          "count": 20
         }
       ],
       "commitsByDay": [
         {
-          "day": "2018-01-16",
+          "day": "2026-02-20",
           "count": 4
-        }
-      ],
-      "contributors": [
+        },
         {
-          "login": "ZEDOTECH",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/24854017?u=113f572cb7527ed48aa4c987d893348055472b05&v=4",
-          "name": "Nicky Liu",
+          "day": "2026-02-21",
+          "count": 7
+        },
+        {
+          "day": "2026-02-22",
           "count": 4
+        },
+        {
+          "day": "2026-02-23",
+          "count": 6
+        },
+        {
+          "day": "2026-02-24",
+          "count": 5
+        },
+        {
+          "day": "2026-02-25",
+          "count": 3
+        },
+        {
+          "day": "2026-02-26",
+          "count": 5
         }
       ],
-      "enable": true
+      "contributors": []
     }
   ],
-  "skills": [],
+  "skills": [
+    {
+      "name": "Full-Stack Web Development",
+      "description": "Designs and implements full-stack web apps combining modern frontend frameworks and server-side .NET backends, delivering end-to-end features and deployable prototypes.",
+      "level": "expert",
+      "relatedTech": [
+        "JavaScript",
+        "TypeScript",
+        "HTML",
+        "CSS",
+        "ASP.NET Core",
+        "Astro",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "name": "API Design & Integration",
+      "description": "Builds and integrates REST/WebSocket APIs and third‑party auth flows, connecting frontend apps, backend services, and external platforms (OAuth, AI APIs).",
+      "level": "advanced",
+      "relatedTech": [
+        "OpenAI Realtime API",
+        "Google OAuth 2.0",
+        "REST APIs",
+        "WebSockets",
+        "C#",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Front-end UI & Visualizations",
+      "description": "Creates interactive, responsive UIs and custom visualizations with strong CSS/Tailwind/Canvas usage for dashboards, stores, and data-driven displays.",
+      "level": "advanced",
+      "relatedTech": [
+        "Tailwind CSS",
+        "CSS/SCSS",
+        "Canvas",
+        "HTML",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": ".NET & C# Application Development",
+      "description": "Develops production-oriented and prototype server components, libraries and console apps on the .NET platform with ASP.NET Core and .NET 5/6.",
+      "level": "advanced",
+      "relatedTech": [
+        "C#",
+        "ASP.NET Core",
+        ".NET 5/6",
+        "NuGet libraries",
+        "Web API"
+      ]
+    },
+    {
+      "name": "Automation & Chatbots",
+      "description": "Implements automation pipelines and conversational bots that post to social platforms and interact via messaging APIs, often combined with AI.",
+      "level": "advanced",
+      "relatedTech": [
+        "Line Bot",
+        "Facebook/Instagram/Threads automation",
+        "JavaScript",
+        "C#",
+        "Webhooks"
+      ]
+    },
+    {
+      "name": "Audio Processing & Speech-to-Text",
+      "description": "Works with audio pipelines for waveform visualization, lossless WAV merging and speech‑to‑text subtitle generation using Whisper toolchains.",
+      "level": "advanced",
+      "relatedTech": [
+        "Python",
+        "faster-whisper",
+        "SRT",
+        "WAV",
+        "FFmpeg"
+      ]
+    },
+    {
+      "name": "Static Site Generation & Content Automation",
+      "description": "Automates content collection and generation to produce AI-driven, deployable static sites and portfolios from GitHub data.",
+      "level": "advanced",
+      "relatedTech": [
+        "Astro",
+        "Tailwind CSS",
+        "GitHub API",
+        "TypeScript",
+        "OpenAI/GPT"
+      ]
+    }
+  ],
   "languageBreakdown": [
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "bytes": 47733043,
-      "percentage": 38.097261207415116
-    },
-    {
-      "name": "C#",
-      "color": "#178600",
-      "bytes": 19959809,
-      "percentage": 15.930558986635635
+      "bytes": 50817511,
+      "percentage": 54.947381466843424
     },
     {
       "name": "CSS",
       "color": "#663399",
-      "bytes": 19463867,
-      "percentage": 15.534731888042153
+      "bytes": 17005173,
+      "percentage": 18.387160436501233
     },
     {
       "name": "HTML",
       "color": "#e34c26",
-      "bytes": 18484538,
-      "percentage": 14.75309823604564
+      "bytes": 11222191,
+      "percentage": 12.134203301904673
     },
     {
-      "name": "PHP",
-      "color": "#4F5D95",
-      "bytes": 7514611,
-      "percentage": 5.997650267952012
+      "name": "C#",
+      "color": "#178600",
+      "bytes": 6300636,
+      "percentage": 6.8126801758497475
     },
     {
       "name": "SCSS",
       "color": "#c6538c",
-      "bytes": 6182518,
-      "percentage": 4.934464437256717
-    },
-    {
-      "name": "ASP",
-      "color": "#6a40fd",
-      "bytes": 2326935,
-      "percentage": 1.8572009018506634
-    },
-    {
-      "name": "PLpgSQL",
-      "color": "#336790",
-      "bytes": 2114633,
-      "percentage": 1.6877559169822853
+      "bytes": 5842510,
+      "percentage": 6.317322894736961
     },
     {
       "name": "Python",
       "color": "#3572A5",
-      "bytes": 571234,
-      "percentage": 0.4559200407264328
+      "bytes": 436692,
+      "percentage": 0.4721813688891373
     },
     {
-      "name": "Pascal",
-      "color": "#E3F171",
-      "bytes": 515948,
-      "percentage": 0.4117945240877146
+      "name": "ASP",
+      "color": "#6a40fd",
+      "bytes": 411693,
+      "percentage": 0.4451507339316397
+    },
+    {
+      "name": "TypeScript",
+      "color": "#3178c6",
+      "bytes": 151051,
+      "percentage": 0.16332671070702706
     },
     {
       "name": "Less",
       "color": "#1d365d",
       "bytes": 140925,
-      "percentage": 0.1124767288700822
+      "percentage": 0.15237778436678864
     },
     {
-      "name": "TypeScript",
-      "color": "#3178c6",
-      "bytes": 130808,
-      "percentage": 0.10440202909375706
+      "name": "PHP",
+      "color": "#4F5D95",
+      "bytes": 73282,
+      "percentage": 0.07923752913937913
+    },
+    {
+      "name": "CoffeeScript",
+      "color": "#244776",
+      "bytes": 47358,
+      "percentage": 0.05120672068151411
+    },
+    {
+      "name": "Batchfile",
+      "color": "#C1F12E",
+      "bytes": 15014,
+      "percentage": 0.016234167496774633
     }
   ],
-  "generatedAt": "2026-03-06T17:29:17.181Z",
+  "generatedAt": "2026-03-14T12:46:20.856Z",
   "meta": {
     "siteTitle": "Nicky Liu's Portfolio",
     "theme": "default"
