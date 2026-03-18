@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f9fc">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>git-folio — 把你的 GitHub 變成精美作品集</title>
+  <meta name="description" content="從 GitHub 自動生成 AI 驅動的個人作品集網站。抓取所有 repos、用 GPT 撰寫描述、生成完整可部署的純靜態 HTML 作品集。">
+  <meta name="author" content="ZEDOTECH">
+  <meta name="keywords" content="git-folio, GitHub 作品集, AI 作品集, portfolio generator, GitHub Pages">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+
+  <style>
+    /* ============================================
+       Design Tokens — Fresh & Soft (ZEDOTECH)
+       ============================================ */
+    :root {
+      --primary-bg: #f8f9fc;
+      --secondary-bg: #ffffff;
+      --accent-primary: #667eea;
+      --accent-secondary: #764ba2;
+      --accent-cyan: #4facfe;
+      --accent-purple: #a18cd1;
+      --accent-pink: #fbc2eb;
+      --accent-yellow: #fda085;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --text-light: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.8);
+      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+      --card-shadow-hover: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 3rem;
+      --spacing-xl: 6rem;
+      --blur-sm: 10px;
+      --blur-md: 20px;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================
+       Base
+       ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > .footer {
+      margin-top: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ============================================
+       Animated Background
+       ============================================ */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #f8f9fc;
+      overflow: hidden;
+    }
+
+    .animated-bg::before,
+    .animated-bg::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 20s infinite alternate;
+    }
+
+    .animated-bg::before {
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, var(--accent-pink), transparent 70%);
+      top: -10%;
+      left: -10%;
+      animation-delay: -5s;
+    }
+
+    .animated-bg::after {
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
+      bottom: -10%;
+      right: -10%;
+    }
+
+    @keyframes float {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(50px, 50px) rotate(10deg); }
+    }
+
+    /* ============================================
+       Glass Morphism
+       ============================================ */
+    .glass {
+      background: var(--secondary-bg);
+      backdrop-filter: blur(var(--blur-md));
+      -webkit-backdrop-filter: blur(var(--blur-md));
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+
+    .glass:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    /* ============================================
+       Navigation
+       ============================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: var(--spacing-sm) var(--spacing-md);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(var(--blur-md));
+      -webkit-backdrop-filter: blur(var(--blur-md));
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: var(--spacing-md);
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-primary);
+    }
+
+    .nav-link.btn-nav {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .nav-link.btn-nav:hover {
+      opacity: 0.9;
+      color: white;
+    }
+
+    /* ============================================
+       Buttons
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: var(--text-light);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-primary);
+      border: 2px solid var(--accent-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       Gradient Text
+       ============================================ */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       Section Layout
+       ============================================ */
+    .section {
+      padding: var(--spacing-xl) var(--spacing-md);
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .section-title h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* ============================================
+       Hero
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(80px + var(--spacing-lg)) var(--spacing-md) var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      gap: var(--spacing-lg);
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(102, 126, 234, 0.1);
+      color: var(--accent-primary);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+      line-height: 1.8;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(102, 126, 234, 0.08);
+      color: var(--text-secondary);
+      border: 1px solid rgba(102, 126, 234, 0.15);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 500;
+    }
+
+    .badge i {
+      color: var(--accent-primary);
+      font-size: 0.9rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+
+    /* Browser Mockup */
+    .hero-visual {
+      flex: 1.1;
+      min-width: 0;
+    }
+
+    .browser-mockup {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transform: perspective(1000px) rotateY(-3deg) rotateX(2deg);
+      transition: transform 0.5s ease;
+    }
+
+    .browser-mockup:hover {
+      transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    }
+
+    .browser-bar {
+      background: #f0f0f0;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .browser-dot:nth-child(1) { background: #ff5f57; }
+    .browser-dot:nth-child(2) { background: #ffbd2e; }
+    .browser-dot:nth-child(3) { background: #28ca41; }
+
+    .browser-url {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .browser-url i {
+      font-size: 0.7rem;
+      color: #28ca41;
+    }
+
+    .browser-screenshot {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .hero-visual-mobile {
+      display: none;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow-hover);
+      margin-top: var(--spacing-md);
+    }
+
+    /* ============================================
+       How it Works
+       ============================================ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: start;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+    }
+
+    .step-card {
+      padding: var(--spacing-md);
+      text-align: center;
+    }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .step-icon {
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      padding-top: 1.5rem;
+      color: var(--accent-primary);
+      font-size: 1.5rem;
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       Features Grid
+       ============================================ */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.75rem;
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon i {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ============================================
+       Quick Start
+       ============================================ */
+    .quickstart-container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .terminal {
+      background: #1a1a1a;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .terminal-bar {
+      background: #2a2a2a;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: #ff5f57; }
+    .terminal-dot:nth-child(2) { background: #ffbd2e; }
+    .terminal-dot:nth-child(3) { background: #28ca41; }
+
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      font-family: monospace;
+    }
+
+    .terminal-body {
+      padding: 1.5rem 2rem;
+      font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+      font-size: 0.9rem;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .terminal-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .terminal-prompt {
+      color: #28ca41;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .terminal-cmd {
+      color: #f59e0b;
+    }
+
+    .terminal-comment {
+      color: #555;
+      font-size: 0.8rem;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .quickstart-note {
+      text-align: center;
+      margin-top: var(--spacing-md);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .quickstart-note a {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    /* ============================================
+       Cost Table
+       ============================================ */
+    .cost-container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cost-note {
+      text-align: center;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .cost-free-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(40, 202, 65, 0.1);
+      color: #16a34a;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--secondary-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .cost-table thead {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    }
+
+    .cost-table thead th {
+      color: white;
+      padding: 0.875rem 1.25rem;
+      text-align: left;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .cost-table tbody tr {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: background 0.2s;
+    }
+
+    .cost-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .cost-table tbody tr:hover {
+      background: rgba(102, 126, 234, 0.03);
+    }
+
+    .cost-table td {
+      padding: 0.875rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    .cost-table td:first-child {
+      font-weight: 600;
+    }
+
+    .cost-free {
+      color: #16a34a;
+      font-weight: 600;
+    }
+
+    .cost-cheap {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    /* ============================================
+       Footer
+       ============================================ */
+    .footer {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(var(--blur-sm));
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-md);
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .footer a {
+      color: var(--accent-primary);
+      font-weight: 500;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--accent-primary);
+    }
+
+    /* ============================================
+       Back to Top
+       ============================================ */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
+
+    /* ============================================
+       Animate-in (JS adds .js-animate class to body to enable)
+       ============================================ */
+    .js-animate .animate-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-in.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* ============================================
+       Responsive
+       ============================================ */
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step-arrow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        min-height: unset;
+        padding-top: calc(80px + var(--spacing-md));
+        padding-bottom: var(--spacing-md);
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .hero-visual-mobile {
+        display: block;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .section-title h2 {
+        font-size: 1.75rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="logo">
+      <i class="mdi mdi-source-repository"></i> git-folio
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works" class="nav-link">如何使用</a></li>
+      <li><a href="#features" class="nav-link">功能特色</a></li>
+      <li><a href="#quick-start" class="nav-link">快速開始</a></li>
+      <li><a href="https://zedotech.github.io/git-folio/" target="_blank" rel="noopener" class="nav-link">查看範例 ↗</a></li>
+      <li><a href="https://github.com/ZEDOTECH/git-folio" target="_blank" rel="noopener" class="nav-link btn-nav">
+        <i class="mdi mdi-github"></i> GitHub
+      </a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================================
+       Hero
+       ============================================================ -->
+  <section class="hero" id="home">
+    <!-- Left: Content -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <i class="mdi mdi-robot-happy"></i> AI × GitHub × 靜態部署
+      </div>
+
+      <h1 class="hero-title">
+        把你的 GitHub<br>
+        變成<span class="text-gradient">精美作品集</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        輸入 GitHub Token，一行指令搞定。AI 自動撰寫描述、分析技能，<br>
+        生成完整可部署的靜態網站，幾分鐘上線。
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge"><i class="mdi mdi-robot"></i> AI 生成描述</span>
+        <span class="badge"><i class="mdi mdi-tag-multiple"></i> 技能自動分析</span>
+        <span class="badge"><i class="mdi mdi-package-variant"></i> 純靜態輸出</span>
+        <span class="badge"><i class="mdi mdi-rocket-launch"></i> 一鍵部署</span>
+        <span class="badge"><i class="mdi mdi-currency-usd-off"></i> GitHub API 免費</span>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#quick-start" class="btn btn-primary">
+          <i class="mdi mdi-play-circle"></i> 立即開始
+        </a>
+        <a href="https://zedotech.github.io/git-folio/" target="_blank" rel="noopener" class="btn btn-secondary">
+          <i class="mdi mdi-eye"></i> 查看範例 ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Browser Mockup (desktop) -->
+    <div class="hero-visual">
+      <div class="browser-mockup">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+          <div class="browser-url">
+            <i class="mdi mdi-shield-check"></i>
+            zedotech.github.io/git-folio/
+          </div>
+        </div>
+        <img class="browser-screenshot" src="assets/preview.png" alt="git-folio 作品集範例">
+      </div>
+    </div>
+
+    <!-- Preview image for mobile -->
+    <img class="hero-visual-mobile" src="assets/preview.png" alt="git-folio 作品集範例">
+  </section>
+
+  <!-- ============================================================
+       How it Works
+       ============================================================ -->
+  <section class="section" id="how-it-works">
+    <div class="section-title">
+      <h2>三步驟，輕鬆上線</h2>
+      <p>從 GitHub 到作品集網站，全自動完成</p>
+    </div>
+
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <div class="step-card glass animate-in">
+        <div class="step-number">1</div>
+        <div class="step-icon"><i class="mdi mdi-github"></i></div>
+        <h3>連接 GitHub</h3>
+        <p>填入 GitHub Personal Access Token，工具透過 GraphQL API 自動抓取你所有的 repos，支援 public 與 private。</p>
+      </div>
+
+      <div class="step-arrow animate-in">
+        <i class="mdi mdi-arrow-right-circle"></i>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card glass animate-in">
+        <div class="step-number">2</div>
+        <div class="step-icon"><i class="mdi mdi-brain"></i></div>
+        <h3>AI 智慧分析</h3>
+        <p>GPT 為每個 repo 生成專業描述、技術標籤與技能分類，並自動撰寫個人簡介。費用極低，100 個 repos 不到 $0.02。</p>
+      </div>
+
+      <div class="step-arrow animate-in">
+        <i class="mdi mdi-arrow-right-circle"></i>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card glass animate-in">
+        <div class="step-number">3</div>
+        <div class="step-icon"><i class="mdi mdi-web"></i></div>
+        <h3>部署上線</h3>
+        <p>生成完整的純靜態 HTML 網站，<code>npm run deploy</code> 一行指令直接推送到 GitHub Pages，不需要後端伺服器。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Features
+       ============================================================ -->
+  <section class="section" id="features">
+    <div class="section-title">
+      <h2>功能特色</h2>
+      <p>從抓取到部署，每個環節都照顧到</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-robot"></i></div>
+        <h3>AI 自動描述</h3>
+        <p>GPT 閱讀每個 repo 的程式碼語言與 README，生成專業且精準的中文描述，讓作品集內容豐富有深度。</p>
+      </div>
+
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-chart-bubble"></i></div>
+        <h3>技能自動分析</h3>
+        <p>AI 分析所有 repos 後，自動歸類技能領域（全端、AI、雲端等）、熟練程度，並生成個人技能簡介。</p>
+      </div>
+
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-eye-check"></i></div>
+        <h3>Repo 可見度控制</h3>
+        <p>Web UI 中可逐一勾選要展示的 repos，不想曝光的項目隨時排除，勾選狀態自動儲存。</p>
+      </div>
+
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-lightning-bolt"></i></div>
+        <h3>智慧快取</h3>
+        <p>GitHub 資料與 AI 分析結果皆會快取，重複執行時秒速完成，節省 API 呼叫費用與等待時間。</p>
+      </div>
+
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-broadcast"></i></div>
+        <h3>SSE 即時進度</h3>
+        <p>Generate 時透過 Server-Sent Events 即時串流日誌，清楚掌握每個步驟的執行狀態。</p>
+      </div>
+
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-package-variant-closed"></i></div>
+        <h3>純靜態輸出</h3>
+        <p>生成的純靜態 HTML 網站不需要任何後端伺服器，可部署到 GitHub Pages、Netlify、Vercel 等任何靜態托管平台。</p>
+      </div>
+
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-monitor-dashboard"></i></div>
+        <h3>視覺化 Web UI</h3>
+        <p>內建 Hono HTTP server，<code>npm run ui</code> 啟動後透過瀏覽器操作四個分頁：Settings → Visibility → Generate → Preview。</p>
+      </div>
+
+      <div class="feature-card glass animate-in">
+        <div class="feature-icon"><i class="mdi mdi-rocket-launch"></i></div>
+        <h3>一鍵部署</h3>
+        <p>執行 <code>npm run deploy</code> 自動將 <code>output/</code> 推送到 <code>gh-pages</code> branch，幾分鐘後即可在 GitHub Pages 上看到作品集。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Quick Start
+       ============================================================ -->
+  <section class="section" id="quick-start">
+    <div class="section-title">
+      <h2>快速開始</h2>
+      <p>安裝到上線，只需幾分鐘</p>
+    </div>
+
+    <div class="quickstart-container">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+          </div>
+          <div class="terminal-title">bash</div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-cmd">git clone https://github.com/ZEDOTECH/git-folio.git</span>
+            <span class="terminal-comment"># 下載專案</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-cmd">cd git-folio</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-cmd">npm install &amp;&amp; npm run build</span>
+            <span class="terminal-comment"># 安裝依賴並編譯</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-cmd">npm run ui</span>
+            <span class="terminal-comment"># 開啟 http://localhost:3000</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="quickstart-note">
+        開啟瀏覽器後，依序設定 GitHub Token → 選擇 Repos → Generate → Preview<br>
+        完成後執行 <code style="background: rgba(102,126,234,0.1); color: var(--accent-primary); padding: 0.1rem 0.4rem; border-radius: 4px;">npm run deploy</code> 部署到 GitHub Pages
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Cost
+       ============================================================ -->
+  <section class="section" id="cost">
+    <div class="section-title">
+      <h2>費用估算</h2>
+      <p>GitHub API 完全免費，AI 費用極低</p>
+    </div>
+
+    <div class="cost-container">
+      <div class="cost-note">
+        <div class="cost-free-badge">
+          <i class="mdi mdi-check-circle"></i> GitHub GraphQL API 完全免費
+        </div>
+      </div>
+
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>規模</th>
+            <th>GitHub API</th>
+            <th>OpenAI（gpt-5-mini）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20 個 repos</td>
+            <td class="cost-free"><i class="mdi mdi-infinity"></i> 免費</td>
+            <td class="cost-cheap">≈ $0.005</td>
+          </tr>
+          <tr>
+            <td>50 個 repos</td>
+            <td class="cost-free"><i class="mdi mdi-infinity"></i> 免費</td>
+            <td class="cost-cheap">≈ $0.011</td>
+          </tr>
+          <tr>
+            <td>100 個 repos</td>
+            <td class="cost-free"><i class="mdi mdi-infinity"></i> 免費</td>
+            <td class="cost-cheap">≈ $0.020</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary); font-size: 0.875rem;">
+        不需要 AI 分析？勾選 <strong>Skip AI enrichment</strong>，完全免費使用。
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://github.com/ZEDOTECH/git-folio" target="_blank" rel="noopener" class="footer-link">
+        <i class="mdi mdi-github"></i> GitHub
+      </a>
+      <a href="https://zedotech.github.io/git-folio/" target="_blank" rel="noopener" class="footer-link">
+        <i class="mdi mdi-eye"></i> 範例作品集
+      </a>
+      <a href="https://www.youtube.com/@zedotech_offical" target="_blank" rel="noopener" class="footer-link">
+        <i class="mdi mdi-youtube"></i> YouTube 頻道
+      </a>
+      <a href="https://zedotech.com" target="_blank" rel="noopener" class="footer-link">
+        <i class="mdi mdi-web"></i> ZEDOTECH
+      </a>
+    </div>
+    <p>
+      <span id="currentYear"></span> © ZEDOTECH |
+      Built with <a href="https://github.com/ZEDOTECH/git-folio">git-folio</a>
+    </p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="回到頂部">
+    <i class="mdi mdi-chevron-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // Current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Navbar scroll spy
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Animate-in (IntersectionObserver)
+    document.body.classList.add('js-animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
